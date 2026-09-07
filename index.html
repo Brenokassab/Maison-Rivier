@@ -375,8 +375,8 @@ button{ font:inherit; color:inherit; cursor:pointer; }
 .product__figure{
   position:relative;
   background:var(--figure-bg);
-  padding:1.6rem;
-  aspect-ratio:4/4.6;
+  padding:.6rem;
+  aspect-ratio:4/4.35;
   display:grid; place-items:center;
   overflow:hidden;
 }
@@ -678,8 +678,8 @@ button{ font:inherit; color:inherit; cursor:pointer; }
 @keyframes toast-in{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
 
 /* ---------- product photo (substitui a ilustração quando existe) ---------- */
-.product__photo{ max-width:88%; max-height:94%; object-fit:contain; filter:drop-shadow(0 16px 22px rgba(0,20,40,.12)); }
-.line__thumb .product__photo{ max-width:94%; max-height:94%; filter:none; }
+.product__photo{ width:100%; height:100%; object-fit:contain; }
+.line__thumb .product__photo{ width:94%; height:94%; }
 
 /* ---------- WhatsApp flutuante ---------- */
 .wa-fab{
