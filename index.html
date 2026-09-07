@@ -640,6 +640,23 @@ button{ font:inherit; color:inherit; cursor:pointer; }
 }
 @keyframes toast-in{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
 
+/* ---------- product photo (substitui a ilustração quando existe) ---------- */
+.product__photo{ max-width:88%; max-height:94%; object-fit:contain; filter:drop-shadow(0 16px 22px rgba(0,20,40,.12)); }
+.line__thumb .product__photo{ max-width:94%; max-height:94%; filter:none; }
+
+/* ---------- WhatsApp flutuante ---------- */
+.wa-fab{
+  position:fixed; right:1.1rem; bottom:1.1rem; z-index:60;
+  width:52px; height:52px; border-radius:999px;
+  display:grid; place-items:center;
+  background:#1f8f6f; color:#fff; text-decoration:none;
+  box-shadow:0 8px 22px -8px rgba(0,0,0,.55);
+  transition:transform .2s ease, background .2s ease;
+}
+.wa-fab:hover{ transform:translateY(-2px); background:#177a5e; }
+.wa-fab svg{ width:28px; height:28px; }
+@media (max-width:560px){ .wa-fab{ right:.8rem; bottom:.8rem; width:48px; height:48px; } }
+
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
 }
@@ -825,10 +842,10 @@ button{ font:inherit; color:inherit; cursor:pointer; }
         <h2 style="font-size:clamp(1.7rem,3.6vw,2.4rem);letter-spacing:.06em;text-transform:uppercase;margin:.9rem 0 1rem">Fale com o atelier</h2>
         <p style="color:var(--muted);font-weight:300">Dúvidas sobre peças, tamanhos ou o andamento do seu pedido? Nossa equipe responde em até um dia útil.</p>
         <ul class="contact__details">
-          <li><span class="k">Instagram</span><span class="v">@maisonrivier</span></li>
-          <li><span class="k">E-mail</span><span class="v">atelier@maisonrivier.com</span></li>
+          <li><span class="k">WhatsApp</span><span class="v"><a href="https://wa.me/5511996603491" target="_blank" rel="noopener">(11) 99660-3491</a></span></li>
+          <li><span class="k">E-mail</span><span class="v"><a href="mailto:maisonrivierr@gmail.com">maisonrivierr@gmail.com</a></span></li>
+          <li><span class="k">Instagram</span><span class="v"><a href="https://instagram.com/maisonrivier" target="_blank" rel="noopener">@maisonrivier</a></span></li>
           <li><span class="k">Atendimento</span><span class="v">Segunda a sexta, 9h às 18h</span></li>
-          <li><span class="k">Origem</span><span class="v">Paris · Riviera Française</span></li>
         </ul>
       </div>
 
@@ -900,10 +917,10 @@ button{ font:inherit; color:inherit; cursor:pointer; }
       <div class="footer__col">
         <h4>Contato</h4>
         <ul>
+          <li><a href="https://wa.me/5511996603491" target="_blank" rel="noopener">WhatsApp (11) 99660-3491</a></li>
+          <li><a href="mailto:maisonrivierr@gmail.com">maisonrivierr@gmail.com</a></li>
           <li><a href="https://instagram.com/maisonrivier" target="_blank" rel="noopener">Instagram @maisonrivier</a></li>
-          <li><a href="mailto:atelier@maisonrivier.com">atelier@maisonrivier.com</a></li>
           <li><a href="#contato">Fale com o atelier</a></li>
-          <li><span style="color:var(--muted);font-size:.84rem;font-weight:300">Seg–sex, 9h–18h</span></li>
         </ul>
       </div>
     </div>
@@ -938,13 +955,18 @@ button{ font:inherit; color:inherit; cursor:pointer; }
     <h2 id="modalTitle">Resumo do pedido</h2>
     <ul class="order-list" id="orderList"></ul>
     <div class="order-total"><span>Total</span><span id="orderTotal">R$ 0,00</span></div>
-    <p class="modal__note">O pagamento on-line estará disponível em breve. Para concluir agora, envie o resumo do pedido por e-mail ou copie-o e fale conosco pelo Instagram — retornaremos para confirmar a compra e o frete.</p>
+    <p class="modal__note">Envie seu pedido pelo WhatsApp e finalizamos o pagamento e o frete por lá — em minutos, no horário comercial. Você também pode enviar por e-mail ou copiar o resumo.</p>
     <div class="modal__actions">
-      <button type="button" class="btn btn--solid" id="orderEmail">Enviar por e-mail</button>
-      <button type="button" class="btn" id="orderCopy">Copiar resumo</button>
+      <button type="button" class="btn btn--solid" id="orderWhats">Enviar no WhatsApp</button>
+      <button type="button" class="btn" id="orderEmail">Por e-mail</button>
+      <button type="button" class="btn" id="orderCopy">Copiar</button>
     </div>
   </div>
 </div>
+
+<a class="wa-fab" href="https://wa.me/5511996603491" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3C9 3 3.5 8.5 3.5 15.5c0 2.4.7 4.7 1.9 6.7L3 29l7-1.8c1.9 1 4 1.6 6 1.6 7 0 12.5-5.5 12.5-12.5S23 3 16 3zm0 22.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-4.1 1.1 1.1-4-.3-.4a10.3 10.3 0 0 1-1.6-5.4c0-5.7 4.7-10.4 10.4-10.4S26.4 9.8 26.4 15.5 21.7 25.8 16 25.8zm5.9-7.8c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.3-.7.1a8.4 8.4 0 0 1-2.5-1.5 9.3 9.3 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.6s0-.4 0-.6-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4a3.7 3.7 0 0 0-1.2 2.8c0 1.6 1.2 3.2 1.4 3.5s2.4 3.7 5.9 5.2c2.1.9 2.9 1 3.9.8.6-.1 1.9-.8 2.2-1.5s.3-1.4.2-1.5-.3-.2-.6-.4z"/></svg>
+</a>
 
 <div class="overlay" id="overlay"></div>
 <div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
@@ -982,34 +1004,34 @@ button{ font:inherit; color:inherit; cursor:pointer; }
   var PRODUCTS = [
     { id:"polo-heritage", cat:"polos", type:"polo", name:"Polo Piqué Heritage", price:349.90,
       desc:"Piqué de algodão pima, gola canelada e brasão bordado ao peito.",
-      colors:["Azul Marinho","Branco","Bege Areia","Verde Oliva","Cinza Mescla","Preto"], sizes:TOPS },
+      colors:["Azul Marinho","Branco","Bege Areia","Verde Oliva","Cinza Mescla","Preto"], sizes:TOPS, usePhotos:true },
     { id:"tee-essential", cat:"camisetas", type:"tee", name:"Camiseta Essential", price:189.90,
       desc:"Malha penteada premium, gola reforçada e brasão ao peito.",
-      colors:["Branco","Azul Marinho","Verde Oliva","Bege Areia","Cinza Claro","Cinza Escuro","Preto","Azul Claro"], sizes:TOPS },
+      colors:["Branco","Azul Marinho","Verde Oliva","Bege Areia","Cinza Claro","Cinza Escuro","Preto","Azul Claro"], sizes:TOPS, usePhotos:true },
     { id:"moletom-rivier", cat:"moletons", type:"hoodie", name:"Moletom Meio-Zíper Rivier", price:399.90,
       desc:"Felpa francesa, gola alta com zíper e punhos canelados.",
-      colors:["Azul Marinho","Bege Areia","Cinza Mescla","Preto"], sizes:TOPS },
+      colors:["Azul Marinho","Bege Areia","Cinza Mescla","Preto"], sizes:TOPS, usePhotos:true },
     { id:"oxford-classica", cat:"camisas", type:"oxford", name:"Camisa Oxford Clássica", price:329.90,
       desc:"Tecido Oxford encorpado, colarinho button-down e bolso frontal.",
-      colors:["Branco","Azul Claro","Azul Listrado","Bege"], sizes:TOPS },
+      colors:["Branco","Azul Claro","Azul Listrado","Bege"], sizes:TOPS, usePhotos:true },
     { id:"chino-alfaiataria", cat:"calcas", type:"chino", name:"Calça Chino Alfaiataria", price:359.90,
       desc:"Sarja com elastano, cós com passantes e caimento reto.",
-      colors:["Bege Areia","Azul Marinho","Caqui","Cinza"], sizes:WAIST },
+      colors:["Bege Areia","Azul Marinho","Caqui","Cinza"], sizes:WAIST, usePhotos:true },
     { id:"bermuda-riviera", cat:"bermudas", type:"bermuda", name:"Bermuda Chino Riviera", price:249.90,
       desc:"Sarja leve, comprimento na altura do joelho.",
-      colors:["Bege Areia","Azul Marinho","Branco","Verde Oliva"], sizes:WAIST },
+      colors:["Bege Areia","Azul Marinho","Branco","Verde Oliva"], sizes:WAIST, usePhotos:true },
     { id:"bone-brasao", cat:"bones", type:"cap", name:"Boné Brasão Maison", price:149.90,
       desc:"Seis gomos estruturados, aba curva e brasão bordado à frente.",
-      colors:["Azul Marinho","Bege","Verde Oliva"], sizes:null, meta:"Ajuste regulável" },
+      colors:["Azul Marinho","Bege","Verde Oliva"], sizes:null, usePhotos:true, meta:"Ajuste regulável" },
     { id:"pulseira-couro", cat:"acessorios", type:"leather", name:"Pulseira Couro Marrom", price:129.90,
       desc:"Couro legítimo trançado, fecho em aço escovado.",
-      colors:["Couro Marrom"], sizes:null, meta:"Tamanho único" },
+      colors:["Couro Marrom"], sizes:null, usePhotos:true, meta:"Tamanho único" },
     { id:"pulseira-corda", cat:"acessorios", type:"cord", name:"Pulseira Corda Marinho", price:119.90,
       desc:"Cordão náutico trançado com fecho magnético.",
-      colors:["Corda Marinho"], sizes:null, meta:"Tamanho único" },
+      colors:["Corda Marinho"], sizes:null, usePhotos:true, meta:"Tamanho único" },
     { id:"pulseira-onix", cat:"acessorios", type:"onyx", name:"Pulseira Pedras Ônix", price:139.90,
       desc:"Contas de ônix natural 8 mm com elástico interno.",
-      colors:["Pedras Ônix"], sizes:null, meta:"Tamanho único" }
+      colors:["Pedras Ônix"], sizes:null, usePhotos:true, meta:"Tamanho único" }
   ];
 
   var PLATES = [
@@ -1177,11 +1199,50 @@ button{ font:inherit; color:inherit; cursor:pointer; }
     };
     return '<svg class="garment" viewBox="0 0 240 288" role="img" aria-label="Ilustração da peça Maison Rivier">'+defs+(art[type]||art.tee)+'</svg>';
   }
+  window.__mrGarment = garment;
+
+  var ACCENTS = {"á":"a","à":"a","â":"a","ã":"a","ä":"a","é":"e","ê":"e","è":"e","í":"i","ì":"i","ó":"o","ô":"o","õ":"o","ò":"o","ú":"u","ù":"u","ü":"u","ç":"c","ñ":"n"};
+  function slug(s){
+    return String(s).toLowerCase().replace(/[^\x00-\x7f]/g, function(ch){ return ACCENTS[ch] || ""; })
+      .replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+  }
+  /* Caminhos de foto testados para cada peça/cor. Se o arquivo existir em images/,
+     a foto entra no lugar da ilustração; se não, fica a ilustração. */
+  function photoCandidates(p, color){
+    if(!p.usePhotos && !p.photo && !(p.photos && p.photos[color])){ return []; }
+    var a = [];
+    if(p.photos && p.photos[color]) a.push(p.photos[color]);
+    if(p.usePhotos) a.push("images/" + p.id + "-" + slug(color) + ".jpg");
+    a.push(p.photo || ("images/" + p.id + ".jpg"));
+    return a;
+  }
+  function hydratePhotos(scope){
+    var nodes = (scope || document).querySelectorAll("[data-ph]");
+    Array.prototype.forEach.call(nodes, function(fig){
+      var urls = (fig.getAttribute("data-ph") || "").split("|").filter(Boolean);
+      if(!urls.length) return;
+      var token = Math.random().toString(36);
+      fig.__pht = token;
+      (function tryNext(i){
+        if(i >= urls.length) return;
+        var im = new Image();
+        im.onload = function(){
+          if(fig.__pht !== token) return;
+          var cat = fig.querySelector(".product__cat");
+          fig.innerHTML = '<img class="product__photo" src="' + urls[i] + '" alt="" decoding="async">';
+          if(cat) fig.appendChild(cat);
+        };
+        im.onerror = function(){ tryNext(i + 1); };
+        im.src = urls[i];
+      })(0);
+    });
+  }
 
   /* ------------------------------------------------------------------
      STATE
   ------------------------------------------------------------------ */
   var LS_CART = "mr_cart_v2", LS_THEME = "mr_theme";
+  var WA = "5511996603491", MAIL = "maisonrivierr@gmail.com";
   var cart = [];
   try{
     var raw = localStorage.getItem(LS_CART);
@@ -1256,7 +1317,7 @@ button{ font:inherit; color:inherit; cursor:pointer; }
       return '<button class="swatch'+(i===0?" is-active":"")+'" data-color="'+esc(c)+'" title="'+esc(c)+'" aria-label="Cor: '+esc(c)+'" style="--sw:'+COLORS[c]+'"></button>';
     }).join("");
     return '<article class="product" data-id="'+p.id+'" data-color="'+esc(first)+'" data-size="'+(p.sizes?esc(p.sizes[0]):"Único")+'" style="'+colorVars(first)+'">'+
-      '<div class="product__figure">'+garment(p.type,first)+'<span class="product__cat">'+esc(catLabel(p.cat))+'</span></div>'+
+      '<div class="product__figure" data-ph="'+esc(photoCandidates(p,first).join("|"))+'">'+garment(p.type,first)+'<span class="product__cat">'+esc(catLabel(p.cat))+'</span></div>'+
       '<div class="product__body">'+
         '<h3 class="product__name">'+esc(p.name)+'</h3>'+
         '<p class="product__desc">'+esc(p.desc)+'</p>'+
@@ -1273,6 +1334,7 @@ button{ font:inherit; color:inherit; cursor:pointer; }
     var grid = $("#grid");
     var list = PRODUCTS.filter(function(p){ return currentFilter==="all" || p.cat===currentFilter; });
     grid.innerHTML = list.map(cardHTML).join("");
+    hydratePhotos(grid);
   }
 
   $("#grid").addEventListener("click", function(e){
@@ -1286,7 +1348,11 @@ button{ font:inherit; color:inherit; cursor:pointer; }
       var nm = card.querySelector("[data-color-name]"); if(nm) nm.textContent = sw.dataset.color;
       card.setAttribute("style", colorVars(sw.dataset.color));
       var fig = card.querySelector(".product__figure");
-      if(fig) fig.innerHTML = garment(p.type, sw.dataset.color) + '<span class="product__cat">'+esc(catLabel(p.cat))+'</span>';
+      if(fig){
+        fig.innerHTML = garment(p.type, sw.dataset.color) + '<span class="product__cat">'+esc(catLabel(p.cat))+'</span>';
+        fig.setAttribute("data-ph", photoCandidates(p, sw.dataset.color).join("|"));
+        hydratePhotos(card);
+      }
       return;
     }
     var sz = e.target.closest(".size");
@@ -1320,7 +1386,11 @@ button{ font:inherit; color:inherit; cursor:pointer; }
   function lineHTML(item, idx){
     var variant = "Cor: " + item.color + (item.size && item.size!=="Único" ? "  ·  Tam: " + item.size : "");
     return '<div class="line" data-idx="'+idx+'">'+
-      '<div class="line__thumb" style="'+colorVars(item.color)+'">'+garment(item.type, item.color)+'</div>'+
+      '<div class="line__thumb" style="'+colorVars(item.color)+'" data-ph="'+
+        esc((function(){ var pr=PRODUCTS.filter(function(x){return x.id===item.id;})[0];
+          return pr ? photoCandidates(pr, item.color).join("|") : ""; })())+'">'+
+        garment(item.type, item.color)+
+      '</div>'+
       '<div>'+
         '<div class="line__name">'+esc(item.name)+'</div>'+
         '<div class="line__variant">'+esc(variant)+'</div>'+
@@ -1346,6 +1416,7 @@ button{ font:inherit; color:inherit; cursor:pointer; }
       body.innerHTML = '<p class="drawer__empty">Sua sacola está vazia.<br>Explore a Coleção Heritage I.</p>';
     }else{
       body.innerHTML = cart.map(lineHTML).join("");
+      hydratePhotos(body);
     }
     $("#cartSubtotal").textContent = money(cartSubtotal());
     $("#checkoutBtn").disabled = cart.length===0;
@@ -1433,9 +1504,12 @@ button{ font:inherit; color:inherit; cursor:pointer; }
     $("#orderTotal").textContent = money(cartSubtotal());
   }
 
+  $("#orderWhats").addEventListener("click", function(){
+    window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(orderText()), "_blank", "noopener");
+  });
   $("#orderEmail").addEventListener("click", function(){
     var subject = "Novo pedido — Maison Rivier";
-    window.location.href = "mailto:atelier@maisonrivier.com?subject=" + encodeURIComponent(subject) +
+    window.location.href = "mailto:" + MAIL + "?subject=" + encodeURIComponent(subject) +
       "&body=" + encodeURIComponent(orderText());
   });
   $("#orderCopy").addEventListener("click", function(){

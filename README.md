@@ -28,7 +28,14 @@ python -m http.server
 Com o repositório no GitHub: **Settings → Pages → Branch: `main` / root**.
 O site fica em `https://<usuario>.github.io/maison-rivier/`.
 
+## Fotos das peças
+
+As peças aparecem como ilustrações até existir uma foto real. Basta colocar os
+arquivos na pasta [`images/`](images/) seguindo os nomes descritos em
+[`images/_LEIA-ME.md`](images/_LEIA-ME.md) — o site troca sozinho.
+
 ## Observações
 
-- Pagamento on-line não está incluído — a finalização gera um resumo de pedido por e-mail/cópia.
-- `atelier@maisonrivier.com` e `@maisonrivier` são placeholders.
+- Contato: WhatsApp (11) 99660-3491 · maisonrivierr@gmail.com · @maisonrivier
+- Pagamento on-line não está incluído — a finalização envia o pedido pelo WhatsApp
+  (ou e-mail / cópia) para fechar pagamento e frete.
