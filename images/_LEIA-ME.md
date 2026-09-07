@@ -3,6 +3,14 @@
 Coloque as fotos **nesta pasta**. O site troca a ilustração pela foto
 automaticamente assim que o arquivo existir — não precisa mexer no código.
 
+## Já no site (recortadas da arte da campanha)
+- `polo-piquet-azul-marinho.jpg`
+- `calca-reta-{off-white,azul-marinho,bege-areia,preto}.jpg`
+- `bermuda-alfaiataria-{off-white,azul-marinho,bege-areia,preto}.jpg`
+
+As demais continuam como ilustração até você enviar as fotos individuais
+(as folhas de campanha não têm resolução para recortar as outras peças com nitidez).
+
 ## Nome do arquivo
 
 `id-da-peca-cor.jpg`  (JPG, quadrado, fundo branco/claro, mín. 1000×1000)

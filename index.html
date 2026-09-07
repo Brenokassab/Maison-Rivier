@@ -380,6 +380,8 @@ button{ font:inherit; color:inherit; cursor:pointer; }
   display:grid; place-items:center;
   overflow:hidden;
 }
+.product__figure.is-photo-dark{ background:#12161c; }
+.product__figure.is-photo-dark .product__cat{ color:rgba(255,255,255,.5); }
 .product__figure .garment{ width:74%; max-width:210px; height:auto; filter:drop-shadow(0 14px 20px rgba(20,20,16,.10)); transition:transform .5s cubic-bezier(.2,.7,.2,1); }
 .product__figure .product__photo{ transition:transform .5s cubic-bezier(.2,.7,.2,1); }
 .product:hover .product__figure .garment,
@@ -1033,7 +1035,7 @@ button{ font:inherit; color:inherit; cursor:pointer; }
   var PRODUCTS = [
     { id:"polo-piquet", cat:"polos", type:"polo", name:"Polo Piquet", price:199.90,
       desc:"Algodão piquet premium, gola estruturada, botões em madrepérola e brasão bordado.",
-      colors:["Azul Marinho","Branco","Bege","Preto"], sizes:TOPS, usePhotos:true },
+      colors:["Azul Marinho","Branco","Bege","Preto"], sizes:TOPS, usePhotos:true, photoBg:"dark" },
     { id:"camiseta-essential", cat:"camisetas", type:"tee", name:"Camiseta Essential", price:189.90,
       desc:"Malha penteada premium, gola reforçada e brasão ao peito.",
       colors:["Branco","Azul Marinho","Verde Oliva","Bege Areia","Cinza Mescla","Preto"], sizes:TOPS, usePhotos:true },
@@ -1064,21 +1066,9 @@ button{ font:inherit; color:inherit; cursor:pointer; }
     { id:"cinto", cat:"acessorios", type:"belt", name:"Cinto", price:249.90,
       desc:"Couro legítimo com fivela personalizada Maison Rivier.",
       colors:["Marrom","Preto"], sizes:BELT, usePhotos:true },
-    { id:"meia", cat:"acessorios", type:"socks", name:"Meia — Kit 3 pares", price:59.90,
-      desc:"Algodão premium, conforto térmico. Kit com três pares.",
-      colors:["Sortido"], sizes:SOCK, usePhotos:true },
-    { id:"pochete", cat:"acessorios", type:"waistbag", name:"Pochete", price:179.90,
-      desc:"Nylon premium, alça ajustável e brasão bordado.",
-      colors:["Preto"], sizes:null, usePhotos:true, meta:"Tamanho único" },
-    { id:"mochila", cat:"acessorios", type:"backpack", name:"Mochila", price:399.90,
-      desc:"Espaço interno amplo, tecido resistente à água e brasão bordado.",
-      colors:["Preto"], sizes:null, usePhotos:true, meta:"Tamanho único" },
     { id:"carteira", cat:"acessorios", type:"wallet", name:"Carteira", price:219.90,
       desc:"Couro legítimo, compacta e elegante.",
-      colors:["Marrom","Preto"], sizes:null, usePhotos:true, meta:"Tamanho único" },
-    { id:"chaveiro", cat:"acessorios", type:"keychain", name:"Chaveiro", price:99.90,
-      desc:"Metal premium com placa personalizada.",
-      colors:["Preto"], sizes:null, usePhotos:true, meta:"Tamanho único" }
+      colors:["Marrom","Preto"], sizes:null, usePhotos:true, meta:"Tamanho único" }
   ];
 
   var PLATES = [
@@ -1332,6 +1322,7 @@ button{ font:inherit; color:inherit; cursor:pointer; }
           var cat = fig.querySelector(".product__cat");
           fig.innerHTML = '<img class="product__photo" src="' + urls[i] + '" alt="" decoding="async">';
           if(cat) fig.appendChild(cat);
+          if(fig.getAttribute("data-photobg") === "dark") fig.classList.add("is-photo-dark");
         };
         im.onerror = function(){ tryNext(i + 1); };
         im.src = urls[i];
@@ -1429,7 +1420,7 @@ button{ font:inherit; color:inherit; cursor:pointer; }
       return '<button class="swatch'+(i===0?" is-active":"")+'" data-color="'+esc(c)+'" title="'+esc(c)+'" aria-label="Cor: '+esc(c)+'" style="--sw:'+COLORS[c]+'"></button>';
     }).join("");
     return '<article class="product" data-id="'+p.id+'" data-color="'+esc(first)+'" data-size="'+(p.sizes?esc(p.sizes[0]):"Único")+'" style="'+colorVars(first)+'">'+
-      '<div class="product__figure" data-ph="'+esc(photoCandidates(p,first).join("|"))+'">'+garment(p.type,first)+'<span class="product__cat">'+esc(catLabel(p.cat))+'</span></div>'+
+      '<div class="product__figure" data-ph="'+esc(photoCandidates(p,first).join("|"))+'" data-photobg="'+(p.photoBg||"")+'">'+garment(p.type,first)+'<span class="product__cat">'+esc(catLabel(p.cat))+'</span></div>'+
       '<div class="product__body">'+
         '<h3 class="product__name">'+esc(p.name)+'</h3>'+
         '<p class="product__desc">'+esc(p.desc)+'</p>'+
@@ -1461,6 +1452,7 @@ button{ font:inherit; color:inherit; cursor:pointer; }
       card.setAttribute("style", colorVars(sw.dataset.color));
       var fig = card.querySelector(".product__figure");
       if(fig){
+        fig.classList.remove("is-photo-dark");
         fig.innerHTML = garment(p.type, sw.dataset.color) + '<span class="product__cat">'+esc(catLabel(p.cat))+'</span>';
         fig.setAttribute("data-ph", photoCandidates(p, sw.dataset.color).join("|"));
         hydratePhotos(card);
