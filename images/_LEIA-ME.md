@@ -1,76 +1,28 @@
 # Fotos das peças — Collection 01
 
-Coloque as fotos **nesta pasta**. O site troca a ilustração pela foto
-automaticamente assim que o arquivo existir — não precisa mexer no código.
+O site troca a ilustração pela foto automaticamente quando o arquivo existe.
+Nome do arquivo: `id-da-peca-cor.jpg`.
 
-## Já no site (recortadas da arte da campanha)
-- `polo-piquet-azul-marinho.jpg`
-- `calca-reta-{off-white,azul-marinho,bege-areia,preto}.jpg`
-- `bermuda-alfaiataria-{off-white,azul-marinho,bege-areia,preto}.jpg`
+## Já no site (fotos geradas para a marca)
 
-As demais continuam como ilustração até você enviar as fotos individuais
-(as folhas de campanha não têm resolução para recortar as outras peças com nitidez).
+| Peça | Cores com foto |
+|---|---|
+| Polo Piquet | Azul Marinho, Branco, Bege, Verde Oliva, Cinza Mescla, Preto |
+| Camiseta Essential | Branco, Azul Marinho, Verde Oliva, Bege Areia, Cinza Mescla, Preto |
+| Camisa Oxford | Branco, Azul Claro, Azul Listrado, Bege, Cinza Mescla |
+| Moletom Meio-Zíper | Azul Marinho, Bege Areia, Verde Oliva, Cinza Mescla, Preto |
+| Calça Reta | Off White, Azul Marinho, Bege Areia, Preto |
+| Bermuda Alfaiataria | Off White, Azul Marinho, Bege Areia, Preto |
+| Boné | Azul Marinho, Bege, Verde Oliva, Preto, Cinza Mescla |
+| Pulseiras | Couro Marrom, Couro Preto, Corda Marinho |
 
-## Nome do arquivo
+`hero.jpg` — foto do herói (topo do site).
 
-`id-da-peca-cor.jpg`  (JPG, quadrado, fundo branco/claro, mín. 1000×1000)
+## Para trocar / adicionar uma foto
 
-Se tiver só **uma** foto por peça, use o nome curto (sem a cor): `id-da-peca.jpg`.
-
-### Polos
-```
-polo-piquet-azul-marinho.jpg   polo-piquet-branco.jpg
-polo-piquet-bege.jpg           polo-piquet-preto.jpg
-```
-### Camisetas
-```
-camiseta-essential-branco.jpg        camiseta-essential-azul-marinho.jpg
-camiseta-essential-verde-oliva.jpg   camiseta-essential-bege-areia.jpg
-camiseta-essential-cinza-mescla.jpg  camiseta-essential-preto.jpg
-```
-### Camisas
-```
-camisa-oxford-branco.jpg  camisa-oxford-azul-marinho.jpg  camisa-oxford-bege.jpg
-```
-### Moletons  (Oversized e Zíper)
-```
-moletom-oversized-preto.jpg  moletom-oversized-branco.jpg  moletom-oversized-bege-areia.jpg
-moletom-oversized-cinza-mescla.jpg  moletom-oversized-verde-oliva.jpg
-moletom-ziper-preto.jpg  moletom-ziper-branco.jpg  moletom-ziper-bege-areia.jpg
-moletom-ziper-cinza-mescla.jpg  moletom-ziper-verde-oliva.jpg
-```
-### Calças  (Reta e Cargo)
-```
-calca-reta-off-white.jpg  calca-reta-azul-marinho.jpg  calca-reta-bege-areia.jpg  calca-reta-preto.jpg
-calca-cargo-preto.jpg  calca-cargo-bege-areia.jpg  calca-cargo-cinza-mescla.jpg  calca-cargo-verde-oliva.jpg
-```
-### Bermudas  (Alfaiataria e Moletom)
-```
-bermuda-alfaiataria-off-white.jpg  bermuda-alfaiataria-azul-marinho.jpg
-bermuda-alfaiataria-bege-areia.jpg  bermuda-alfaiataria-preto.jpg
-bermuda-moletom-preto.jpg  bermuda-moletom-branco.jpg  bermuda-moletom-bege-areia.jpg
-bermuda-moletom-cinza-mescla.jpg  bermuda-moletom-verde-oliva.jpg
-```
-### Acessórios
-```
-bone-preto.jpg  bone-bege.jpg  bone-verde-oliva.jpg
-cinto-marrom.jpg  cinto-preto.jpg
-meia-sortido.jpg
-pochete-preto.jpg
-mochila-preto.jpg
-carteira-marrom.jpg  carteira-preto.jpg
-chaveiro-preto.jpg
-```
-
-## Imagens da campanha já no site
-- `hero.jpg` — foto do herói (topo do site)
-- `campanha-polo.jpg` — arte da polo (reserva, ainda não usada)
-
-## Publicar depois de adicionar fotos
+Salve o arquivo aqui com o nome no padrão acima (ex.: `polo-piquet-verde-oliva.jpg`),
+depois:
 ```
 cd C:\Users\Breno\maison-rivier
-git add -A
-git commit -m "Adiciona fotos das pecas"
-git push
+git add -A && git commit -m "atualiza fotos" && git push
 ```
-O site atualiza sozinho em ~1 min: https://brenokassab.github.io/Maison-Rivier/

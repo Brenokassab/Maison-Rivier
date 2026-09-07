@@ -1013,7 +1013,8 @@ button{ font:inherit; color:inherit; cursor:pointer; }
     "Azul Marinho":"#00182E","Branco":"#F5F3EC","Off White":"#EEEBE1",
     "Bege Areia":"#C9B48B","Bege":"#CFBB93","Verde Oliva":"#3B4A34",
     "Cinza Mescla":"#A6A8AA","Preto":"#161616","Marrom":"#5A3D28",
-    "Cinza Claro":"#D7D7D4","Sortido":"#B7B2A4"
+    "Azul Claro":"#AEC6D8","Azul Listrado":"#DCE7EF","Cinza Claro":"#D7D7D4",
+    "Sortido":"#B7B2A4"
   };
 
   var TOPS  = ["P","M","G","GG"];
@@ -1031,44 +1032,38 @@ button{ font:inherit; color:inherit; cursor:pointer; }
     {key:"acessorios",  label:"Acessórios"}
   ];
 
-  /* Collection 01 — preços e peças conforme a campanha oficial */
+  /* Collection 01 — fotos de produto geradas para a marca */
   var PRODUCTS = [
     { id:"polo-piquet", cat:"polos", type:"polo", name:"Polo Piquet", price:199.90,
       desc:"Algodão piquet premium, gola estruturada, botões em madrepérola e brasão bordado.",
-      colors:["Azul Marinho","Branco","Bege","Preto"], sizes:TOPS, usePhotos:true },
+      colors:["Azul Marinho","Branco","Bege","Verde Oliva","Cinza Mescla","Preto"], sizes:TOPS, usePhotos:true },
     { id:"camiseta-essential", cat:"camisetas", type:"tee", name:"Camiseta Essential", price:189.90,
       desc:"Malha penteada premium, gola reforçada e brasão ao peito.",
       colors:["Branco","Azul Marinho","Verde Oliva","Bege Areia","Cinza Mescla","Preto"], sizes:TOPS, usePhotos:true },
     { id:"camisa-oxford", cat:"camisas", type:"oxford", name:"Camisa Oxford", price:329.90,
-      desc:"Tecido Oxford encorpado, colarinho button-down e bolso frontal.",
-      colors:["Branco","Azul Marinho","Bege"], sizes:TOPS, usePhotos:true },
-    { id:"moletom-oversized", cat:"moletons", type:"hoodie", name:"Moletom Oversized", price:399.90,
-      desc:"Felpa premium, capuz duplo, bolso canguru, cordão personalizado, modelagem oversized.",
-      colors:["Preto","Branco","Bege Areia","Cinza Mescla","Verde Oliva"], sizes:TOPS, usePhotos:true },
-    { id:"moletom-ziper", cat:"moletons", type:"hoodie", name:"Moletom Zíper", price:399.90,
-      desc:"Felpa premium, fechamento em zíper, capuz duplo e bolsos laterais.",
-      colors:["Preto","Branco","Bege Areia","Cinza Mescla","Verde Oliva"], sizes:TOPS, usePhotos:true },
+      desc:"Tecido Oxford encorpado, colarinho button-down e brasão bordado.",
+      colors:["Branco","Azul Claro","Azul Listrado","Bege","Cinza Mescla"], sizes:TOPS, usePhotos:true },
+    { id:"moletom-ziper", cat:"moletons", type:"hoodie", name:"Moletom Meio-Zíper", price:399.90,
+      desc:"Felpa premium, gola alta com zíper e brasão bordado ao peito.",
+      colors:["Azul Marinho","Bege Areia","Verde Oliva","Cinza Mescla","Preto"], sizes:TOPS, usePhotos:true },
     { id:"calca-reta", cat:"calcas", type:"chino", name:"Calça Reta", price:329.90,
-      desc:"Algodão premium com elastano, cós elástico, modelagem reta, ponteira metálica e brasão bordado.",
+      desc:"Algodão premium com elastano, cós elástico, modelagem reta e brasão bordado.",
       colors:["Off White","Azul Marinho","Bege Areia","Preto"], sizes:WAIST, usePhotos:true },
-    { id:"calca-cargo", cat:"calcas", type:"cargo", name:"Calça Cargo", price:329.90,
-      desc:"Bolsos laterais utilitários, cós com cordão, modelagem reta e brasão bordado.",
-      colors:["Preto","Bege Areia","Cinza Mescla","Verde Oliva"], sizes:WAIST, usePhotos:true },
     { id:"bermuda-alfaiataria", cat:"bermudas", type:"bermuda", name:"Bermuda Alfaiataria", price:279.90,
-      desc:"Cós com passantes, fechamento em botão, bolsos laterais e traseiro, brasão bordado.",
+      desc:"Cós com passantes, fechamento em botão, bolsos e brasão bordado.",
       colors:["Off White","Azul Marinho","Bege Areia","Preto"], sizes:WAIST, usePhotos:true },
-    { id:"bermuda-moletom", cat:"bermudas", type:"bermuda", name:"Bermuda Moletom", price:279.90,
-      desc:"Moletom de algodão, cós com cordão, leveza para o verão.",
-      colors:["Preto","Branco","Bege Areia","Cinza Mescla","Verde Oliva"], sizes:TOPS, usePhotos:true },
     { id:"bone", cat:"acessorios", type:"cap", name:"Boné", price:199.90,
       desc:"Bordado exclusivo, aba curva e fecho metálico ajustável.",
-      colors:["Preto","Bege","Verde Oliva"], sizes:null, usePhotos:true, meta:"Ajuste regulável" },
-    { id:"cinto", cat:"acessorios", type:"belt", name:"Cinto", price:249.90,
-      desc:"Couro legítimo com fivela personalizada Maison Rivier.",
-      colors:["Marrom","Preto"], sizes:BELT, usePhotos:true },
-    { id:"carteira", cat:"acessorios", type:"wallet", name:"Carteira", price:219.90,
-      desc:"Couro legítimo, compacta e elegante.",
-      colors:["Marrom","Preto"], sizes:null, usePhotos:true, meta:"Tamanho único" }
+      colors:["Azul Marinho","Bege","Verde Oliva","Preto","Cinza Mescla"], sizes:null, usePhotos:true, meta:"Ajuste regulável" },
+    { id:"pulseira-couro-marrom", cat:"acessorios", type:"leather", name:"Pulseira Couro Marrom", price:129.90,
+      desc:"Couro legítimo trançado com fecho Maison Rivier.",
+      colors:["Marrom"], sizes:null, meta:"Tamanho único", photo:"images/pulseira-couro-marrom.jpg" },
+    { id:"pulseira-couro-preto", cat:"acessorios", type:"leather", name:"Pulseira Couro Preto", price:129.90,
+      desc:"Couro legítimo trançado com fecho Maison Rivier.",
+      colors:["Preto"], sizes:null, meta:"Tamanho único", photo:"images/pulseira-couro-preto.jpg" },
+    { id:"pulseira-corda", cat:"acessorios", type:"cord", name:"Pulseira Corda Marinho", price:119.90,
+      desc:"Cordão náutico trançado com fecho Maison Rivier.",
+      colors:["Azul Marinho"], sizes:null, meta:"Tamanho único", photo:"images/pulseira-corda.jpg" }
   ];
 
   var PLATES = [
