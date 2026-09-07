@@ -1,0 +1,485 @@
+<title>Instagram Maison Rivier</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap">
+
+<style>
+/* Manual de Instagram — Maison Rivier
+   Estilo herança / editorial (ref. Ralph Lauren) */
+
+:root{
+  --paper:#FBFAF6;
+  --surface:#F3F1EA;
+  --ink:#1B1B18;
+  --muted:#6E6C63;
+  --line:#E4E0D5;
+  --navy:#14243F;
+  --bronze:#7C5C2E;
+  --focus:#14243F;
+  --maxw:820px;
+  --gutter:clamp(1.15rem, 5vw, 3rem);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#12110D; --surface:#1B1A15; --ink:#ECE7DA; --muted:#9C978A;
+    --line:#302E26; --navy:#9DB2D2; --bronze:#C7A468; --focus:#C7A468;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#12110D; --surface:#1B1A15; --ink:#ECE7DA; --muted:#9C978A;
+  --line:#302E26; --navy:#9DB2D2; --bronze:#C7A468; --focus:#C7A468;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-padding-top:2rem; }
+@media (prefers-reduced-motion: no-preference){ html{ scroll-behavior:smooth; } }
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight:400; line-height:1.75; font-size:1rem;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{ font-family:"Cormorant Garamond","Times New Roman",Georgia,serif; font-weight:500; margin:0; line-height:1.15; text-wrap:balance; }
+p{ margin:0; }
+a{ color:inherit; }
+strong{ font-weight:500; }
+:focus-visible{ outline:1px solid var(--focus); outline-offset:3px; }
+::selection{ background:var(--navy); color:#fff; }
+
+.wrap{ max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gutter); }
+
+/* ---- masthead ---- */
+.masthead{
+  background:linear-gradient(180deg,#16283f,#0f1d31);
+  color:#F3EFE5; text-align:center;
+  padding:clamp(3rem,9vw,5.5rem) var(--gutter) clamp(2.5rem,7vw,4rem);
+}
+.masthead svg{ width:54px; height:auto; color:#C7A468; margin-bottom:1.4rem; }
+.masthead .kicker{
+  font-size:.62rem; letter-spacing:.34em; text-transform:uppercase; color:rgba(243,239,229,.65);
+}
+.masthead h1{ font-size:clamp(2.1rem,6vw,3.4rem); letter-spacing:.02em; margin:.8rem 0 .5rem; }
+.masthead p{ font-family:"Cormorant Garamond",serif; font-style:italic; font-size:1.15rem; color:#E3DECF; }
+
+/* ---- sections ---- */
+section{ padding-block:clamp(2.6rem,6vw,4.2rem); border-bottom:1px solid var(--line); }
+section:last-of-type{ border-bottom:0; }
+.eyebrow{
+  font-size:.6rem; letter-spacing:.32em; text-transform:uppercase; color:var(--muted); font-weight:500;
+  display:flex; align-items:center; gap:.9rem; margin-bottom:1.1rem;
+}
+.eyebrow::after{ content:""; flex:1; height:1px; background:var(--line); }
+.eyebrow .n{ color:var(--bronze); }
+h2{ font-size:clamp(1.6rem,3.6vw,2.3rem); margin-bottom:.4rem; }
+.lead{ color:var(--muted); font-weight:300; margin-bottom:1.8rem; max-width:60ch; }
+h3{ font-size:1.2rem; margin:1.8rem 0 .5rem; }
+p + p{ margin-top:.9rem; }
+ul{ margin:.6rem 0 0; padding-left:1.1rem; }
+li{ margin:.35rem 0; }
+li::marker{ color:var(--bronze); }
+
+.two{ display:grid; grid-template-columns:1fr 1fr; gap:1.4rem 2rem; }
+@media (max-width:640px){ .two{ grid-template-columns:1fr; } }
+
+/* ---- copy blocks ---- */
+.copy{
+  border:1px solid var(--line); background:var(--surface);
+  padding:1.1rem 1.2rem; margin:.9rem 0 0; position:relative;
+}
+.copy .tag{
+  font-size:.54rem; letter-spacing:.26em; text-transform:uppercase; color:var(--muted);
+  display:block; margin-bottom:.5rem;
+}
+.copy pre{
+  font-family:inherit; font-size:.94rem; white-space:pre-wrap; margin:0; color:var(--ink);
+}
+.copy button{
+  position:absolute; top:.7rem; right:.7rem;
+  font:inherit; font-size:.54rem; letter-spacing:.2em; text-transform:uppercase;
+  background:var(--ink); color:var(--paper); border:0; padding:.4rem .7rem; cursor:pointer;
+}
+.copy button:hover{ opacity:.8; }
+.count{ font-size:.7rem; color:var(--muted); margin-top:.5rem; }
+
+/* ---- tables ---- */
+.scroll{ overflow-x:auto; margin-top:1rem; border:1px solid var(--line); }
+table{ border-collapse:collapse; width:100%; font-size:.82rem; min-width:520px; }
+th,td{ text-align:left; padding:.7rem .9rem; border-bottom:1px solid var(--line); vertical-align:top; }
+th{ font-size:.56rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); font-weight:500; background:var(--surface); }
+tr:last-child td{ border-bottom:0; }
+td .s{ font-family:"Cormorant Garamond",serif; font-size:1rem; }
+
+/* ---- pills / checklist ---- */
+.pills{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.9rem; }
+.pill{ border:1px solid var(--line); padding:.4rem .8rem; font-size:.74rem; color:var(--muted); }
+.check{ list-style:none; padding:0; margin:1rem 0 0; }
+.check li{ padding-left:1.9rem; position:relative; margin:.55rem 0; }
+.check li::before{
+  content:""; position:absolute; left:0; top:.45em;
+  width:11px; height:6px; border-left:1.5px solid var(--bronze); border-bottom:1.5px solid var(--bronze);
+  transform:rotate(-45deg);
+}
+.note{
+  border-left:2px solid var(--bronze); padding:.3rem 0 .3rem 1.1rem; margin-top:1.4rem;
+  color:var(--muted); font-size:.9rem;
+}
+.foot{ text-align:center; padding:2.6rem var(--gutter) 3rem; color:var(--muted); font-size:.78rem; }
+.foot svg{ width:26px; height:auto; color:var(--bronze); margin-bottom:.8rem; }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mr" viewBox="0 0 128 148">
+    <g fill="currentColor">
+      <path d="M44 45 L44 28 L55 36 L66 20 L77 36 L88 28 L88 45 Z"/>
+      <rect x="44" y="45" width="44" height="5"/>
+      <circle cx="44" cy="24" r="3.4"/><circle cx="88" cy="24" r="3.4"/><circle cx="66" cy="15" r="3.8"/>
+    </g>
+    <path d="M32 53 L100 53 C100 92 89 120 66 136 C43 120 32 92 32 53 Z" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linejoin="round"/>
+    <text x="66" y="104" text-anchor="middle" font-family="Cinzel, serif" font-size="35" font-weight="600" fill="currentColor" letter-spacing="-4">MR</text>
+  </symbol>
+</svg>
+
+<header class="masthead">
+  <svg aria-hidden="true"><use href="#mr"/></svg>
+  <div class="kicker">Maison Rivier · @maisonrivier</div>
+  <h1>Manual de Instagram</h1>
+  <p>Otimização completa, no espírito Ralph Lauren.</p>
+</header>
+
+<main class="wrap">
+
+  <section id="principio">
+    <div class="eyebrow"><span class="n">00</span> O princípio</div>
+    <h2>Um feed, uma só voz</h2>
+    <p class="lead">O Instagram da Ralph Lauren funciona porque cada post parece pertencer ao mesmo mundo: mesma luz, mesma paleta, mesmo tom de voz. Não é sobre postar muito — é sobre <strong>consistência</strong> e <strong>contenção</strong>. Menos texto, mais imagem. Nada de promoção gritante. A marca fala baixo e com segurança.</p>
+    <ul>
+      <li><strong>Herança acima de tendência.</strong> Nada de áudio viral ou meme. O que envelhece bem.</li>
+      <li><strong>Estilo de vida, não vitrine.</strong> A peça aparece sendo usada, em um cenário, não só no cabide.</li>
+      <li><strong>Disciplina visual.</strong> Um preset de cor, um formato (retrato 4:5), margens generosas.</li>
+      <li><strong>Legenda curta.</strong> Uma frase. Um lugar. Um detalhe. O CTA discreto no fim.</li>
+    </ul>
+  </section>
+
+  <section id="perfil">
+    <div class="eyebrow"><span class="n">01</span> Perfil</div>
+    <h2>A base — resolva isto primeiro</h2>
+    <p class="lead">Cinco minutos de ajuste que mudam como o perfil é encontrado e como converte.</p>
+    <ul>
+      <li><strong>Conta Profissional</strong> → tipo <strong>Empresa</strong>. Categoria: <strong>Roupas (marca)</strong>.</li>
+      <li><strong>Foto do perfil:</strong> o brasão MR em dourado sobre azul-marinho, centralizado, com margem de respiro — tem que ler nítido a 32&nbsp;px. Nada de foto de produto aqui.</li>
+      <li><strong>Botões de contato:</strong> ative <strong>WhatsApp</strong> (número da loja) e <strong>E-mail</strong>. O botão de WhatsApp no perfil é o seu caixa.</li>
+      <li><strong>Nome (campo pesquisável, 30 caracteres):</strong> use palavras que as pessoas buscam.</li>
+    </ul>
+    <div class="copy">
+      <span class="tag">Campo "Nome" — copie</span>
+      <button type="button" data-copy>Copiar</button>
+      <pre>Maison Rivier · Moda Masculina</pre>
+    </div>
+  </section>
+
+  <section id="bio">
+    <div class="eyebrow"><span class="n">02</span> Bio</div>
+    <h2>150 caracteres, zero desperdício</h2>
+    <p class="lead">Diga o que é, o valor, e para onde ir. Sem frases de efeito vazias, sem fila de emoji. Escolha uma das três — todas cabem no limite.</p>
+
+    <div class="copy">
+      <span class="tag">Opção A — direta</span>
+      <button type="button" data-copy>Copiar</button>
+      <pre>Alfaiataria casual masculina premium.
+Élégance. Discrétion. Intemporel.
+Coleção Heritage I — pedidos no WhatsApp ↓</pre>
+      <div class="count">109 caracteres</div>
+    </div>
+
+    <div class="copy">
+      <span class="tag">Opção B — herança</span>
+      <button type="button" data-copy>Copiar</button>
+      <pre>Moda masculina premium — herança francesa, estética atemporal.
+Paris · Riviera Française
+Compre pelo site ↓</pre>
+      <div class="count">107 caracteres</div>
+    </div>
+
+    <div class="copy">
+      <span class="tag">Opção C — sóbria</span>
+      <button type="button" data-copy>Copiar</button>
+      <pre>Peças atemporais para o homem exigente.
+Coleção Heritage I.
+Atendimento e pedidos pelo botão abaixo.</pre>
+      <div class="count">99 caracteres</div>
+    </div>
+
+    <div class="note">Não coloque o link dentro do texto da bio — use o campo de site. O texto ganha espaço e o link fica clicável de verdade.</div>
+  </section>
+
+  <section id="link">
+    <div class="eyebrow"><span class="n">03</span> Link da bio</div>
+    <h2>Um destino só</h2>
+    <p class="lead">A loja já é o hub — ela tem coleção, história e checkout por WhatsApp. Não precisa de agregador (Linktree) por enquanto; um link direto converte melhor e é mais elegante.</p>
+    <div class="copy">
+      <span class="tag">Campo "Site" — copie</span>
+      <button type="button" data-copy>Copiar</button>
+      <pre>https://brenokassab.github.io/Maison-Rivier/</pre>
+    </div>
+    <p style="margin-top:1rem">Quando tiver domínio próprio (ex.: <em>maisonrivier.com.br</em>), troque só aqui. Se um dia rodar muitas campanhas ao mesmo tempo, aí sim um agregador simples — mantido no mesmo visual (ivory, serifa).</p>
+  </section>
+
+  <section id="destaques">
+    <div class="eyebrow"><span class="n">04</span> Destaques</div>
+    <h2>Poucos, permanentes, elegantes</h2>
+    <p class="lead">Capas discretas: fundo azul-marinho sólido com uma palavra em serifa clara, ou o brasão. Nunca ícone colorido de banco de imagem. Ordem sugerida:</p>
+    <div class="pills">
+      <span class="pill">Coleção</span>
+      <span class="pill">Heritage I</span>
+      <span class="pill">Riviera</span>
+      <span class="pill">Detalhes</span>
+      <span class="pill">Como Vestir</span>
+      <span class="pill">Atendimento</span>
+    </div>
+    <ul>
+      <li><strong>Coleção / Heritage I</strong> — peças, cores, preços, link.</li>
+      <li><strong>Riviera</strong> — os cenários, o clima da marca (lifestyle).</li>
+      <li><strong>Detalhes</strong> — brasão, tecido, costura (macro).</li>
+      <li><strong>Como Vestir</strong> — combinações, dúvidas de caimento.</li>
+      <li><strong>Atendimento</strong> — como comprar, prazos, trocas, tamanhos.</li>
+    </ul>
+  </section>
+
+  <section id="fixados">
+    <div class="eyebrow"><span class="n">05</span> Posts fixados</div>
+    <h2>Os três primeiros que todo visitante vê</h2>
+    <ul>
+      <li><strong>1 — Manifesto.</strong> Editorial com o brasão e a frase da marca. Legenda: a história em 3 linhas.</li>
+      <li><strong>2 — A peça-ícone.</strong> Carrossel da Polo Piqué Heritage nas 6 cores. É o seu produto de entrada.</li>
+      <li><strong>3 — Como comprar.</strong> Carrossel passo a passo: escolher no site → enviar pelo WhatsApp → confirmar pagamento e frete.</li>
+    </ul>
+  </section>
+
+  <section id="estetica">
+    <div class="eyebrow"><span class="n">06</span> Estética do feed</div>
+    <h2>As regras que fazem parecer uma marca só</h2>
+    <div class="two">
+      <div>
+        <h3>Formato</h3>
+        <ul>
+          <li>Sempre <strong>retrato 4:5</strong> (1080 × 1350). Ocupa mais tela, some menos no scroll.</li>
+          <li>Carrossel só quando conta uma sequência (cores, passos, look completo).</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Luz &amp; cor</h3>
+        <ul>
+          <li>Luz natural, quente, no fim da tarde. Sombra suave.</li>
+          <li><strong>Um preset só</strong> (Lightroom), aplicado em tudo: contraste médio, leve dessaturação, pretos não esmagados.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Paleta recorrente</h3>
+        <ul>
+          <li>Azul-marinho, off-white, areia, verde oliva, madeira, pedra, linho.</li>
+          <li>Se a foto tem cor fora disso, não entra no feed (vale pro story).</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Enquadramento</h3>
+        <ul>
+          <li>Muito busto-para-baixo, mãos, gola, punho — o rosto nem sempre aparece.</li>
+          <li>Respiro nas bordas. Nada de texto grande sobre a foto (só serifa pequena e discreta).</li>
+        </ul>
+      </div>
+    </div>
+    <h3>O ritmo da grade</h3>
+    <p>Alternando os tipos, o feed nunca fica repetitivo nem bagunçado:</p>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;letter-spacing:.04em;margin-top:.6rem">
+      vida&nbsp;→&nbsp;detalhe&nbsp;→&nbsp;produto&nbsp;→&nbsp;vida&nbsp;→&nbsp;editorial&nbsp;→&nbsp;detalhe&nbsp;→&nbsp;produto&nbsp;→&nbsp;vida&nbsp;→&nbsp;detalhe
+    </p>
+  </section>
+
+  <section id="pilares">
+    <div class="eyebrow"><span class="n">07</span> Pilares de conteúdo</div>
+    <h2>Seis assuntos, para nunca faltar ideia</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Pilar</th><th>O que é</th><th>Frequência</th></tr></thead>
+        <tbody>
+          <tr><td class="s">Cenários</td><td>Modelo em um dos 7 cenários da marca: Riviera, Iate, Clube, Golfe, Centro Histórico, Café Europeu, Hotel.</td><td>2×/semana</td></tr>
+          <tr><td class="s">Detalhe &amp; matéria</td><td>Macro: brasão bordado, textura do piqué, costura, botão, punho.</td><td>1–2×/semana</td></tr>
+          <tr><td class="s">Produto</td><td>Still limpo em fundo areia/claro. Uma peça por post, ou carrossel de cores.</td><td>1–2×/semana</td></tr>
+          <tr><td class="s">Como vestir</td><td>Combinações: a chino com 3 tops diferentes; polo por baixo do moletom.</td><td>1×/semana</td></tr>
+          <tr><td class="s">Herança &amp; valores</td><td>Frase serifada sobre fundo areia; trechos da história e dos valores.</td><td>1×/semana</td></tr>
+          <tr><td class="s">Bastidores</td><td>Tecido chegando, prova de caimento, revisão à mão, a embalagem, o pedido saindo.</td><td>1×/semana</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="grade">
+    <div class="eyebrow"><span class="n">08</span> Grade de lançamento</div>
+    <h2>Os primeiros 9 posts</h2>
+    <p class="lead">Publique de cima para baixo, 1 por dia. Ao final, o perfil já conta a história inteira e parece estabelecido.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>#</th><th>Tipo</th><th>Conteúdo</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td class="s">Editorial</td><td>Brasão + "MAISON RIVIER / Paris" em serifa sobre areia. É o manifesto — fixe este.</td></tr>
+          <tr><td>2</td><td class="s">Vida</td><td>Riviera, fim de tarde. Polo Azul Marinho + chino areia.</td></tr>
+          <tr><td>3</td><td class="s">Detalhe</td><td>Brasão bordado, macro, luz rasante.</td></tr>
+          <tr><td>4</td><td class="s">Produto</td><td>Polo Piqué Heritage, still, fundo areia. Legenda com a ficha técnica.</td></tr>
+          <tr><td>5</td><td class="s">Vida</td><td>Iate / convés. Camisa Oxford branca + bermuda chino.</td></tr>
+          <tr><td>6</td><td class="s">Editorial</td><td>"Élégance. Discrétion. Intemporel." serifado sobre linho.</td></tr>
+          <tr><td>7</td><td class="s">Detalhe</td><td>Textura do piqué / punho canelado.</td></tr>
+          <tr><td>8</td><td class="s">Produto</td><td>Carrossel: a polo nas 6 cores. Fixe este.</td></tr>
+          <tr><td>9</td><td class="s">Vida</td><td>Café europeu, manhã. Moletom Meio-Zíper cinza mescla.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="legendas">
+    <div class="eyebrow"><span class="n">09</span> Legendas</div>
+    <h2>A voz: elegante, confiante, atemporal</h2>
+    <p class="lead">Frases curtas e afirmativas. Português com um toque francês. Sem gíria, sem emoji (ou no máximo um, discreto). Uma ideia por legenda. O CTA vai no fim, sempre igual.</p>
+
+    <div class="copy"><span class="tag">Lançamento de peça</span><button type="button" data-copy>Copiar</button><pre>A Polo Piqué Heritage. Algodão pima, gola canelada, brasão bordado no peito. Seis cores, do marinho ao off-white.
+
+Link na bio · WhatsApp (11) 99660-3491</pre></div>
+
+    <div class="copy"><span class="tag">Cenário / vida</span><button type="button" data-copy>Copiar</button><pre>Fim de tarde na Riviera. Polo Azul Marinho, calça chino areia.
+
+Link na bio · WhatsApp (11) 99660-3491</pre></div>
+
+    <div class="copy"><span class="tag">Detalhe</span><button type="button" data-copy>Copiar</button><pre>O brasão. Bordado ponto a ponto, discreto no peito esquerdo — a assinatura da casa.
+
+Link na bio · WhatsApp (11) 99660-3491</pre></div>
+
+    <div class="copy"><span class="tag">Herança</span><button type="button" data-copy>Copiar</button><pre>A Maison Rivier nasce para unir a elegância clássica francesa a uma estética contemporânea e atemporal. Peças feitas para durar.
+
+Link na bio · WhatsApp (11) 99660-3491</pre></div>
+
+    <div class="copy"><span class="tag">Como vestir</span><button type="button" data-copy>Copiar</button><pre>Três formas de usar a chino areia: com a polo marinho, com a oxford branca, com o moletom cinza. Salve para depois.
+
+Link na bio · WhatsApp (11) 99660-3491</pre></div>
+
+    <div class="copy"><span class="tag">Bastidores</span><button type="button" data-copy>Copiar</button><pre>Antes de sair, cada peça é revista à mão: costura, caimento, acabamento. É o que separa uma peça boa de uma peça premium.
+
+Link na bio · WhatsApp (11) 99660-3491</pre></div>
+  </section>
+
+  <section id="hashtags">
+    <div class="eyebrow"><span class="n">10</span> Hashtags</div>
+    <h2>Poucas, certas, no primeiro comentário</h2>
+    <p class="lead">Nada de 30 hashtags no fim da legenda — polui e a Ralph Lauren jamais faria. Use <strong>6 a 10</strong>, no primeiro comentário, misturando amplas, de nicho e a da marca. Vá alternando o conjunto.</p>
+    <div class="copy"><span class="tag">Conjunto base — copie</span><button type="button" data-copy>Copiar</button><pre>#maisonrivier #modamasculina #alfaiatariacasual #estilomasculino #menswear #modamasculinapremium #elegânciamasculina #lookmasculino #heritagestyle #madeinbrazil</pre></div>
+    <p style="margin-top:1rem">Rotacione com: <em>#poloclássica, #camisaoxford, #calçachino, #guardaroupamasculino, #modamasculinabrasil, #riviera, #oldmoney</em>.</p>
+  </section>
+
+  <section id="stories">
+    <div class="eyebrow"><span class="n">11</span> Stories</div>
+    <h2>Todos os dias, em três blocos</h2>
+    <div class="two">
+      <div><h3>Manhã</h3><ul><li>Bastidor ou frase da marca.</li><li>Enquete leve: "Polo ou camisa hoje?"</li></ul></div>
+      <div><h3>Tarde</h3><ul><li>Produto + <strong>sticker de link</strong> para o site.</li><li>Caixa de perguntas sobre tamanho.</li></ul></div>
+      <div><h3>Noite</h3><ul><li>Repost de cliente (prova social).</li><li>Contagem: "Últimas peças na cor X."</li></ul></div>
+      <div><h3>Sempre</h3><ul><li>Tudo que for perene vira <strong>Destaque</strong>.</li><li>Link no story de produto — não deixe para a bio só.</li></ul></div>
+    </div>
+  </section>
+
+  <section id="reels">
+    <div class="eyebrow"><span class="n">12</span> Reels</div>
+    <h2>Cinco conceitos, som instrumental discreto</h2>
+    <ul>
+      <li><strong>A peça em 15 s</strong> — macro girando: tecido → gola → brasão → vestida. Sem fala.</li>
+      <li><strong>3 looks, 1 chino</strong> — troca rápida, corte seco, mesma luz.</li>
+      <li><strong>Do rolo à peça</strong> — bastidor do corte e da costura.</li>
+      <li><strong>Riviera</strong> — mini-filme de 20 s em um cenário, ritmo lento.</li>
+      <li><strong>Qual o seu tamanho</strong> — utilitário: como medir em casa. Salva e compartilha muito.</li>
+    </ul>
+  </section>
+
+  <section id="calendario">
+    <div class="eyebrow"><span class="n">13</span> Calendário — 2 semanas</div>
+    <h2>Ritmo sustentável: 5 feeds + 2 reels por semana</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Dia</th><th>Semana 1</th><th>Semana 2</th></tr></thead>
+        <tbody>
+          <tr><td>Seg</td><td>Feed: Editorial (manifesto)</td><td>Feed: Herança (frase)</td></tr>
+          <tr><td>Ter</td><td>Feed: Vida — Riviera</td><td>Reel: 3 looks, 1 chino</td></tr>
+          <tr><td>Qua</td><td>Reel: A peça em 15 s</td><td>Feed: Detalhe — punho</td></tr>
+          <tr><td>Qui</td><td>Feed: Produto — Polo Heritage</td><td>Feed: Produto — Camisa Oxford</td></tr>
+          <tr><td>Sex</td><td>Feed: Vida — Iate</td><td>Feed: Vida — Café Europeu</td></tr>
+          <tr><td>Sáb</td><td>Reel: Do rolo à peça</td><td>Reel: Qual o seu tamanho</td></tr>
+          <tr><td>Dom</td><td>Só stories (repost + enquete)</td><td>Só stories (bastidor + link)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">Stories todos os dias, inclusive domingo. Feed nunca depois das 21h; melhor janela: 12h–13h e 19h–20h.</div>
+  </section>
+
+  <section id="metricas">
+    <div class="eyebrow"><span class="n">14</span> Métricas</div>
+    <h2>O que olhar toda segunda</h2>
+    <p class="lead">Curtidas dizem pouco. Acompanhe o que indica interesse real e intenção de compra:</p>
+    <ul>
+      <li><strong>Alcance de não-seguidores</strong> — o conteúdo está saindo da bolha?</li>
+      <li><strong>Salvamentos e compartilhamentos</strong> — o sinal mais forte de conteúdo bom.</li>
+      <li><strong>Cliques no link</strong> da bio e dos stories.</li>
+      <li><strong>Mensagens iniciadas</strong> pelo perfil (é venda a caminho).</li>
+      <li><strong>Seguidores novos</strong> por semana — tendência, não número isolado.</li>
+    </ul>
+  </section>
+
+  <section id="checklist">
+    <div class="eyebrow"><span class="n">15</span> Checklist 100%</div>
+    <h2>Perfil pronto quando tudo isto estiver feito</h2>
+    <ul class="check">
+      <li>Conta Profissional → Empresa, categoria "Roupas (marca)"</li>
+      <li>Campo Nome preenchido ("Maison Rivier · Moda Masculina")</li>
+      <li>Bio escolhida e colada (≤150 caracteres, sem link no texto)</li>
+      <li>Campo Site com o link da loja</li>
+      <li>Foto de perfil = brasão MR, dourado sobre marinho, legível a 32 px</li>
+      <li>Botões de contato: WhatsApp + E-mail ativos</li>
+      <li>6 Destaques criados, com capas sóbrias</li>
+      <li>Primeiros 9 posts publicados (1/dia), formato 4:5</li>
+      <li>3 posts fixados: manifesto, polo-ícone, como comprar</li>
+      <li>Preset de cor único salvo e aplicado em tudo</li>
+      <li>Sacola/loja conectada ao perfil quando o Instagram Shopping estiver disponível</li>
+      <li>Calendário das 2 primeiras semanas agendado</li>
+    </ul>
+  </section>
+
+  <section id="limites">
+    <div class="eyebrow"><span class="n">16</span> O que eu faço e o que não faço</div>
+    <h2>Divisão de trabalho</h2>
+    <p><strong>Não faço:</strong> não entro na sua conta, não publico, não altero configurações por você — isso exige sua senha e sua aprovação a cada passo.</p>
+    <p><strong>Faço:</strong> escrevo cada legenda, reviso prints do seu perfil e da grade com crítica ponto a ponto, crio os textos dos posts editoriais e roteiros de reels, e ajusto este manual conforme a loja evolui.</p>
+    <div class="note">Me mande um print do perfil atual e das últimas 9 fotos — devolvo uma análise específica do que trocar primeiro.</div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <svg aria-hidden="true"><use href="#mr"/></svg>
+  <div>Maison Rivier — Manual de Instagram · Créé pour ceux qui apprécient l'excellence et la discrétion.</div>
+</footer>
+
+<script>
+document.querySelectorAll(".copy [data-copy]").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    var pre = btn.parentNode.querySelector("pre");
+    var txt = pre ? pre.textContent : "";
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){
+        var o = btn.textContent; btn.textContent = "Copiado";
+        setTimeout(function(){ btn.textContent = o; }, 1600);
+      }, function(){ btn.textContent = "Selecione e copie"; });
+    } else {
+      var r = document.createRange(); r.selectNodeContents(pre);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    }
+  });
+});
+</script>
