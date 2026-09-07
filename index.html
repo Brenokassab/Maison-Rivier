@@ -2,744 +2,400 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap">
 
 <style>
 /* ============================================================
-   MAISON RIVIER — PARIS
-   Storefront · Collection 01
-   Estilo: herança / editorial (ref. Polo Ralph Lauren)
-   Ivory + tinta quase-preta, navy e bronze como acento discreto
-   Type: Cormorant Garamond (display serifado) + Cinzel (marca) + Montserrat (UI)
+   MAISON RIVIER — PARIS · Collection 01
+   Loja clara · marca em azul-marinho e dourado
+   Cormorant Garamond (serifa) · Cinzel (marca) · Montserrat (UI)
    ============================================================ */
 
-/* Tema único: azul-marinho com detalhes em dourado */
 :root{
-  --paper:#001B33;          /* fundo navy */
-  --surface:#082742;        /* navy elevado (inputs, tiles) */
-  --figure-bg:#F1EDE1;      /* placa clara p/ as fotos de produto */
-  --ink:#EEE7D6;            /* texto off-white */
-  --muted:#9DAAB8;          /* texto secundário azul-acinzentado */
-  --line:rgba(199,164,104,.24);   /* filetes dourados discretos */
-  --navy:#00142A;           /* navy mais profundo (rodapé, faixas) */
-  --ink-solid:#000D1C;      /* o mais escuro */
-  --accent:#C7A468;         /* dourado */
-  --accent-hi:#E0C592;      /* dourado claro */
-  --garment-stroke:rgba(238,231,214,.5);
-  --focus:#C7A468;
-  --ok:#7FB58F;
-  --err:#E39385;
-  --shadow:0 1px 2px rgba(0,0,0,.35), 0 22px 48px -28px rgba(0,0,0,.6);
+  --bone:#FAF8F2;          /* fundo geral, quase-branco quente */
+  --paper:#FFFFFF;
+  --tile:#F4F1E8;          /* placa das fotos de produto */
+  --ink:#181C22;           /* texto principal */
+  --muted:#6C6A60;         /* texto secundário */
+  --line:#E7E1D3;          /* filetes */
+  --navy:#0B2545;          /* azul-marinho da marca */
+  --navy-deep:#06182F;     /* navy mais fundo (rodapé, faixa) */
+  --gold:#A9863F;          /* dourado para texto/linha */
+  --gold-lt:#C9A45E;       /* dourado claro (sobre navy) */
+  --focus:#A9863F;
+  --err:#9B3B2E;
   --maxw:1280px;
-  --gutter:clamp(1.15rem, 5vw, 4.5rem);
-  color-scheme: dark;
+  --gutter:clamp(1.2rem,5vw,4.5rem);
+  color-scheme: light;
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
-
-html{ scroll-padding-top:5.5rem; }
-@media (prefers-reduced-motion: no-preference){
-  html{ scroll-behavior:smooth; }
-}
-
+html{ scroll-padding-top:5rem; }
+@media (prefers-reduced-motion:no-preference){ html{ scroll-behavior:smooth; } }
 body{
-  margin:0;
-  background:var(--paper);
-  color:var(--ink);
-  font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-weight:400;
-  line-height:1.7;
-  font-size:1rem;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
+  margin:0; background:var(--bone); color:var(--ink);
+  font-family:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-weight:400; line-height:1.7; font-size:1rem;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
   overflow-x:hidden;
 }
-
-h1,h2,h3,h4{
-  font-family:"Cormorant Garamond", "Times New Roman", Georgia, serif;
-  font-weight:500; margin:0; line-height:1.12; letter-spacing:.005em;
-  text-wrap:balance;
-}
+h1,h2,h3,h4{ font-family:"Cormorant Garamond","Times New Roman",Georgia,serif;
+  font-weight:500; margin:0; line-height:1.12; letter-spacing:.005em; text-wrap:balance; }
 p{ margin:0; }
 a{ color:inherit; }
-img{ display:block; }
+img{ display:block; max-width:100%; }
 button{ font:inherit; color:inherit; cursor:pointer; }
+:focus-visible{ outline:1px solid var(--focus); outline-offset:3px; }
+::selection{ background:var(--navy); color:#fff; }
 
-:focus-visible{ outline:1px solid var(--focus); outline-offset:3px; border-radius:0; }
-
-::selection{ background:var(--accent); color:var(--navy); }
-
-/* ---------- shared layout ---------- */
 .wrap{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gutter); }
-
-.section{ padding-block:clamp(4rem, 9vw, 8rem); }
+.section{ padding-block:clamp(3.5rem,8vw,7rem); }
 
 .eyebrow{
-  font-family:"Montserrat", sans-serif;
-  font-weight:500;
-  font-size:.66rem;
-  letter-spacing:.34em;
-  text-transform:uppercase;
-  color:var(--accent);
-  margin:0;
+  font-size:.62rem; letter-spacing:.36em; text-transform:uppercase; font-weight:600;
+  color:var(--gold); margin:0;
 }
+.rule{ width:40px; height:1px; background:var(--gold); border:0; opacity:.85; }
 
-.section__head{ max-width:52ch; margin-inline:auto; margin-bottom:clamp(2.4rem,5vw,3.6rem); display:flex; flex-direction:column; gap:1rem; text-align:center; align-items:center; }
-.section__head h2{ font-size:clamp(2rem, 4.4vw, 3.1rem); letter-spacing:.01em; }
-.section__head p{ color:var(--muted); font-weight:300; font-size:1.02rem; max-width:56ch; }
-.section__head--left{ margin-inline:0; text-align:left; align-items:flex-start; }
+.sec-head{ max-width:52ch; margin:0 auto clamp(2.2rem,5vw,3.4rem); display:flex;
+  flex-direction:column; align-items:center; gap:1rem; text-align:center; }
+.sec-head h2{ font-size:clamp(2rem,4.4vw,3rem); letter-spacing:.01em; }
+.sec-head p{ color:var(--muted); font-weight:300; max-width:56ch; }
 
-.rule{ width:44px; height:1px; background:var(--accent); border:0; margin:0; opacity:.7; }
-
-.panel--navy{
-  background:var(--navy);
-  --paper:var(--navy); --surface:rgba(255,255,255,.04);
-  --ink:#EFE8D7; --muted:#94A2B1; --line:rgba(199,164,104,.22);
-  color:var(--ink);
-}
-.panel--ink{
-  background:var(--ink-solid);
-  --paper:var(--ink-solid); --surface:rgba(255,255,255,.03);
-  --ink:#EFE8D7; --muted:#8E9BA9; --line:rgba(199,164,104,.18);
-  color:var(--ink);
-}
-
-/* ---------- buttons ---------- */
+/* ---- buttons ---- */
 .btn{
-  --bg:transparent; --fg:var(--accent); --bd:var(--accent);
+  --bg:var(--navy); --fg:#fff; --bd:var(--navy);
   display:inline-flex; align-items:center; justify-content:center; gap:.6ch;
-  padding:1rem 2.4rem;
-  background:var(--bg); color:var(--fg);
-  border:1px solid var(--bd);
-  font-family:"Montserrat", sans-serif;
-  font-weight:500; font-size:.68rem; letter-spacing:.24em; text-transform:uppercase;
-  text-decoration:none;
-  transition:background .3s ease, color .3s ease, border-color .3s ease;
+  padding:.95rem 2.2rem; background:var(--bg); color:var(--fg); border:1px solid var(--bd);
+  font-family:"Montserrat",sans-serif; font-weight:500; font-size:.66rem;
+  letter-spacing:.24em; text-transform:uppercase; text-decoration:none;
+  transition:background .25s ease,color .25s ease,border-color .25s ease;
 }
-.btn:hover{ --bg:var(--accent); --fg:var(--navy); --bd:var(--accent); }
-.btn--solid{ --bg:var(--accent); --fg:var(--navy); --bd:var(--accent); }
-.btn--solid:hover{ --bg:transparent; --fg:var(--accent); --bd:var(--accent); }
-.btn--ghost{ --fg:var(--ink); --bd:color-mix(in srgb, var(--ink) 34%, transparent); }
-.btn--ghost:hover{ --bg:transparent; --fg:var(--accent); --bd:var(--accent); }
-.btn:disabled{ opacity:.35; cursor:not-allowed; }
-
-.link-underline{
-  background:none; border:0; padding:0;
-  font-family:"Montserrat", sans-serif;
-  font-weight:500; font-size:.68rem; letter-spacing:.22em; text-transform:uppercase;
-  color:var(--accent);
-  border-bottom:1px solid currentColor;
-  padding-bottom:.35rem;
-  transition:opacity .25s ease;
+.btn:hover{ --bg:transparent; --fg:var(--navy); --bd:var(--navy); }
+.btn--ghost{ --bg:transparent; --fg:var(--ink); --bd:var(--line); }
+.btn--ghost:hover{ --bg:var(--navy); --fg:#fff; --bd:var(--navy); }
+.btn--gold{ --bg:var(--gold-lt); --fg:var(--navy-deep); --bd:var(--gold-lt); }
+.btn--gold:hover{ --bg:transparent; --fg:var(--gold-lt); --bd:var(--gold-lt); }
+.btn:disabled{ opacity:.4; cursor:not-allowed; }
+.link{
+  background:none; border:0; padding:0 0 .3rem; font-family:"Montserrat",sans-serif;
+  font-weight:500; font-size:.64rem; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--navy); border-bottom:1px solid var(--gold); transition:opacity .2s ease;
 }
-.link-underline:hover{ opacity:.6; }
+.link:hover{ opacity:.6; }
 
-/* ---------- svg sprite ---------- */
-.sprite{ position:absolute; width:0; height:0; overflow:hidden; }
+/* ---- sprite ---- */
+.sprite{ position:absolute; width:0; height:0; }
 
-/* ---------- announcement ---------- */
+/* ---- announce ---- */
 .announce{
-  background:var(--navy); color:#F1EEE6;
-  font-size:.64rem; letter-spacing:.2em; text-transform:uppercase; font-weight:400;
+  background:var(--navy-deep); color:#EFE7D4;
+  font-size:.6rem; letter-spacing:.22em; text-transform:uppercase;
   display:flex; align-items:center; justify-content:center; gap:1rem;
-  padding:.55rem var(--gutter); text-align:center;
+  padding:.5rem var(--gutter); text-align:center;
 }
-.announce button{
-  background:none; border:0; color:inherit; opacity:.55; font-size:1rem; line-height:1;
-  padding:.2rem; transition:opacity .2s ease;
-}
+.announce button{ background:none; border:0; color:inherit; opacity:.55; font-size:1rem; line-height:1; }
 .announce button:hover{ opacity:1; }
 .announce[hidden]{ display:none; }
 
-/* ---------- header ---------- */
-.site-header{
-  position:sticky; top:0; z-index:50;
-  color:#EFEBDF;
-  transition:background .35s ease, color .35s ease, border-color .35s ease;
-  border-bottom:1px solid transparent;
+/* ---- header ---- */
+.hdr{
+  position:sticky; top:0; z-index:50; background:var(--bone);
+  border-bottom:1px solid var(--line);
+  transition:background .3s ease,border-color .3s ease;
 }
-.site-header.is-solid{
-  background:var(--paper); color:var(--ink);
-  border-bottom-color:var(--line);
-}
-.header-inner{
-  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:1rem;
-  padding-block:1.15rem;
-}
-.brand{
-  grid-column:2; justify-self:center;
-  display:inline-flex; flex-direction:column; align-items:center; gap:.35rem; text-decoration:none;
-}
-.brand svg{ width:26px; height:30px; color:var(--accent-hi); }
-.brand span{
-  font-family:"Cinzel", serif; font-weight:600; font-size:.82rem;
-  letter-spacing:.34em; white-space:nowrap;
-}
-@media (max-width:600px){ .brand span{ font-size:.7rem; letter-spacing:.28em; } }
-
-.site-nav{ grid-column:1; justify-self:start; }
-.site-nav ul{ list-style:none; margin:0; padding:0; display:flex; gap:clamp(.9rem,2vw,1.9rem); }
-.site-nav a{
-  text-decoration:none; font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; font-weight:500;
-  padding-block:.4rem; border-bottom:1px solid transparent;
-  transition:border-color .25s ease, opacity .25s ease;
-  opacity:.85;
-}
-.site-nav a:hover{ opacity:1; color:var(--accent-hi); border-bottom-color:var(--accent-hi); }
-
-.header-tools{ grid-column:3; justify-self:end; display:flex; align-items:center; gap:.3rem; }
-.icon-btn{
-  background:none; border:0; padding:.55rem; display:inline-flex; align-items:center; justify-content:center;
-  color:inherit; position:relative; border-radius:2px;
-  transition:opacity .2s ease;
-}
-.icon-btn:hover{ opacity:.65; }
-.icon-btn svg{ width:20px; height:20px; }
-.cart-count{
-  position:absolute; top:2px; right:0;
-  background:var(--accent); color:var(--navy);
-  font-family:"Montserrat",sans-serif; font-size:.6rem; font-weight:600; letter-spacing:0;
-  min-width:15px; height:15px; padding:0 3px;
-  border-radius:999px; display:grid; place-items:center;
-}
-.cart-count[data-empty="true"]{ display:none; }
-
-.theme-toggle{ display:none; }
-
-.nav-toggle{ display:none; }
+.hdr.over{ background:transparent; border-color:transparent; color:#F3EEE1; }
+.hdr-in{ display:grid; grid-template-columns:1fr auto 1fr; align-items:center; padding-block:1rem; gap:1rem; }
+.brand{ grid-column:2; justify-self:center; display:flex; flex-direction:column; align-items:center; gap:.3rem; text-decoration:none; }
+.brand svg{ width:26px; height:30px; color:var(--gold); }
+.hdr.over .brand svg{ color:var(--gold-lt); }
+.brand b{ font-family:"Cinzel",serif; font-weight:600; font-size:.8rem; letter-spacing:.34em; }
+@media (max-width:600px){ .brand b{ font-size:.66rem; letter-spacing:.26em; } }
+.nav{ grid-column:1; justify-self:start; }
+.nav ul{ list-style:none; margin:0; padding:0; display:flex; gap:clamp(.9rem,2vw,1.8rem); }
+.nav a{ text-decoration:none; font-size:.64rem; letter-spacing:.2em; text-transform:uppercase;
+  font-weight:500; padding-block:.4rem; border-bottom:1px solid transparent; opacity:.85;
+  transition:opacity .2s ease,border-color .2s ease,color .2s ease; }
+.nav a:hover{ opacity:1; color:var(--gold); border-bottom-color:var(--gold); }
+.tools{ grid-column:3; justify-self:end; display:flex; align-items:center; gap:.2rem; }
+.ico{ background:none; border:0; padding:.5rem; display:inline-flex; color:inherit; position:relative; }
+.ico:hover{ opacity:.6; }
+.ico svg{ width:19px; height:19px; }
+.badge{ position:absolute; top:1px; right:-1px; background:var(--gold); color:var(--navy-deep);
+  font-family:"Montserrat",sans-serif; font-size:.58rem; font-weight:700; min-width:15px; height:15px;
+  padding:0 3px; border-radius:999px; display:grid; place-items:center; }
+.badge[data-empty="true"]{ display:none; }
+.burger{ display:none; }
 @media (max-width:860px){
-  .nav-toggle{ display:inline-flex; }
-  .site-nav{
-    position:fixed; inset:0 0 0 auto; width:min(320px,84vw);
-    background:var(--paper); color:var(--ink);
-    transform:translateX(100%); transition:transform .4s cubic-bezier(.4,0,.1,1);
-    padding:6rem 2rem 2rem; z-index:60;
-    border-left:1px solid var(--line);
-  }
-  .site-nav ul{ flex-direction:column; gap:1.6rem; }
-  .site-nav a{ font-size:.9rem; opacity:1; }
-  body.nav-open .site-nav{ transform:translateX(0); }
-  body.nav-open .site-header.is-solid,
-  body.nav-open .site-header{ background:var(--paper); color:var(--ink); border-bottom-color:var(--line); }
+  .burger{ display:inline-flex; }
+  .nav{ position:fixed; inset:0 0 0 auto; width:min(320px,84vw); background:var(--bone);
+    color:var(--ink); transform:translateX(100%); transition:transform .4s cubic-bezier(.4,0,.1,1);
+    padding:5.5rem 2rem 2rem; z-index:60; border-left:1px solid var(--line); }
+  .nav ul{ flex-direction:column; gap:1.5rem; }
+  .nav a{ font-size:.86rem; opacity:1; }
+  body.menu .nav{ transform:none; }
+  body.menu .hdr,.body.menu .hdr.over{ background:var(--bone); color:var(--ink); border-color:var(--line); }
 }
 
-/* ---------- hero ---------- */
+/* ---- hero ---- */
 .hero{
-  position:relative; overflow:hidden; text-align:center;
-  min-height:clamp(560px, 92vh, 880px);
-  display:flex; align-items:flex-end; justify-content:center;
+  position:relative; min-height:clamp(560px,90vh,880px);
+  display:flex; align-items:flex-end; justify-content:center; text-align:center;
   background:
-    linear-gradient(180deg, rgba(9,15,24,.30) 0%, rgba(9,15,24,.05) 42%, rgba(9,15,24,.74) 100%),
-    #0f1d31 url("images/hero.jpg") center/cover no-repeat;
+    linear-gradient(180deg,rgba(4,15,30,.28) 0%,rgba(4,15,30,.04) 40%,rgba(4,15,30,.75) 100%),
+    #0B2545 url("images/hero.jpg") center/cover no-repeat;
 }
-.hero__mark{ display:none; }
-.hero__inner{
-  position:relative; z-index:1;
-  padding:0 var(--gutter) clamp(3rem,8vh,5.5rem);
-  display:flex; flex-direction:column; align-items:center; gap:1.3rem;
-  max-width:640px;
-}
-.hero__crest{ width:60px; height:68px; color:var(--accent-hi); }
-.hero__eyebrow{ color:rgba(241,238,230,.7); }
-.hero__word{
-  font-family:"Cinzel", serif;
-  font-size:clamp(2rem, 6vw, 3.9rem);
-  letter-spacing:.2em; text-transform:uppercase; font-weight:500;
-  color:#F4F1E9; margin:0;
-}
-.hero__sub-line{ display:flex; align-items:center; gap:1rem; color:#EFEBDF; }
-.hero__sub-line::before,.hero__sub-line::after{ content:""; width:30px; height:1px; background:currentColor; opacity:.45; }
-.hero__paris{ font-family:"Cinzel",serif; letter-spacing:.42em; font-size:.72rem; text-transform:uppercase; opacity:.8; }
-.hero__tag{
-  font-family:"Cormorant Garamond", serif; font-style:italic; font-weight:400;
-  font-size:clamp(1.15rem,3vw,1.7rem); letter-spacing:.04em; color:#E9E4D6;
-}
-.hero__copy{ max-width:46ch; color:#C4CBd3; color:rgba(233,230,222,.72); font-weight:300; font-size:.98rem; }
-.hero__cta{ display:flex; flex-wrap:wrap; gap:1.4rem 2rem; justify-content:center; margin-top:1rem; }
-.hero__cta .btn{ --fg:var(--accent-hi); --bd:rgba(224,197,146,.55); }
-.hero__cta .btn:hover{ --bg:var(--accent-hi); --fg:#0b1a2e; --bd:var(--accent-hi); }
-.hero__cta .btn--solid{ --bg:var(--accent-hi); --fg:#0b1a2e; --bd:var(--accent-hi); }
-.hero__cta .btn--solid:hover{ --bg:transparent; --fg:var(--accent-hi); --bd:var(--accent-hi); }
-
-@media (prefers-reduced-motion: no-preference){
-  .hero__inner > *{ animation:rise 1s cubic-bezier(.2,.7,.2,1) both; }
-  .hero__inner > *:nth-child(2){ animation-delay:.07s; }
-  .hero__inner > *:nth-child(3){ animation-delay:.14s; }
-  .hero__inner > *:nth-child(4){ animation-delay:.21s; }
-  .hero__inner > *:nth-child(5){ animation-delay:.28s; }
-  .hero__inner > *:nth-child(6){ animation-delay:.35s; }
+.hero-in{ position:relative; z-index:1; padding:0 var(--gutter) clamp(3rem,8vh,5.5rem);
+  display:flex; flex-direction:column; align-items:center; gap:1.4rem; }
+.hero-in p{ font-family:"Cormorant Garamond",serif; font-style:italic; font-size:clamp(1.1rem,3vw,1.6rem);
+  color:#EDE6D6; letter-spacing:.04em; }
+.hero-cta{ display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; }
+.hero-cta .btn{ --bg:var(--gold-lt); --fg:var(--navy-deep); --bd:var(--gold-lt); }
+.hero-cta .btn:hover{ --bg:transparent; --fg:#F3EEE1; --bd:#F3EEE1; }
+.hero-cta .btn--ghost{ --bg:transparent; --fg:#F3EEE1; --bd:rgba(243,238,225,.5); }
+.hero-cta .btn--ghost:hover{ --bg:#F3EEE1; --fg:var(--navy-deep); --bd:#F3EEE1; }
+@media (prefers-reduced-motion:no-preference){
+  .hero-in>*{ animation:rise .9s cubic-bezier(.2,.7,.2,1) both; }
+  .hero-in>*:nth-child(2){ animation-delay:.08s; }
+  .hero-in>*:nth-child(3){ animation-delay:.16s; }
   @keyframes rise{ from{ opacity:0; transform:translateY(16px); } to{ opacity:1; transform:none; } }
 }
 
-/* ---------- collection tiles (categorias) ---------- */
-.ribbon__grid{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(.4rem,1.2vw,.9rem);
-}
-@media (max-width:900px){ .ribbon__grid{ grid-template-columns:repeat(2,1fr); } }
-@media (max-width:460px){ .ribbon__grid{ grid-template-columns:1fr; } }
-.ribbon__item{
-  position:relative; overflow:hidden; isolation:isolate;
-  aspect-ratio:3/4; border:0; padding:1.6rem;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.9rem;
-  background:var(--g,#182a41); color:#F3EFE5; text-align:center;
-}
-.ribbon__item::before{
-  content:""; position:absolute; inset:0; z-index:-2; background:var(--g,#182a41);
-  transition:transform .6s cubic-bezier(.2,.7,.2,1);
-}
-.ribbon__item::after{
-  content:""; position:absolute; inset:0; z-index:-1;
-  background:linear-gradient(180deg, rgba(8,12,20,.12), rgba(8,12,20,.5));
-}
-.ribbon__item:hover::before{ transform:scale(1.05); }
-.ribbon__item b{
-  font-family:"Cormorant Garamond",serif; font-weight:500;
-  font-size:clamp(1.35rem,2.4vw,1.75rem); letter-spacing:.01em;
-}
-.ribbon__item span{
-  font-size:.6rem; letter-spacing:.24em; text-transform:uppercase; font-weight:500;
-  color:var(--accent-hi);
-  border-bottom:1px solid var(--accent-hi); padding-bottom:.3rem;
-}
+/* ---- intro / collection ---- */
+.intro{ text-align:center; }
+.intro .eyebrow{ display:block; margin-bottom:1.2rem; }
+.intro h2{ font-size:clamp(2rem,4.6vw,3.1rem); max-width:20ch; margin:0 auto 1.2rem; }
+.intro p{ color:var(--muted); font-weight:300; max-width:54ch; margin:0 auto 1.8rem; }
 
-/* ---------- shop ---------- */
-.shop__filters{
-  display:flex; gap:.4rem 1.8rem; flex-wrap:wrap; align-items:baseline; justify-content:center;
-  padding-bottom:1.8rem; margin-bottom:3rem;
-  border-bottom:1px solid var(--line);
-  overflow-x:auto;
-}
-.filter-btn{
-  background:none; border:0; padding:.3rem 0;
-  font-size:.66rem; letter-spacing:.22em; text-transform:uppercase; font-weight:500;
-  color:var(--muted); white-space:nowrap;
-  border-bottom:1px solid transparent;
-  transition:color .2s ease, border-color .2s ease;
-}
-.filter-btn:hover{ color:var(--ink); }
-.filter-btn[aria-pressed="true"]{ color:var(--accent); border-bottom-color:var(--accent); }
+/* ---- shop ---- */
+.filters{ display:flex; flex-wrap:wrap; justify-content:center; gap:.4rem 1.6rem;
+  border-bottom:1px solid var(--line); padding-bottom:1.6rem; margin-bottom:2.8rem; overflow-x:auto; }
+.filter{ background:none; border:0; padding:.3rem 0; font-size:.62rem; letter-spacing:.22em;
+  text-transform:uppercase; font-weight:600; color:var(--muted); white-space:nowrap;
+  border-bottom:1px solid transparent; transition:color .2s ease,border-color .2s ease; }
+.filter:hover{ color:var(--ink); }
+.filter[aria-pressed="true"]{ color:var(--navy); border-bottom-color:var(--gold); }
 
-.grid{
-  display:grid; gap:clamp(1.8rem,3.2vw,3.2rem) clamp(1rem,2vw,1.8rem);
-  grid-template-columns:repeat(4,1fr);
-}
-@media (max-width:1080px){ .grid{ grid-template-columns:repeat(3,1fr); } }
-@media (max-width:760px){ .grid{ grid-template-columns:repeat(2,1fr); } }
-@media (max-width:520px){ .grid{ gap:1.4rem 1rem; } }
+.grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(2rem,4vw,3.4rem) clamp(1.2rem,2.4vw,2.4rem); }
+@media (max-width:920px){ .grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:480px){ .grid{ gap:1.6rem 1rem; } }
 
-.product{
-  background:transparent;
-  display:flex; flex-direction:column;
-  padding:0;
-}
-.product__figure{
-  position:relative;
-  background:var(--figure-bg);
-  padding:.6rem;
-  aspect-ratio:4/4.35;
-  display:grid; place-items:center;
-  overflow:hidden;
-}
-.product__figure.is-photo-dark{ background:#12161c; }
-.product__figure.is-photo-dark .product__cat{ color:rgba(255,255,255,.5); }
-.product__figure .garment{ width:74%; max-width:210px; height:auto; filter:drop-shadow(0 14px 20px rgba(20,20,16,.10)); transition:transform .5s cubic-bezier(.2,.7,.2,1); }
-.product__figure .product__photo{ transition:transform .5s cubic-bezier(.2,.7,.2,1); }
-.product:hover .product__figure .garment,
-.product:hover .product__figure .product__photo{ transform:scale(1.04); }
-
-.garment .g-hi{ stop-color:var(--c-hi,#5b6c79); }
-.garment .g-base{ stop-color:var(--c,#33414d); }
-.garment .g-lo{ stop-color:var(--c-lo,#28323c); }
-.garment .body{ stroke:var(--c-lo2,#171e25); stroke-width:1.6; stroke-opacity:.4; stroke-linejoin:round; }
-.garment .fill-base{ fill:var(--c,#33414d); }
-.garment .fill-hi{ fill:var(--c-hi,#5b6c79); }
-.garment .fill-lo{ fill:var(--c-lo,#28323c); }
-.garment .fill-lo2{ fill:var(--c-lo2,#171e25); }
-.garment .edge{ fill:none; stroke:var(--c-lo2,#171e25); stroke-width:2; stroke-linejoin:round; stroke-linecap:round; opacity:.5; }
-.garment .seam{ fill:none; stroke:var(--c-lo2,#171e25); stroke-width:1.5; stroke-linecap:round; opacity:.4; }
-.garment .hl{ fill:none; stroke:var(--c-hi,#5b6c79); stroke-width:2.4; stroke-linecap:round; opacity:.5; }
-.garment .gbtn{ fill:var(--c-lo2,#171e25); opacity:.75; }
-.garment .metal{ fill:#c7a468; }
-.garment .metal-d{ fill:#8f6f3d; }
-.garment .cutout{ fill:var(--figure-bg); }
-.garment .gshadow{ fill:var(--c-lo2); opacity:.16; }
-.garment use{ color:var(--accent); }
-.product__cat{
-  position:absolute; top:.9rem; left:0; right:0;
-  font-size:.56rem; letter-spacing:.24em; text-transform:uppercase; font-weight:500;
-  color:rgba(0,20,40,.4); text-align:center;
-}
-.product__body{ padding:1.1rem .2rem 0; display:flex; flex-direction:column; align-items:center; gap:.45rem; flex:1; text-align:center; }
-.product__name{ font-family:"Cormorant Garamond",serif; font-size:1.35rem; font-weight:500; letter-spacing:.01em; line-height:1.2; }
-.product__desc{ font-size:.78rem; color:var(--muted); font-weight:300; max-width:34ch; }
-.product__price{
-  font-family:"Montserrat",sans-serif; font-weight:400; font-size:.82rem;
-  font-variant-numeric:tabular-nums; letter-spacing:.06em; color:var(--muted);
-}
-.product__group-label{
-  font-size:.56rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted);
-  margin-top:.6rem;
-}
-.product__colors{ display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; }
-.swatch{
-  --sw:#000;
-  width:18px; height:18px; padding:0; border-radius:999px;
-  border:1px solid rgba(0,0,0,.15);
-  background:var(--sw);
-  position:relative;
-  transition:transform .15s ease;
-}
-.swatch:hover{ transform:scale(1.15); }
-.swatch.is-active::after{
-  content:""; position:absolute; inset:-4px; border:1px solid var(--accent); border-radius:999px;
-}
-.product__sizes{ display:flex; flex-wrap:wrap; gap:.35rem; justify-content:center; }
-.size{
-  min-width:30px; padding:.3rem .45rem;
-  background:none; border:1px solid var(--line);
-  font-size:.64rem; letter-spacing:.08em; font-weight:500; color:var(--muted);
-  transition:border-color .2s ease, color .2s ease;
-}
+.card{ display:flex; flex-direction:column; }
+.card-fig{ position:relative; background:var(--tile); aspect-ratio:4/4.7;
+  display:grid; place-items:center; overflow:hidden; }
+.card-fig img,.card-fig .sil{ width:100%; height:100%; object-fit:contain;
+  transition:transform .5s cubic-bezier(.2,.7,.2,1); }
+.card:hover .card-fig img,.card:hover .card-fig .sil{ transform:scale(1.04); }
+.card-cat{ position:absolute; top:.9rem; left:0; right:0; text-align:center;
+  font-size:.54rem; letter-spacing:.24em; text-transform:uppercase; color:rgba(11,37,69,.42); }
+.card-body{ padding:1.1rem .2rem 0; display:flex; flex-direction:column; align-items:center;
+  gap:.4rem; text-align:center; }
+.card-name{ font-family:"Cormorant Garamond",serif; font-size:1.3rem; font-weight:500; }
+.card-desc{ font-size:.76rem; color:var(--muted); font-weight:300; max-width:32ch; }
+.card-price{ font-size:.8rem; letter-spacing:.06em; color:var(--muted); font-variant-numeric:tabular-nums; }
+.pick-label{ font-size:.54rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin-top:.6rem; }
+.swatches{ display:flex; flex-wrap:wrap; justify-content:center; gap:.45rem; }
+.sw{ width:17px; height:17px; border-radius:999px; padding:0; border:1px solid rgba(0,0,0,.15);
+  background:var(--c); position:relative; transition:transform .15s ease; }
+.sw:hover{ transform:scale(1.15); }
+.sw.on::after{ content:""; position:absolute; inset:-4px; border:1px solid var(--navy); border-radius:999px; }
+.sizes{ display:flex; flex-wrap:wrap; justify-content:center; gap:.35rem; }
+.size{ min-width:30px; padding:.3rem .45rem; background:none; border:1px solid var(--line);
+  font-size:.62rem; letter-spacing:.06em; font-weight:500; color:var(--muted);
+  transition:border-color .2s ease,color .2s ease; }
 .size:hover{ color:var(--ink); }
-.size.is-active{ border-color:var(--ink); color:var(--ink); }
-.product__meta{ font-size:.64rem; color:var(--muted); letter-spacing:.14em; text-transform:uppercase; }
-.product .btn--add{ margin-top:1rem; width:100%; padding:.85rem 1rem; font-size:.6rem; }
+.size.on{ border-color:var(--navy); color:var(--navy); }
+.card-meta{ font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+.card .btn{ margin-top:1rem; width:100%; padding:.8rem 1rem; font-size:.58rem; }
 
-/* ---------- story ---------- */
-.story{ text-align:center; }
-.story .eyebrow{ display:block; margin-bottom:1.4rem; }
-.story__lead{
-  font-family:"Cormorant Garamond",serif; font-weight:400;
-  font-size:clamp(1.5rem, 3.4vw, 2.4rem); line-height:1.4; letter-spacing:.01em;
-  max-width:24ch; margin:0 auto 3rem;
-}
-.story__lead .drop{ font-style:italic; color:var(--accent-hi); }
-.story__cols{
-  display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1.8rem,4vw,3.5rem);
-  border-top:1px solid var(--line); padding-top:3rem; text-align:center;
-}
-@media (max-width:820px){ .story__cols{ grid-template-columns:1fr; gap:2rem; } }
-.story__col h3{ font-family:"Cormorant Garamond",serif; font-size:1.3rem; font-weight:500; letter-spacing:.02em; margin-bottom:.6rem; }
-.story__col p{ color:var(--muted); font-weight:300; font-size:.92rem; max-width:34ch; margin:0 auto; }
-.story__values{
-  display:flex; flex-wrap:wrap; gap:.6rem 1.4rem; margin-top:3rem; justify-content:center;
-  font-size:.64rem; letter-spacing:.26em; text-transform:uppercase; color:var(--muted);
-}
-.story__values span{ position:relative; padding-right:1.4rem; }
-.story__values span:not(:last-child)::after{ content:"—"; position:absolute; right:.35rem; opacity:.5; }
-.story__foot{ margin:2.4rem auto 0; color:var(--muted); font-weight:300; font-size:.86rem; max-width:56ch; }
+/* ---- editorial (navy) ---- */
+.editorial{ background:var(--navy); color:#EFE8D6; text-align:center; }
+.editorial .eyebrow{ color:var(--gold-lt); display:block; margin-bottom:1.4rem; }
+.editorial blockquote{ margin:0 auto; max-width:24ch; font-family:"Cormorant Garamond",serif;
+  font-size:clamp(1.5rem,3.6vw,2.4rem); line-height:1.42; }
+.editorial blockquote em{ color:var(--gold-lt); font-style:italic; }
+.editorial .cols{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1.8rem,4vw,3.4rem);
+  margin-top:3rem; padding-top:3rem; border-top:1px solid rgba(201,164,94,.24); }
+@media (max-width:760px){ .editorial .cols{ grid-template-columns:1fr; gap:2rem; } }
+.editorial .cols h3{ font-size:1.2rem; margin-bottom:.5rem; }
+.editorial .cols p{ font-size:.86rem; color:#B9BFC8; font-weight:300; max-width:32ch; margin:0 auto; }
 
-/* ---------- lookbook ---------- */
-.plates{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
-  background:var(--line); border:1px solid var(--line);
-}
-@media (max-width:900px){ .plates{ grid-template-columns:repeat(2,1fr); } }
-@media (max-width:520px){ .plates{ grid-template-columns:1fr; } }
-.plate{
-  position:relative; aspect-ratio:3/4; overflow:hidden;
-  background:var(--g,#123); color:#F2EEE2;
-  display:flex; flex-direction:column; justify-content:flex-end;
-  padding:1.3rem;
-  isolation:isolate;
-}
-.plate::before{
-  content:""; position:absolute; inset:0; z-index:-1;
-  background:
-    repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 2px, transparent 2px 6px),
-    radial-gradient(120% 80% at 30% 20%, rgba(255,255,255,.14), transparent 60%);
-}
-.plate__no{
-  position:absolute; top:1.1rem; right:1.2rem;
-  font-family:"Cinzel",serif; font-size:.72rem; letter-spacing:.2em; opacity:.7;
-}
-.plate__name{
-  font-family:"Cormorant Garamond",serif; font-size:1.5rem; font-weight:500; letter-spacing:.02em;
-}
-.plate__cap{ font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; opacity:.7; margin-top:.3rem; }
-.plate svg.plate__crest{ position:absolute; top:1rem; left:1.1rem; width:22px; height:25px; color:#fff; opacity:.45; }
+/* ---- guarantees ---- */
+.guar{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line);
+  border-block:1px solid var(--line); }
+@media (max-width:760px){ .guar{ grid-template-columns:repeat(2,1fr); } }
+.guar div{ background:var(--bone); padding:1.8rem 1.4rem; text-align:center;
+  display:flex; flex-direction:column; align-items:center; gap:.5rem; }
+.guar svg{ width:22px; height:22px; color:var(--gold); }
+.guar b{ font-family:"Cormorant Garamond",serif; font-weight:500; font-size:1rem; }
+.guar span{ font-size:.72rem; color:var(--muted); font-weight:300; max-width:22ch; }
 
-/* ---------- guarantees ---------- */
-.guarantees{
-  display:grid; grid-template-columns:repeat(5,1fr); gap:1px;
-  background:var(--line); border-block:1px solid var(--line);
-}
-@media (max-width:900px){ .guarantees{ grid-template-columns:repeat(2,1fr); } }
-@media (max-width:520px){ .guarantees{ grid-template-columns:1fr; } }
-.guarantee{
-  background:var(--paper);
-  padding:2rem 1.6rem;
-  display:flex; flex-direction:column; align-items:center; text-align:center; gap:.6rem;
-}
-.guarantee svg{ width:24px; height:24px; color:var(--accent); stroke-width:1.25; opacity:.95; }
-.guarantee b{ font-family:"Cormorant Garamond",serif; font-weight:500; font-size:1.05rem; letter-spacing:.02em; }
-.guarantee span{ font-size:.74rem; color:var(--muted); font-weight:300; max-width:24ch; }
+/* ---- contact ---- */
+.contact-grid{ display:grid; grid-template-columns:1fr 1.1fr; gap:clamp(2rem,6vw,5rem); }
+@media (max-width:820px){ .contact-grid{ grid-template-columns:1fr; } }
+.contact-grid h2{ font-size:clamp(1.8rem,4vw,2.6rem); margin:.6rem 0 1rem; }
+.contact-grid>div>p{ color:var(--muted); font-weight:300; }
+.cdl{ list-style:none; margin:1.6rem 0 0; padding:0; display:flex; flex-direction:column; gap:.9rem; }
+.cdl li{ display:flex; flex-direction:column; gap:.15rem; }
+.cdl .k{ font-size:.56rem; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); font-weight:600; }
+.cdl a{ text-decoration:none; border-bottom:1px solid var(--line); }
+.cdl a:hover{ border-bottom-color:var(--gold); }
+.form{ display:grid; gap:1rem; }
+.field{ display:flex; flex-direction:column; gap:.35rem; }
+.field label{ font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.field input,.field select,.field textarea{ font:inherit; font-size:.9rem; font-weight:300;
+  background:var(--paper); color:var(--ink); border:1px solid var(--line); border-radius:0; padding:.75rem .85rem;
+  transition:border-color .2s ease; }
+.field input:focus,.field select:focus,.field textarea:focus{ outline:none; border-color:var(--gold); }
+.field textarea{ resize:vertical; min-height:110px; }
+.field.bad input,.field.bad select,.field.bad textarea{ border-color:var(--err); }
+.field .err{ font-size:.7rem; color:var(--err); min-height:1em; }
+.form-ok{ border:1px solid var(--gold); padding:2.2rem; text-align:center;
+  display:flex; flex-direction:column; align-items:center; gap:.7rem; }
+.form-ok svg{ width:30px; height:34px; color:var(--gold); }
+.form-ok h3{ font-family:"Cormorant Garamond",serif; font-size:1.4rem; font-weight:500; }
+.form-ok p{ color:var(--muted); font-weight:300; font-size:.88rem; }
 
-/* ---------- contact ---------- */
-.contact__grid{ display:grid; grid-template-columns:1fr 1.1fr; gap:clamp(2rem,6vw,5rem); }
-@media (max-width:820px){ .contact__grid{ grid-template-columns:1fr; } }
-.contact__details{ list-style:none; margin:1.8rem 0 0; padding:0; display:flex; flex-direction:column; gap:1rem; }
-.contact__details li{ display:flex; flex-direction:column; gap:.1rem; }
-.contact__details dt,.contact__details .k{
-  font-size:.58rem; letter-spacing:.24em; text-transform:uppercase; color:var(--muted); font-weight:500;
-}
-.contact__details .v{ font-size:.95rem; }
-.contact__details .v a{ text-decoration:none; border-bottom:1px solid var(--line); }
-.contact__details .v a:hover{ border-bottom-color:var(--accent); }
-
-.form{ display:grid; gap:1.1rem; }
-.field{ display:flex; flex-direction:column; gap:.4rem; }
-.field label{ font-size:.66rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); font-weight:600; }
-.field input,.field select,.field textarea{
-  font:inherit; font-size:.92rem; font-weight:300;
-  background:var(--surface); color:var(--ink);
-  border:1px solid var(--line); border-radius:0;
-  padding:.8rem .9rem;
-  transition:border-color .2s ease;
-}
-.field input:focus,.field select:focus,.field textarea:focus{ outline:none; border-color:var(--accent); }
-.field textarea{ resize:vertical; min-height:120px; }
-.field.invalid input,.field.invalid select,.field.invalid textarea{ border-color:var(--err); }
-.field__err{ font-size:.72rem; color:var(--err); min-height:1em; }
-.form__ok{
-  border:1px solid var(--line); padding:2.4rem; text-align:center;
-  display:flex; flex-direction:column; gap:.7rem; align-items:center;
-}
-.form__ok svg{ width:32px; height:36px; color:var(--accent); }
-.form__ok h3{ font-family:"Cormorant Garamond",serif; font-size:1.5rem; font-weight:500; letter-spacing:.01em; }
-.form__ok p{ color:var(--muted); font-weight:300; font-size:.9rem; }
-
-/* ---------- footer ---------- */
-.site-footer{ padding-block:clamp(3.5rem,7vw,5.5rem) 2rem; }
-.footer__top{ display:grid; grid-template-columns:1.5fr 1fr 1fr 1.3fr; gap:2.6rem; }
-@media (max-width:900px){ .footer__top{ grid-template-columns:1fr 1fr; } }
-@media (max-width:520px){ .footer__top{ grid-template-columns:1fr; } }
-.footer__brand svg{ width:38px; height:43px; color:var(--accent-hi); }
-.footer__brand b{ display:block; font-family:"Cinzel",serif; letter-spacing:.32em; margin:.9rem 0 .5rem; font-size:.86rem; }
-.footer__brand p{ font-family:"Cormorant Garamond",serif; font-style:italic; font-size:.95rem; letter-spacing:.02em; color:var(--muted); text-transform:none; }
-.footer__col h4{ font-size:.58rem; letter-spacing:.26em; text-transform:uppercase; color:var(--muted); margin-bottom:1.2rem; font-weight:500; }
-.footer__col ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.7rem; }
-.footer__col a{ text-decoration:none; font-size:.82rem; color:var(--muted); font-weight:300; transition:color .2s ease; }
-.footer__col a:hover{ color:var(--ink); }
-.newsletter{ display:flex; border:1px solid var(--line); margin-top:.4rem; }
-.newsletter input{
-  flex:1; min-width:0; font:inherit; font-size:.84rem; font-weight:300;
-  background:transparent; color:var(--ink); border:0; padding:.7rem .8rem;
-}
-.newsletter input:focus{ outline:none; }
-.newsletter button{
-  background:var(--accent); color:var(--navy); border:0; padding:0 1.2rem;
-  font-size:.6rem; letter-spacing:.22em; text-transform:uppercase; font-weight:500;
-}
-.newsletter__msg{ font-size:.74rem; color:var(--muted); margin-top:.5rem; min-height:1em; }
-.footer__bar{
-  margin-top:3.5rem; padding-top:1.8rem; border-top:1px solid var(--line);
+/* ---- footer ---- */
+.ft{ background:var(--navy-deep); color:#D6D2C4; padding-block:clamp(3.5rem,7vw,5rem) 2rem; }
+.ft-top{ display:grid; grid-template-columns:1.5fr 1fr 1fr 1.3fr; gap:2.6rem; }
+@media (max-width:900px){ .ft-top{ grid-template-columns:1fr 1fr; } }
+@media (max-width:520px){ .ft-top{ grid-template-columns:1fr; } }
+.ft-brand svg{ width:38px; height:43px; color:var(--gold-lt); }
+.ft-brand b{ display:block; font-family:"Cinzel",serif; letter-spacing:.32em; margin:.9rem 0 .5rem; font-size:.82rem; color:#EFE8D6; }
+.ft-brand p{ font-family:"Cormorant Garamond",serif; font-style:italic; font-size:.95rem; color:#9FA6B0; }
+.ft-col h4{ font-size:.56rem; letter-spacing:.26em; text-transform:uppercase; color:var(--gold-lt); margin-bottom:1.1rem; font-weight:600; }
+.ft-col ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.7rem; }
+.ft-col a{ text-decoration:none; font-size:.8rem; color:#9FA6B0; font-weight:300; transition:color .2s ease; }
+.ft-col a:hover{ color:#EFE8D6; }
+.nl{ display:flex; border:1px solid rgba(201,164,94,.3); margin-top:.4rem; }
+.nl input{ flex:1; min-width:0; font:inherit; font-size:.82rem; font-weight:300; background:transparent; color:#EFE8D6; border:0; padding:.65rem .8rem; }
+.nl input:focus{ outline:none; }
+.nl button{ background:var(--gold-lt); color:var(--navy-deep); border:0; padding:0 1.1rem; font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; font-weight:600; }
+.nl-msg{ font-size:.72rem; color:var(--gold-lt); margin-top:.5rem; min-height:1em; }
+.ft-bar{ margin-top:3.4rem; padding-top:1.6rem; border-top:1px solid rgba(201,164,94,.2);
   display:flex; flex-wrap:wrap; gap:.6rem 1.6rem; justify-content:space-between;
-  font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted);
-}
-.footer__bar .fr{ color:var(--muted); font-family:"Cormorant Garamond",serif; font-style:italic; font-size:.8rem; letter-spacing:.02em; text-transform:none; }
+  font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:#8A919B; }
+.ft-bar .fr{ font-family:"Cormorant Garamond",serif; font-style:italic; font-size:.82rem; text-transform:none; letter-spacing:.02em; color:#B9BFC8; }
 
-/* ---------- cart drawer ---------- */
-.overlay{
-  position:fixed; inset:0; z-index:70;
-  background:rgba(0,10,22,.66);
-  opacity:0; visibility:hidden; transition:opacity .35s ease, visibility .35s;
-}
-.overlay.is-open{ opacity:1; visibility:visible; }
-
-.drawer{
-  position:fixed; top:0; right:0; bottom:0; z-index:80;
-  width:min(430px, 94vw);
-  background:var(--paper); color:var(--ink);
-  border-left:1px solid var(--line);
-  display:flex; flex-direction:column;
-  transform:translateX(100%);
-  transition:transform .4s cubic-bezier(.4,0,.1,1);
-}
-.drawer.is-open{ transform:translateX(0); }
-.drawer__head{
-  display:flex; align-items:center; justify-content:space-between;
-  padding:1.4rem 1.5rem; border-bottom:1px solid var(--line);
-}
-.drawer__head h2{ font-family:"Montserrat",sans-serif; font-weight:500; font-size:.7rem; letter-spacing:.28em; text-transform:uppercase; }
-.drawer__close{ background:none; border:0; font-size:1.5rem; line-height:1; color:var(--muted); padding:.2rem; }
-.drawer__close:hover{ color:var(--ink); }
-.drawer__body{ flex:1; overflow-y:auto; padding:1.2rem 1.5rem; }
-.drawer__empty{ color:var(--muted); font-weight:300; text-align:center; padding:3rem 1rem; font-size:.9rem; }
-
-.line{
-  display:grid; grid-template-columns:64px 1fr auto; gap:1rem;
-  padding:1.1rem 0; border-bottom:1px solid var(--line);
-}
-.line__thumb{ background:var(--figure-bg); display:grid; place-items:center; aspect-ratio:1; overflow:hidden; }
-.line__thumb .garment{ width:86%; height:auto; }
-.line__name{ font-family:"Cormorant Garamond",serif; font-size:1.05rem; font-weight:500; letter-spacing:.01em; }
-.line__variant{ font-size:.72rem; color:var(--muted); margin-top:.15rem; }
+/* ---- drawer / modal / overlay ---- */
+.overlay{ position:fixed; inset:0; z-index:70; background:rgba(4,15,30,.55);
+  opacity:0; visibility:hidden; transition:opacity .3s ease,visibility .3s; }
+.overlay.on{ opacity:1; visibility:visible; }
+.drawer{ position:fixed; top:0; right:0; bottom:0; z-index:80; width:min(420px,94vw);
+  background:var(--paper); display:flex; flex-direction:column; border-left:1px solid var(--line);
+  transform:translateX(100%); transition:transform .38s cubic-bezier(.4,0,.1,1); }
+.drawer.on{ transform:none; }
+.drawer-h{ display:flex; align-items:center; justify-content:space-between; padding:1.3rem 1.4rem; border-bottom:1px solid var(--line); }
+.drawer-h h2{ font-family:"Montserrat",sans-serif; font-weight:600; font-size:.66rem; letter-spacing:.28em; text-transform:uppercase; }
+.x{ background:none; border:0; font-size:1.4rem; line-height:1; color:var(--muted); padding:.2rem; }
+.x:hover{ color:var(--ink); }
+.drawer-b{ flex:1; overflow-y:auto; padding:1rem 1.4rem; }
+.empty{ color:var(--muted); font-weight:300; text-align:center; padding:3rem 1rem; font-size:.88rem; }
+.line{ display:grid; grid-template-columns:62px 1fr auto; gap:.9rem; padding:1rem 0; border-bottom:1px solid var(--line); }
+.line-th{ background:var(--tile); aspect-ratio:1; overflow:hidden; }
+.line-th img,.line-th .sil{ width:100%; height:100%; object-fit:contain; }
+.line-nm{ font-family:"Cormorant Garamond",serif; font-size:1rem; font-weight:500; }
+.line-v{ font-size:.7rem; color:var(--muted); margin-top:.1rem; }
 .qty{ display:inline-flex; align-items:center; border:1px solid var(--line); margin-top:.5rem; }
-.qty button{ background:none; border:0; width:26px; height:26px; color:var(--muted); font-size:.9rem; }
+.qty button{ background:none; border:0; width:24px; height:24px; color:var(--muted); }
 .qty button:hover{ color:var(--ink); }
-.qty span{ min-width:26px; text-align:center; font-size:.8rem; font-variant-numeric:tabular-nums; }
-.line__right{ display:flex; flex-direction:column; align-items:flex-end; justify-content:space-between; }
-.line__price{ font-weight:600; font-size:.82rem; font-variant-numeric:tabular-nums; }
-.line__rm{ background:none; border:0; font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
-.line__rm:hover{ color:var(--err); }
+.qty span{ min-width:24px; text-align:center; font-size:.76rem; font-variant-numeric:tabular-nums; }
+.line-r{ display:flex; flex-direction:column; align-items:flex-end; justify-content:space-between; }
+.line-p{ font-weight:600; font-size:.78rem; font-variant-numeric:tabular-nums; }
+.rm{ background:none; border:0; font-size:.58rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+.rm:hover{ color:var(--err); }
+.drawer-f{ border-top:1px solid var(--line); padding:1.2rem 1.4rem; display:flex; flex-direction:column; gap:.85rem; }
+.sub{ display:flex; justify-content:space-between; font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; }
+.sub b{ font-family:"Montserrat",sans-serif; font-weight:600; font-variant-numeric:tabular-nums; }
+.note{ font-size:.68rem; color:var(--muted); font-weight:300; }
 
-.drawer__foot{ border-top:1px solid var(--line); padding:1.3rem 1.5rem; display:flex; flex-direction:column; gap:.9rem; }
-.subtotal{ display:flex; justify-content:space-between; font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; }
-.subtotal b{ font-family:"Montserrat",sans-serif; font-weight:600; font-variant-numeric:tabular-nums; }
-.drawer__note{ font-size:.72rem; color:var(--muted); font-weight:300; }
+.modal{ position:fixed; inset:0; z-index:90; display:grid; place-items:center; padding:1.5rem;
+  opacity:0; visibility:hidden; transition:opacity .3s ease,visibility .3s; }
+.modal.on{ opacity:1; visibility:visible; }
+.modal-c{ position:relative; background:var(--paper); border:1px solid var(--line);
+  width:min(520px,100%); max-height:88vh; overflow-y:auto; padding:2rem;
+  transform:translateY(12px); transition:transform .3s ease; }
+.modal.on .modal-c{ transform:none; }
+.modal-c h2{ font-family:"Cormorant Garamond",serif; font-weight:500; font-size:1.7rem; margin-bottom:.3rem; }
+.olist{ list-style:none; margin:1rem 0 1.2rem; padding:0; }
+.olist li{ display:flex; justify-content:space-between; gap:1rem; padding:.65rem 0; border-bottom:1px solid var(--line); font-size:.84rem; font-weight:300; }
+.olist li b{ font-weight:600; white-space:nowrap; font-variant-numeric:tabular-nums; }
+.ototal{ display:flex; justify-content:space-between; font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:.8rem; margin-bottom:1.2rem; }
+.modal-note{ font-size:.76rem; color:var(--muted); font-weight:300; margin-bottom:1.3rem; }
+.modal-act{ display:flex; flex-wrap:wrap; gap:.6rem; }
+.modal-act .btn{ flex:1; min-width:150px; }
+.modal-x{ position:absolute; top:.9rem; right:1.1rem; background:none; border:0; font-size:1.4rem; color:var(--muted); line-height:1; }
 
-/* ---------- modal ---------- */
-.modal{
-  position:fixed; inset:0; z-index:90;
-  display:grid; place-items:center; padding:1.5rem;
-  opacity:0; visibility:hidden; transition:opacity .3s ease, visibility .3s;
-}
-.modal.is-open{ opacity:1; visibility:visible; }
-.modal__card{
-  position:relative;
-  background:var(--paper); color:var(--ink);
-  border:1px solid var(--line);
-  width:min(520px,100%); max-height:88vh; overflow-y:auto;
-  padding:2rem;
-  transform:translateY(12px); transition:transform .3s ease;
-}
-.modal.is-open .modal__card{ transform:none; }
-.modal__card h2{ font-family:"Cormorant Garamond",serif; font-weight:500; font-size:1.7rem; letter-spacing:.01em; text-transform:none; margin-bottom:.4rem; }
-.modal__card .eyebrow{ margin-bottom:1.2rem; }
-.order-list{ list-style:none; margin:0 0 1.2rem; padding:0; }
-.order-list li{
-  display:flex; justify-content:space-between; gap:1rem;
-  padding:.7rem 0; border-bottom:1px solid var(--line);
-  font-size:.85rem; font-weight:300;
-}
-.order-list li b{ font-weight:600; font-variant-numeric:tabular-nums; white-space:nowrap; }
-.order-total{ display:flex; justify-content:space-between; font-weight:600; letter-spacing:.1em; text-transform:uppercase; font-size:.82rem; margin-bottom:1.2rem; }
-.modal__note{ font-size:.78rem; color:var(--muted); font-weight:300; margin-bottom:1.4rem; }
-.modal__actions{ display:flex; flex-wrap:wrap; gap:.7rem; }
-.modal__actions .btn{ flex:1; min-width:150px; }
-.modal__close{
-  position:absolute; top:1rem; right:1.2rem;
-  background:none; border:0; font-size:1.5rem; color:var(--muted); line-height:1;
-}
+/* ---- wa fab / toast ---- */
+.wa{ position:fixed; right:1.1rem; bottom:1.1rem; z-index:60; width:50px; height:50px;
+  border-radius:999px; display:grid; place-items:center; background:#1f8f6f; color:#fff;
+  text-decoration:none; border:1px solid rgba(201,164,94,.4); box-shadow:0 8px 22px -8px rgba(0,0,0,.5);
+  transition:transform .2s ease; }
+.wa:hover{ transform:translateY(-2px); }
+.wa svg{ width:26px; height:26px; }
+.toasts{ position:fixed; left:50%; bottom:1.4rem; transform:translateX(-50%); z-index:100;
+  display:flex; flex-direction:column; gap:.5rem; align-items:center; pointer-events:none; }
+.toast{ background:var(--navy-deep); color:var(--gold-lt); padding:.75rem 1.2rem; font-size:.7rem;
+  letter-spacing:.12em; text-transform:uppercase; border:1px solid rgba(201,164,94,.3);
+  animation:tin .3s ease both; }
+@keyframes tin{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
 
-/* ---------- toast ---------- */
-.toasts{
-  position:fixed; left:50%; bottom:1.5rem; transform:translateX(-50%);
-  z-index:100; display:flex; flex-direction:column; gap:.5rem; align-items:center;
-  pointer-events:none;
-}
-.toast{
-  background:var(--ink-solid); color:var(--accent-hi);
-  padding:.8rem 1.3rem; font-size:.74rem; letter-spacing:.12em; text-transform:uppercase;
-  border:1px solid var(--line);
-  animation:toast-in .3s ease both;
-}
-@keyframes toast-in{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
-
-/* ---------- product photo (substitui a ilustração quando existe) ---------- */
-.product__photo{ width:100%; height:100%; object-fit:contain; }
-.line__thumb .product__photo{ width:94%; height:94%; }
-
-/* ---------- WhatsApp flutuante ---------- */
-.wa-fab{
-  position:fixed; right:1.1rem; bottom:1.1rem; z-index:60;
-  width:52px; height:52px; border-radius:999px;
-  display:grid; place-items:center;
-  background:#1f8f6f; color:#fff; text-decoration:none;
-  border:1px solid rgba(199,164,104,.45);
-  box-shadow:0 8px 22px -8px rgba(0,0,0,.6);
-  transition:transform .2s ease, background .2s ease;
-}
-.wa-fab:hover{ transform:translateY(-2px); background:#177a5e; }
-.wa-fab svg{ width:28px; height:28px; }
-@media (max-width:560px){ .wa-fab{ right:.8rem; bottom:.8rem; width:48px; height:48px; } }
-
-@media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
-}
-
-.visually-hidden{
-  position:absolute!important; width:1px; height:1px; padding:0; margin:-1px;
-  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
-}
+@media (prefers-reduced-motion:reduce){ *,*::before,*::after{ animation-duration:.001ms!important; transition-duration:.001ms!important; } }
+.vh{ position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
 </style>
 
-<!-- ============ SVG SPRITE ============ -->
 <svg class="sprite" aria-hidden="true" focusable="false">
   <symbol id="crest" viewBox="0 0 132 150">
     <g fill="currentColor">
       <path d="M44 45 L44 28 L55 36 L66 20 L77 36 L88 28 L88 45 Z"/>
       <rect x="44" y="45" width="44" height="5"/>
-      <circle cx="44" cy="24" r="3.4"/><circle cx="88" cy="24" r="3.4"/><circle cx="66" cy="15" r="3.8"/>
+      <circle cx="44" cy="24" r="3.3"/><circle cx="88" cy="24" r="3.3"/><circle cx="66" cy="15" r="3.7"/>
     </g>
     <g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" opacity=".9">
-      <path d="M50 131 C32 121 22 99 24 60"/>
-      <path d="M82 131 C100 121 110 99 108 60"/>
+      <path d="M50 131 C32 121 22 99 24 60"/><path d="M82 131 C100 121 110 99 108 60"/>
     </g>
-    <g fill="currentColor" opacity=".92">
-      <ellipse cx="22" cy="62" rx="6" ry="2.6" transform="rotate(-58 22 62)"/>
-      <ellipse cx="21" cy="76" rx="6" ry="2.6" transform="rotate(-42 21 76)"/>
-      <ellipse cx="23" cy="90" rx="6" ry="2.6" transform="rotate(-26 23 90)"/>
-      <ellipse cx="28" cy="103" rx="5.6" ry="2.5" transform="rotate(-8 28 103)"/>
-      <ellipse cx="36" cy="114" rx="5.2" ry="2.3" transform="rotate(14 36 114)"/>
-      <ellipse cx="45" cy="123" rx="4.8" ry="2.1" transform="rotate(32 45 123)"/>
-      <ellipse cx="110" cy="62" rx="6" ry="2.6" transform="rotate(58 110 62)"/>
-      <ellipse cx="111" cy="76" rx="6" ry="2.6" transform="rotate(42 111 76)"/>
-      <ellipse cx="109" cy="90" rx="6" ry="2.6" transform="rotate(26 109 90)"/>
-      <ellipse cx="104" cy="103" rx="5.6" ry="2.5" transform="rotate(8 104 103)"/>
-      <ellipse cx="96" cy="114" rx="5.2" ry="2.3" transform="rotate(-14 96 114)"/>
-      <ellipse cx="87" cy="123" rx="4.8" ry="2.1" transform="rotate(-32 87 123)"/>
+    <g fill="currentColor" opacity=".9">
+      <ellipse cx="22" cy="62" rx="6" ry="2.5" transform="rotate(-58 22 62)"/>
+      <ellipse cx="21" cy="76" rx="6" ry="2.5" transform="rotate(-42 21 76)"/>
+      <ellipse cx="23" cy="90" rx="6" ry="2.5" transform="rotate(-26 23 90)"/>
+      <ellipse cx="28" cy="103" rx="5.4" ry="2.3" transform="rotate(-8 28 103)"/>
+      <ellipse cx="36" cy="114" rx="5" ry="2.1" transform="rotate(14 36 114)"/>
+      <ellipse cx="110" cy="62" rx="6" ry="2.5" transform="rotate(58 110 62)"/>
+      <ellipse cx="111" cy="76" rx="6" ry="2.5" transform="rotate(42 111 76)"/>
+      <ellipse cx="109" cy="90" rx="6" ry="2.5" transform="rotate(26 109 90)"/>
+      <ellipse cx="104" cy="103" rx="5.4" ry="2.3" transform="rotate(8 104 103)"/>
+      <ellipse cx="96" cy="114" rx="5" ry="2.1" transform="rotate(-14 96 114)"/>
     </g>
     <path d="M32 53 L100 53 C100 92 89 120 66 136 C43 120 32 92 32 53 Z" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round"/>
     <path d="M39 60 L93 60 C93 92 83 114 66 127 C49 114 39 92 39 60 Z" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".45"/>
-    <text x="66" y="104" text-anchor="middle" font-family="Cinzel, 'Times New Roman', serif" font-size="35" font-weight="600" fill="currentColor" letter-spacing="-4">MR</text>
-  </symbol>
-  <symbol id="emblem" viewBox="0 0 128 148">
-    <g fill="currentColor">
-      <path d="M42 46 L42 30 L53 37 L64 22 L75 37 L86 30 L86 46 Z"/>
-      <circle cx="42" cy="26" r="3"/><circle cx="86" cy="26" r="3"/><circle cx="64" cy="17" r="3.4"/>
-    </g>
-    <path d="M30 50 L98 50 C98 90 87 116 64 132 C41 116 30 90 30 50 Z" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linejoin="round"/>
-    <text x="64" y="100" text-anchor="middle" font-family="Cinzel, serif" font-size="40" font-weight="600" fill="currentColor" letter-spacing="-3">MR</text>
+    <text x="66" y="103" text-anchor="middle" font-family="Cinzel,'Times New Roman',serif" font-size="35" font-weight="600" fill="currentColor" letter-spacing="-4">MR</text>
   </symbol>
 </svg>
 
-<!-- ============ ANNOUNCE ============ -->
 <div class="announce" id="announce">
-  <span>Frete grátis para todo o Brasil acima de R$ 500 — Collection 01, edição inaugural</span>
-  <button type="button" aria-label="Fechar aviso" data-close-announce>&times;</button>
+  <span>Frete grátis para todo o Brasil acima de R$ 500 — Collection 01</span>
+  <button type="button" aria-label="Fechar" data-x-announce>&times;</button>
 </div>
 
-<!-- ============ HEADER ============ -->
-<header class="site-header" id="siteHeader">
-  <div class="wrap header-inner">
-    <a href="#inicio" class="brand" aria-label="Maison Rivier — início">
-      <svg aria-hidden="true"><use href="#crest"/></svg>
-      <span>Maison Rivier</span>
-    </a>
-
-    <nav class="site-nav" id="siteNav" aria-label="Navegação principal">
+<header class="hdr" id="hdr">
+  <div class="wrap hdr-in">
+    <a href="#inicio" class="brand" aria-label="Maison Rivier"><svg aria-hidden="true"><use href="#crest"/></svg><b>Maison Rivier</b></a>
+    <nav class="nav" id="nav" aria-label="Navegação">
       <ul>
         <li><a href="#inicio">Início</a></li>
         <li><a href="#colecao">Coleção</a></li>
         <li><a href="#loja">Loja</a></li>
         <li><a href="#historia">História</a></li>
-        <li><a href="#lookbook">Lookbook</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
     </nav>
-
-    <div class="header-tools">
-      <button type="button" class="icon-btn theme-toggle" id="themeToggle" aria-label="Alternar tema claro e escuro">
-        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
-        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg>
-      </button>
-      <button type="button" class="icon-btn" id="cartOpen" aria-label="Abrir sacola">
+    <div class="tools">
+      <button type="button" class="ico" id="cartOpen" aria-label="Sacola">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 8h12l1 12H5L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
-        <span class="cart-count" id="cartCount" data-empty="true">0</span>
+        <span class="badge" id="badge" data-empty="true">0</span>
       </button>
-      <button type="button" class="icon-btn nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+      <button type="button" class="ico burger" id="burger" aria-label="Menu" aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
     </div>
@@ -747,980 +403,392 @@ button{ font:inherit; color:inherit; cursor:pointer; }
 </header>
 
 <main>
-  <!-- ============ HERO ============ -->
   <section class="hero" id="inicio">
-    <h1 class="visually-hidden">Maison Rivier — Paris · Collection 01</h1>
-    <div class="wrap hero__inner">
-      <div class="hero__cta">
-        <a class="btn btn--solid" href="#loja">Explorar a coleção</a>
+    <h1 class="vh">Maison Rivier — Paris · Collection 01</h1>
+    <div class="wrap hero-in">
+      <p>Élégance. Discrétion. Intemporel.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#loja">Explorar a coleção</a>
         <a class="btn btn--ghost" href="#historia">Nossa história</a>
       </div>
     </div>
   </section>
 
-  <!-- ============ COLLECTION RIBBON ============ -->
-  <section class="section" id="colecao">
+  <section class="section intro" id="colecao">
     <div class="wrap">
-      <div class="section__head">
-        <p class="eyebrow">Collection 01</p>
-        <h2>As categorias</h2>
-        <p>As sete famílias de peças da Collection 01. Selecione uma para explorar na loja.</p>
-      </div>
-      <div class="ribbon__grid" id="ribbon"></div>
+      <p class="eyebrow">Collection 01</p>
+      <h2>A coleção inaugural da Maison Rivier</h2>
+      <p>Moda masculina premium que une a elegância clássica francesa a uma estética contemporânea e atemporal. Cada peça leva o brasão bordado da casa.</p>
+      <a class="link" href="#loja">Ver todas as peças</a>
     </div>
   </section>
 
-  <!-- ============ SHOP ============ -->
   <section class="section" id="loja" style="padding-top:0">
     <div class="wrap">
-      <div class="section__head">
+      <div class="sec-head">
         <p class="eyebrow">A Loja</p>
-        <h2>A Collection 01</h2>
-        <p>As peças da Collection 01, todas com o brasão Maison Rivier. Escolha a cor e o tamanho para adicionar à sacola.</p>
+        <h2>Peças</h2>
+        <p>Escolha a cor e o tamanho para adicionar à sacola. Pedidos finalizados pelo WhatsApp.</p>
       </div>
-      <div class="shop__filters" id="filters" role="group" aria-label="Filtrar por categoria"></div>
+      <div class="filters" id="filters" role="group" aria-label="Filtrar"></div>
       <div class="grid" id="grid"></div>
     </div>
   </section>
 
-  <!-- ============ STORY ============ -->
-  <section class="section story" id="historia">
+  <section class="section editorial" id="historia">
     <div class="wrap">
       <p class="eyebrow">A Maison</p>
-      <p class="story__lead"><span class="drop">Maison Rivier</span> nasce do desejo de unir a elegância clássica francesa a uma estética contemporânea e atemporal. Inspirada pela Riviera Francesa, cria peças de sofisticação discreta e qualidade impecável.</p>
-      <div class="story__cols">
-        <div class="story__col">
-          <h3>Missão</h3>
-          <p>Criar roupas de qualidade excepcional que reflitam elegância, autenticidade e confiança.</p>
-        </div>
-        <div class="story__col">
-          <h3>Valores</h3>
-          <p>Excelência e durabilidade em cada detalhe, do tecido ao acabamento, sem concessões.</p>
-        </div>
-        <div class="story__col">
-          <h3>Posicionamento</h3>
-          <p>Moda masculina premium que une o clássico ao contemporâneo, com design atemporal e qualidade superior.</p>
-        </div>
+      <blockquote>Inspirada pela Riviera Francesa, a <em>Maison Rivier</em> cria peças de sofisticação discreta e qualidade impecável.</blockquote>
+      <div class="cols">
+        <div><h3>Missão</h3><p>Roupas de qualidade excepcional que reflitam elegância, autenticidade e confiança.</p></div>
+        <div><h3>Matéria</h3><p>Tecidos nobres e acabamento revisado peça a peça, sem concessões.</p></div>
+        <div><h3>Para quem</h3><p>Homens de 25 a 45 anos que valorizam qualidade, discrição e estilo refinado.</p></div>
       </div>
-      <div class="story__values">
-        <span>Excelência</span><span>Discrição</span><span>Autenticidade</span><span>Sofisticação</span><span>Durabilidade</span>
-      </div>
-      <p class="story__foot">Para homens de 25 a 45 anos, exigentes, que valorizam qualidade, discrição e estilo refinado. Tom elegante, confiante, sofisticado e atemporal.</p>
     </div>
   </section>
 
-  <!-- ============ LOOKBOOK ============ -->
-  <section class="section panel--ink" id="lookbook">
-    <div class="wrap">
-      <div class="section__head">
-        <p class="eyebrow">Conceito Fotográfico</p>
-        <h2>Lookbook</h2>
-        <p>Sete cenários que traduzem o universo Maison Rivier — do litoral à cidade.</p>
-      </div>
-      <div class="plates" id="plates"></div>
-    </div>
-  </section>
-
-  <!-- ============ GUARANTEES ============ -->
   <section class="section" style="padding:0">
-    <div class="guarantees" id="guarantees"></div>
+    <div class="guar" id="guar"></div>
   </section>
 
-  <!-- ============ CONTACT ============ -->
   <section class="section" id="contato">
-    <div class="wrap contact__grid">
+    <div class="wrap contact-grid">
       <div>
         <p class="eyebrow">Contato</p>
-        <h2 style="font-size:clamp(1.9rem,4vw,2.7rem);letter-spacing:.01em;margin:.6rem 0 1rem">Fale com o atelier</h2>
-        <p style="color:var(--muted);font-weight:300">Dúvidas sobre peças, tamanhos ou o andamento do seu pedido? Nossa equipe responde em até um dia útil.</p>
-        <ul class="contact__details">
-          <li><span class="k">WhatsApp</span><span class="v"><a href="https://wa.me/5511996603491" target="_blank" rel="noopener">(11) 99660-3491</a></span></li>
-          <li><span class="k">E-mail</span><span class="v"><a href="mailto:maisonrivierr@gmail.com">maisonrivierr@gmail.com</a></span></li>
-          <li><span class="k">Instagram</span><span class="v"><a href="https://instagram.com/maisonrivier" target="_blank" rel="noopener">@maisonrivier</a></span></li>
-          <li><span class="k">Atendimento</span><span class="v">Segunda a sexta, 9h às 18h</span></li>
+        <h2>Fale com o atelier</h2>
+        <p>Dúvidas sobre peças, tamanhos ou o andamento do seu pedido? Respondemos em até um dia útil.</p>
+        <ul class="cdl">
+          <li><span class="k">WhatsApp</span><span><a href="https://wa.me/5511996603491" target="_blank" rel="noopener">(11) 99660-3491</a></span></li>
+          <li><span class="k">E-mail</span><span><a href="mailto:maisonrivierr@gmail.com">maisonrivierr@gmail.com</a></span></li>
+          <li><span class="k">Instagram</span><span><a href="https://instagram.com/maisonrivier" target="_blank" rel="noopener">@maisonrivier</a></span></li>
+          <li><span class="k">Atendimento</span><span>Segunda a sexta, 9h às 18h</span></li>
         </ul>
       </div>
-
-      <form class="form" id="contactForm" novalidate>
-        <div class="field" id="f-name">
-          <label for="cName">Nome</label>
-          <input type="text" id="cName" name="name" autocomplete="name" required>
-          <span class="field__err" aria-live="polite"></span>
-        </div>
-        <div class="field" id="f-email">
-          <label for="cEmail">E-mail</label>
-          <input type="email" id="cEmail" name="email" autocomplete="email" required>
-          <span class="field__err" aria-live="polite"></span>
-        </div>
-        <div class="field" id="f-subject">
-          <label for="cSubject">Assunto</label>
-          <select id="cSubject" name="subject" required>
-            <option value="">Selecione…</option>
-            <option>Meu pedido</option>
-            <option>Trocas e devoluções</option>
-            <option>Tamanhos e caimento</option>
-            <option>Imprensa e parcerias</option>
-            <option>Outro assunto</option>
-          </select>
-          <span class="field__err" aria-live="polite"></span>
-        </div>
-        <div class="field" id="f-message">
-          <label for="cMessage">Mensagem</label>
-          <textarea id="cMessage" name="message" required></textarea>
-          <span class="field__err" aria-live="polite"></span>
-        </div>
-        <button type="submit" class="btn btn--solid">Enviar mensagem</button>
+      <form class="form" id="cform" novalidate>
+        <div class="field" id="f-nome"><label for="i-nome">Nome</label><input id="i-nome" type="text" autocomplete="name"><span class="err" aria-live="polite"></span></div>
+        <div class="field" id="f-email"><label for="i-email">E-mail</label><input id="i-email" type="email" autocomplete="email"><span class="err" aria-live="polite"></span></div>
+        <div class="field" id="f-assunto"><label for="i-assunto">Assunto</label>
+          <select id="i-assunto"><option value="">Selecione…</option><option>Meu pedido</option><option>Trocas e devoluções</option><option>Tamanhos e caimento</option><option>Imprensa e parcerias</option><option>Outro</option></select>
+          <span class="err" aria-live="polite"></span></div>
+        <div class="field" id="f-msg"><label for="i-msg">Mensagem</label><textarea id="i-msg"></textarea><span class="err" aria-live="polite"></span></div>
+        <button type="submit" class="btn">Enviar mensagem</button>
       </form>
     </div>
   </section>
 </main>
 
-<!-- ============ FOOTER ============ -->
-<footer class="site-footer panel--navy">
+<footer class="ft">
   <div class="wrap">
-    <div class="footer__top">
-      <div class="footer__brand">
+    <div class="ft-top">
+      <div class="ft-brand">
         <svg aria-hidden="true"><use href="#crest"/></svg>
         <b>Maison Rivier</b>
         <p>Élégance. Discrétion. Intemporel.</p>
-        <form id="newsletter" style="margin-top:1.4rem">
-          <label class="visually-hidden" for="nlEmail">E-mail para a newsletter</label>
-          <div class="newsletter">
-            <input type="email" id="nlEmail" placeholder="Seu e-mail" autocomplete="email">
-            <button type="submit">Assinar</button>
-          </div>
-          <p class="newsletter__msg" id="nlMsg" aria-live="polite"></p>
+        <form id="nlform" style="margin-top:1.3rem">
+          <label class="vh" for="nl-email">E-mail</label>
+          <div class="nl"><input id="nl-email" type="email" placeholder="Seu e-mail" autocomplete="email"><button type="submit">Assinar</button></div>
+          <p class="nl-msg" id="nl-msg" aria-live="polite"></p>
         </form>
       </div>
-      <div class="footer__col">
-        <h4>Navegação</h4>
-        <ul>
-          <li><a href="#inicio">Início</a></li>
-          <li><a href="#colecao">Coleção</a></li>
-          <li><a href="#loja">Loja</a></li>
-          <li><a href="#historia">História</a></li>
-          <li><a href="#lookbook">Lookbook</a></li>
-        </ul>
-      </div>
-      <div class="footer__col">
-        <h4>Coleção</h4>
-        <ul id="footerCats"></ul>
-      </div>
-      <div class="footer__col">
-        <h4>Contato</h4>
-        <ul>
-          <li><a href="https://wa.me/5511996603491" target="_blank" rel="noopener">WhatsApp (11) 99660-3491</a></li>
-          <li><a href="mailto:maisonrivierr@gmail.com">maisonrivierr@gmail.com</a></li>
-          <li><a href="https://instagram.com/maisonrivier" target="_blank" rel="noopener">Instagram @maisonrivier</a></li>
-          <li><a href="#contato">Fale com o atelier</a></li>
-        </ul>
-      </div>
+      <div class="ft-col"><h4>Navegação</h4><ul>
+        <li><a href="#inicio">Início</a></li><li><a href="#colecao">Coleção</a></li><li><a href="#loja">Loja</a></li><li><a href="#historia">História</a></li>
+      </ul></div>
+      <div class="ft-col"><h4>Coleção</h4><ul id="ft-cats"></ul></div>
+      <div class="ft-col"><h4>Contato</h4><ul>
+        <li><a href="https://wa.me/5511996603491" target="_blank" rel="noopener">WhatsApp (11) 99660-3491</a></li>
+        <li><a href="mailto:maisonrivierr@gmail.com">maisonrivierr@gmail.com</a></li>
+        <li><a href="https://instagram.com/maisonrivier" target="_blank" rel="noopener">Instagram @maisonrivier</a></li>
+      </ul></div>
     </div>
-    <div class="footer__bar">
+    <div class="ft-bar">
       <span class="fr">Créé pour ceux qui apprécient l'excellence et la discrétion.</span>
-      <span id="footYear">© Maison Rivier</span>
-      <span>Collection 01 — Lançamento 2025</span>
+      <span id="ft-year">© Maison Rivier</span>
+      <span>Collection 01 — Paris</span>
     </div>
   </div>
 </footer>
 
-<!-- ============ CART DRAWER ============ -->
-<aside class="drawer" id="drawer" aria-label="Sacola de compras" aria-hidden="true">
-  <div class="drawer__head">
-    <h2>Sacola</h2>
-    <button type="button" class="drawer__close" id="cartClose" aria-label="Fechar sacola">&times;</button>
-  </div>
-  <div class="drawer__body" id="cartBody"></div>
-  <div class="drawer__foot">
-    <div class="subtotal"><span>Subtotal</span><b id="cartSubtotal">R$ 0,00</b></div>
-    <p class="drawer__note">Frete e impostos calculados na finalização.</p>
-    <button type="button" class="btn btn--solid" id="checkoutBtn" disabled>Finalizar pedido</button>
-    <button type="button" class="link-underline" id="keepShopping" style="align-self:center">Continuar comprando</button>
+<aside class="drawer" id="drawer" aria-label="Sacola" aria-hidden="true">
+  <div class="drawer-h"><h2>Sacola</h2><button type="button" class="x" id="cartClose" aria-label="Fechar">&times;</button></div>
+  <div class="drawer-b" id="cartBody"></div>
+  <div class="drawer-f">
+    <div class="sub"><span>Subtotal</span><b id="subtotal">R$ 0,00</b></div>
+    <p class="note">Frete e pagamento combinados na finalização, pelo WhatsApp.</p>
+    <button type="button" class="btn" id="checkout" disabled>Finalizar pedido</button>
+    <button type="button" class="link" id="keep" style="align-self:center">Continuar comprando</button>
   </div>
 </aside>
 
-<!-- ============ CHECKOUT MODAL ============ -->
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
-  <div class="modal__card">
-    <button type="button" class="modal__close" id="modalClose" aria-label="Fechar">&times;</button>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mtitle" aria-hidden="true">
+  <div class="modal-c">
+    <button type="button" class="modal-x" id="modalClose" aria-label="Fechar">&times;</button>
     <p class="eyebrow">Collection 01</p>
-    <h2 id="modalTitle">Resumo do pedido</h2>
-    <ul class="order-list" id="orderList"></ul>
-    <div class="order-total"><span>Total</span><span id="orderTotal">R$ 0,00</span></div>
-    <p class="modal__note">Envie seu pedido pelo WhatsApp e finalizamos o pagamento e o frete por lá — em minutos, no horário comercial. Você também pode enviar por e-mail ou copiar o resumo.</p>
-    <div class="modal__actions">
-      <button type="button" class="btn btn--solid" id="orderWhats">Enviar no WhatsApp</button>
-      <button type="button" class="btn" id="orderEmail">Por e-mail</button>
-      <button type="button" class="btn" id="orderCopy">Copiar</button>
+    <h2 id="mtitle">Resumo do pedido</h2>
+    <ul class="olist" id="olist"></ul>
+    <div class="ototal"><span>Total</span><span id="ototal">R$ 0,00</span></div>
+    <p class="modal-note">Envie o pedido pelo WhatsApp e finalizamos o pagamento e o frete por lá, no horário comercial. Você também pode enviar por e-mail ou copiar o resumo.</p>
+    <div class="modal-act">
+      <button type="button" class="btn btn--gold" id="oWhats">Enviar no WhatsApp</button>
+      <button type="button" class="btn btn--ghost" id="oMail">Por e-mail</button>
+      <button type="button" class="btn btn--ghost" id="oCopy">Copiar</button>
     </div>
   </div>
 </div>
 
-<a class="wa-fab" href="https://wa.me/5511996603491" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
-  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3C9 3 3.5 8.5 3.5 15.5c0 2.4.7 4.7 1.9 6.7L3 29l7-1.8c1.9 1 4 1.6 6 1.6 7 0 12.5-5.5 12.5-12.5S23 3 16 3zm0 22.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-4.1 1.1 1.1-4-.3-.4a10.3 10.3 0 0 1-1.6-5.4c0-5.7 4.7-10.4 10.4-10.4S26.4 9.8 26.4 15.5 21.7 25.8 16 25.8zm5.9-7.8c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.3-.7.1a8.4 8.4 0 0 1-2.5-1.5 9.3 9.3 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.6s0-.4 0-.6-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4a3.7 3.7 0 0 0-1.2 2.8c0 1.6 1.2 3.2 1.4 3.5s2.4 3.7 5.9 5.2c2.1.9 2.9 1 3.9.8.6-.1 1.9-.8 2.2-1.5s.3-1.4.2-1.5-.3-.2-.6-.4z"/></svg>
+<a class="wa" href="https://wa.me/5511996603491" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3C9 3 3.5 8.5 3.5 15.5c0 2.4.7 4.7 1.9 6.7L3 29l7-1.8c1.9 1 4 1.6 6 1.6 7 0 12.5-5.5 12.5-12.5S23 3 16 3zm0 22.8c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-4.1 1.1 1.1-4-.3-.4a10.3 10.3 0 0 1-1.6-5.4c0-5.7 4.7-10.4 10.4-10.4S26.4 9.8 26.4 15.5 21.7 25.8 16 25.8zm5.9-7.8c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.3-.7.1a8.4 8.4 0 0 1-2.5-1.5 9.3 9.3 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.7l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4a3.7 3.7 0 0 0-1.2 2.8c0 1.6 1.2 3.2 1.4 3.5s2.4 3.7 5.9 5.2c2.1.9 2.9 1 3.9.8.6-.1 1.9-.8 2.2-1.5s.3-1.4.2-1.5-.3-.2-.6-.4z"/></svg>
 </a>
 
 <div class="overlay" id="overlay"></div>
-<div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
 
 <script>
 (function(){
   "use strict";
+  var $=function(s,c){return (c||document).querySelector(s);};
+  var money=function(v){return "R$ "+v.toFixed(2).replace(".",",");};
+  var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});};
+  var ACC={"á":"a","à":"a","â":"a","ã":"a","é":"e","ê":"e","í":"i","ó":"o","ô":"o","õ":"o","ú":"u","ü":"u","ç":"c"};
+  var slug=function(s){return String(s).toLowerCase().replace(/[^\x00-\x7f]/g,function(c){return ACC[c]||"";}).replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");};
+  var reduced=matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var WA="5511996603491", MAIL="maisonrivierr@gmail.com";
 
-  /* ------------------------------------------------------------------
-     DATA
-  ------------------------------------------------------------------ */
-  var COLORS = {
-    "Azul Marinho":"#00182E","Branco":"#F5F3EC","Off White":"#EEEBE1",
-    "Bege Areia":"#C9B48B","Bege":"#CFBB93","Verde Oliva":"#3B4A34",
-    "Cinza Mescla":"#A6A8AA","Preto":"#161616","Marrom":"#5A3D28",
-    "Azul Claro":"#AEC6D8","Azul Listrado":"#DCE7EF","Cinza Claro":"#D7D7D4",
-    "Sortido":"#B7B2A4"
+  var COLORS={
+    "Azul Marinho":"#0B2545","Branco":"#F4F1E9","Off White":"#ECE7DB","Bege Areia":"#C9B48B",
+    "Bege":"#D3BE97","Verde Oliva":"#3B4A34","Cinza Mescla":"#A7A7A2","Preto":"#1A1A1A",
+    "Marrom":"#5A3D28","Azul Claro":"#AEC6D8","Azul Listrado":"#DCE7EF","Cinza Claro":"#D7D7D4"
   };
-
-  var TOPS  = ["P","M","G","GG"];
-  var WAIST = ["38","40","42","44","46"];
-  var BELT  = ["85","90","95","100","105"];
-  var SOCK  = ["35–39","40–44"];
-
-  var CATS = [
-    {key:"polos",       label:"Polos"},
-    {key:"camisetas",   label:"Camisetas"},
-    {key:"camisas",     label:"Camisas"},
-    {key:"moletons",    label:"Moletons"},
-    {key:"calcas",      label:"Calças"},
-    {key:"bermudas",    label:"Bermudas"},
-    {key:"acessorios",  label:"Acessórios"}
+  var TOPS=["P","M","G","GG"], WAIST=["38","40","42","44","46"];
+  var CATS=[
+    {k:"polos",l:"Polos"},{k:"camisetas",l:"Camisetas"},{k:"camisas",l:"Camisas"},
+    {k:"moletons",l:"Moletons"},{k:"calcas",l:"Calças"},{k:"bermudas",l:"Bermudas"},{k:"acessorios",l:"Acessórios"}
+  ];
+  var P=[
+    {id:"polo-piquet",cat:"polos",name:"Polo Piquet",price:199.90,desc:"Algodão piquet premium, gola estruturada, botões em madrepérola, brasão bordado.",colors:["Azul Marinho","Branco","Bege","Verde Oliva","Cinza Mescla","Preto"],sizes:TOPS},
+    {id:"camiseta-essential",cat:"camisetas",name:"Camiseta Essential",price:189.90,desc:"Malha penteada premium, gola reforçada, brasão ao peito.",colors:["Branco","Azul Marinho","Verde Oliva","Bege Areia","Cinza Mescla","Preto"],sizes:TOPS},
+    {id:"camisa-oxford",cat:"camisas",name:"Camisa Oxford",price:329.90,desc:"Tecido Oxford encorpado, colarinho button-down, brasão bordado.",colors:["Branco","Azul Claro","Azul Listrado","Bege","Cinza Mescla"],sizes:TOPS},
+    {id:"moletom-ziper",cat:"moletons",name:"Moletom Meio-Zíper",price:399.90,desc:"Felpa premium, gola alta com zíper, brasão bordado ao peito.",colors:["Azul Marinho","Bege Areia","Verde Oliva","Cinza Mescla","Preto"],sizes:TOPS},
+    {id:"calca-reta",cat:"calcas",name:"Calça Reta",price:329.90,desc:"Algodão premium com elastano, cós elástico, caimento reto.",colors:["Off White","Azul Marinho","Bege Areia","Preto"],sizes:WAIST},
+    {id:"bermuda-alfaiataria",cat:"bermudas",name:"Bermuda Alfaiataria",price:279.90,desc:"Cós com passantes, fechamento em botão, brasão bordado.",colors:["Off White","Azul Marinho","Bege Areia","Preto"],sizes:WAIST},
+    {id:"bone",cat:"acessorios",name:"Boné",price:199.90,desc:"Bordado exclusivo, aba curva, fecho metálico ajustável.",colors:["Azul Marinho","Bege","Verde Oliva","Preto","Cinza Mescla"],sizes:null,meta:"Ajuste regulável"},
+    {id:"pulseira-couro-marrom",cat:"acessorios",name:"Pulseira Couro Marrom",price:129.90,desc:"Couro legítimo trançado, fecho Maison Rivier.",colors:["Marrom"],sizes:null,meta:"Tamanho único",photo:"images/pulseira-couro-marrom.jpg"},
+    {id:"pulseira-couro-preto",cat:"acessorios",name:"Pulseira Couro Preto",price:129.90,desc:"Couro legítimo trançado, fecho Maison Rivier.",colors:["Preto"],sizes:null,meta:"Tamanho único",photo:"images/pulseira-couro-preto.jpg"},
+    {id:"pulseira-corda",cat:"acessorios",name:"Pulseira Corda Marinho",price:119.90,desc:"Cordão náutico trançado, fecho Maison Rivier.",colors:["Azul Marinho"],sizes:null,meta:"Tamanho único",photo:"images/pulseira-corda.jpg"}
+  ];
+  var GUAR=[
+    {t:"Qualidade premium",d:"Tecidos nobres e fornecedores selecionados.",p:"M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 20l-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z"},
+    {t:"Acabamento revisado",d:"Cada peça conferida à mão antes de sair.",p:"M4 20l6-6M14 10l6-6M9 9l6 6"},
+    {t:"Atendimento próximo",d:"Consultoria de tamanho e caimento.",p:"M4 5h16v10H8l-4 4z"},
+    {t:"Troca e garantia",d:"30 dias para trocas; garantia de fábrica.",p:"M4 10a8 8 0 0 1 14-4M20 6v4h-4M20 14a8 8 0 0 1-14 4M4 18v-4h4"}
   ];
 
-  /* Collection 01 — fotos de produto geradas para a marca */
-  var PRODUCTS = [
-    { id:"polo-piquet", cat:"polos", type:"polo", name:"Polo Piquet", price:199.90,
-      desc:"Algodão piquet premium, gola estruturada, botões em madrepérola e brasão bordado.",
-      colors:["Azul Marinho","Branco","Bege","Verde Oliva","Cinza Mescla","Preto"], sizes:TOPS, usePhotos:true },
-    { id:"camiseta-essential", cat:"camisetas", type:"tee", name:"Camiseta Essential", price:189.90,
-      desc:"Malha penteada premium, gola reforçada e brasão ao peito.",
-      colors:["Branco","Azul Marinho","Verde Oliva","Bege Areia","Cinza Mescla","Preto"], sizes:TOPS, usePhotos:true },
-    { id:"camisa-oxford", cat:"camisas", type:"oxford", name:"Camisa Oxford", price:329.90,
-      desc:"Tecido Oxford encorpado, colarinho button-down e brasão bordado.",
-      colors:["Branco","Azul Claro","Azul Listrado","Bege","Cinza Mescla"], sizes:TOPS, usePhotos:true },
-    { id:"moletom-ziper", cat:"moletons", type:"hoodie", name:"Moletom Meio-Zíper", price:399.90,
-      desc:"Felpa premium, gola alta com zíper e brasão bordado ao peito.",
-      colors:["Azul Marinho","Bege Areia","Verde Oliva","Cinza Mescla","Preto"], sizes:TOPS, usePhotos:true },
-    { id:"calca-reta", cat:"calcas", type:"chino", name:"Calça Reta", price:329.90,
-      desc:"Algodão premium com elastano, cós elástico, modelagem reta e brasão bordado.",
-      colors:["Off White","Azul Marinho","Bege Areia","Preto"], sizes:WAIST, usePhotos:true },
-    { id:"bermuda-alfaiataria", cat:"bermudas", type:"bermuda", name:"Bermuda Alfaiataria", price:279.90,
-      desc:"Cós com passantes, fechamento em botão, bolsos e brasão bordado.",
-      colors:["Off White","Azul Marinho","Bege Areia","Preto"], sizes:WAIST, usePhotos:true },
-    { id:"bone", cat:"acessorios", type:"cap", name:"Boné", price:199.90,
-      desc:"Bordado exclusivo, aba curva e fecho metálico ajustável.",
-      colors:["Azul Marinho","Bege","Verde Oliva","Preto","Cinza Mescla"], sizes:null, usePhotos:true, meta:"Ajuste regulável" },
-    { id:"pulseira-couro-marrom", cat:"acessorios", type:"leather", name:"Pulseira Couro Marrom", price:129.90,
-      desc:"Couro legítimo trançado com fecho Maison Rivier.",
-      colors:["Marrom"], sizes:null, meta:"Tamanho único", photo:"images/pulseira-couro-marrom.jpg" },
-    { id:"pulseira-couro-preto", cat:"acessorios", type:"leather", name:"Pulseira Couro Preto", price:129.90,
-      desc:"Couro legítimo trançado com fecho Maison Rivier.",
-      colors:["Preto"], sizes:null, meta:"Tamanho único", photo:"images/pulseira-couro-preto.jpg" },
-    { id:"pulseira-corda", cat:"acessorios", type:"cord", name:"Pulseira Corda Marinho", price:119.90,
-      desc:"Cordão náutico trançado com fecho Maison Rivier.",
-      colors:["Azul Marinho"], sizes:null, meta:"Tamanho único", photo:"images/pulseira-corda.jpg" }
-  ];
-
-  var PLATES = [
-    {name:"Riviera",         cap:"Litoral ao amanhecer",  g:"linear-gradient(160deg,#0A3A5C,#0E5A6E)"},
-    {name:"Iate",            cap:"Convés e linho",         g:"linear-gradient(160deg,#001E3A,#586A74)"},
-    {name:"Clube",           cap:"Tênis e sombra",         g:"linear-gradient(160deg,#2C3B2A,#5E6B4A)"},
-    {name:"Golfe",           cap:"Campo aberto",           g:"linear-gradient(160deg,#3F4F36,#7C8A5B)"},
-    {name:"Centro Histórico",cap:"Pedra e cal",            g:"linear-gradient(160deg,#4A3A2A,#8A7150)"},
-    {name:"Café Europeu",    cap:"Mesa de mármore",        g:"linear-gradient(160deg,#2A211C,#6B4A2E)"},
-    {name:"Hotel",           cap:"Lobby ao entardecer",    g:"linear-gradient(160deg,#101922,#2E3E4C)"}
-  ];
-  var ROMAN = ["I","II","III","IV","V","VI","VII"];
-
-  var GUARANTEES = [
-    {t:"Qualidade premium",  d:"Tecidos nobres e fornecedores selecionados.",
-     p:"M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 21l-4.9 2.6.9-5.5-4-3.9 5.5-.8z"},
-    {t:"Acabamento impecável", d:"Costuras reforçadas e revisão peça a peça.",
-     p:"M4 20l6-6M14 10l6-6M9 9l6 6"},
-    {t:"Atendimento exclusivo", d:"Consultoria de tamanho e caimento.",
-     p:"M4 5h16v10H8l-4 4z"},
-    {t:"Entrega segura", d:"Envio rastreado para todo o Brasil.",
-     p:"M3 7h11v9H3zM14 10h4l3 3v3h-7zM7 19a2 2 0 1 0 0-.01M18 19a2 2 0 1 0 0-.01"},
-    {t:"Troca fácil e garantia", d:"30 dias para trocas e garantia de fábrica.",
-     p:"M4 10a8 8 0 0 1 14-4M20 6v4h-4M20 14a8 8 0 0 1-14 4M4 18v-4h4"}
-  ];
-
-  /* ------------------------------------------------------------------
-     HELPERS
-  ------------------------------------------------------------------ */
-  var $ = function(s,c){ return (c||document).querySelector(s); };
-  var money = function(v){ return "R$ " + v.toFixed(2).replace(".",","); };
-  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var esc = function(s){ return String(s).replace(/[&<>"]/g,function(c){
-    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
-
-  /* ---- garment illustrations — catalog renders ---- */
-  var GID = 0;
-  function shade(hex, amt){
-    hex = String(hex).replace("#","");
-    if(hex.length===3) hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
-    var r=parseInt(hex.substr(0,2),16), g=parseInt(hex.substr(2,2),16), b=parseInt(hex.substr(4,2),16);
-    if(amt<0){ var k=1+amt; r*=k; g*=k; b*=k; } else { r+=(255-r)*amt; g+=(255-g)*amt; b+=(255-b)*amt; }
-    function h(v){ v=Math.max(0,Math.min(255,Math.round(v))).toString(16); return v.length<2?"0"+v:v; }
-    return "#"+h(r)+h(g)+h(b);
+  /* ---- silhueta simples (só aparece se a foto faltar) ---- */
+  function sil(){
+    return '<svg class="sil" viewBox="0 0 200 240" role="img" aria-label="Peça Maison Rivier">'+
+      '<rect x="46" y="40" width="108" height="170" rx="6" fill="#DED8C8"/>'+
+      '<use href="#crest" x="80" y="150" width="40" height="46" color="#B7A988"/></svg>';
   }
-  function colorVars(name){
-    var hex = COLORS[name] || "#8a8f94";
-    var n = parseInt(shade(hex,0).slice(1),16);
-    var lum = (0.299*(n>>16) + 0.587*((n>>8)&255) + 0.114*(n&255)) / 255;
-    var hi = lum < 0.24 ? 0.34 : (lum > 0.86 ? 0.05 : 0.17);
-    var lo = lum > 0.86 ? -0.10 : -0.20;
-    return "--c:"+hex+";--c-hi:"+shade(hex,hi)+";--c-lo:"+shade(hex,lo)+";--c-lo2:"+shade(hex, lo-0.16);
-  }
-  function ring(cx,cy,rx,ry,step){
-    var s="", a;
-    for(a=-72; a<=72; a+=(step||13)){
-      var rad=a*Math.PI/180, x=cx+Math.sin(rad)*rx, y=cy-Math.cos(rad)*ry;
-      s+='<line x1="'+(x-5).toFixed(1)+'" y1="'+(y-4).toFixed(1)+'" x2="'+(x+5).toFixed(1)+'" y2="'+(y+4).toFixed(1)+'"/>';
-    }
-    return '<g class="seam">'+s+'</g>';
-  }
-  function garment(type, colorName){
-    var uid = "mg"+(++GID);
-    var listr = colorName === "Azul Listrado";
-    var defs = '<defs>'+
-      '<linearGradient id="'+uid+'h" x1="40" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse">'+
-        '<stop offset="0" class="g-lo"/><stop offset=".3" class="g-base"/><stop offset=".62" class="g-hi"/><stop offset="1" class="g-lo"/></linearGradient>'+
-      '<linearGradient id="'+uid+'v" x1="0" y1="44" x2="46" y2="270" gradientUnits="userSpaceOnUse">'+
-        '<stop offset="0" class="g-hi"/><stop offset=".5" class="g-base"/><stop offset="1" class="g-lo"/></linearGradient>'+
-      '</defs>';
-    var H='url(#'+uid+'h)', V='url(#'+uid+'v)';
-    var em = function(x,y,w){ return '<use href="#emblem" x="'+x+'" y="'+y+'" width="'+w+'" height="'+(w*1.15).toFixed(1)+'"/>'; };
-    var sh = function(cy){ return '<ellipse class="gshadow" cx="120" cy="'+cy+'" rx="72" ry="11"/>'; };
-    var stripes = "";
-    if(listr){ for(var sx=92; sx<=150; sx+=8){ stripes += '<line x1="'+sx+'" y1="58" x2="'+sx+'" y2="252" stroke="#9db6cc" stroke-width="2.4" opacity=".5"/>'; } stripes = '<g>'+stripes+'</g>'; }
-
-    var art = {
-      polo:
-        sh(270)+
-        '<path class="body" fill="'+H+'" d="M104 54 L120 66 L136 54 L150 47 L194 74 L198 100 L160 104 L156 262 L84 262 L80 104 L42 100 L46 74 L90 47 Z"/>'+
-        '<path class="fill-lo2" d="M46 74 L80 104 L86 100 L52 71 Z" opacity=".5"/><path class="fill-lo2" d="M194 74 L160 104 L154 100 L188 71 Z" opacity=".5"/>'+
-        '<path class="fill-lo" d="M104 54 L120 66 L120 44 L107 42 Z"/><path class="fill-lo" d="M136 54 L120 66 L120 44 L133 42 Z"/>'+
-        '<path class="fill-lo" d="M115 60 L125 60 L125 100 L115 100 Z"/>'+
-        '<circle class="gbtn" cx="120" cy="70" r="2.4"/><circle class="gbtn" cx="120" cy="86" r="2.4"/>'+
-        '<path class="fill-lo" d="M148 104 L152 262 L156 262 L160 104 Z" opacity=".4"/>'+
-        '<path class="hl" d="M96 78 C93 150 95 220 99 254"/>'+
-        em(134, 96, 26),
-      tee:
-        sh(270)+
-        '<path class="body" fill="'+H+'" d="M104 52 Q120 66 136 52 L150 46 L194 74 L198 100 L160 104 L156 262 L84 262 L80 104 L42 100 L46 74 L90 46 Z"/>'+
-        '<path class="fill-lo2" d="M46 74 L80 104 L86 100 L52 71 Z" opacity=".5"/><path class="fill-lo2" d="M194 74 L160 104 L154 100 L188 71 Z" opacity=".5"/>'+
-        '<path class="fill-lo" d="M104 52 Q120 66 136 52 Q120 59 104 52 Z"/>'+
-        '<path class="seam" d="M104 52 Q120 66 136 52"/>'+
-        '<path class="fill-lo" d="M148 104 L152 262 L156 262 L160 104 Z" opacity=".4"/>'+
-        '<path class="hl" d="M96 74 C93 150 95 220 99 254"/>'+
-        em(134, 94, 26),
-      hoodie:
-        sh(266)+
-        '<path class="fill-lo" d="M92 58 C68 62 52 80 45 120 L39 206 C38 222 42 236 48 244 L74 240 C80 230 84 150 88 108 Z"/>'+
-        '<path class="fill-lo" d="M148 58 C172 62 188 80 195 120 L201 206 C202 222 198 236 192 244 L166 240 C160 230 156 150 152 108 Z"/>'+
-        '<path class="fill-lo2" d="M42 232 L66 228 L70 250 L46 254 Z"/><path class="fill-lo2" d="M198 232 L174 228 L170 250 L194 254 Z"/>'+
-        '<path class="body" fill="'+H+'" d="M90 60 C95 52 104 50 108 50 L132 50 C136 50 145 52 150 60 L162 132 L158 250 L82 250 L78 132 Z"/>'+
-        '<path class="fill-lo2" d="M80 244 L160 244 L158 264 L82 264 Z"/>'+
-        '<path class="fill-lo" d="M100 54 C110 40 130 40 140 54 L138 80 C120 70 102 70 102 80 Z"/>'+
-        '<rect class="fill-lo2" x="117" y="54" width="6" height="86"/>'+
-        '<rect class="metal" x="116" y="122" width="8" height="13" rx="1.5"/>'+
-        '<path class="seam" d="M120 60 L120 140"/><path class="hl" d="M100 74 C97 150 99 210 103 244"/>'+
-        em(133, 96, 25),
-      oxford:
-        sh(262)+
-        '<path class="fill-lo" d="M92 54 C70 58 54 74 46 114 L42 208 C41 220 45 230 50 236 L78 234 C84 224 88 130 90 96 Z"/>'+
-        '<path class="fill-lo" d="M148 54 C170 58 186 74 194 114 L198 208 C199 220 195 230 190 236 L162 234 C156 224 152 130 150 96 Z"/>'+
-        '<path class="fill-lo2" d="M44 222 L74 218 L78 238 L48 242 Z"/><path class="fill-lo2" d="M196 222 L166 218 L162 238 L192 242 Z"/>'+
-        '<path class="body" fill="'+H+'" d="M90 54 C96 47 106 45 110 45 L130 45 C134 45 144 47 150 54 L158 122 L154 258 L86 258 L82 122 Z"/>'+
-        stripes+
-        '<path class="fill-lo" d="M120 66 L98 45 L117 39 Z"/><path class="fill-lo" d="M120 66 L142 45 L123 39 Z"/>'+
-        '<rect class="fill-lo" x="115" y="45" width="10" height="206"/>'+
-        '<circle class="gbtn" cx="120" cy="80" r="2"/><circle class="gbtn" cx="120" cy="110" r="2"/><circle class="gbtn" cx="120" cy="140" r="2"/><circle class="gbtn" cx="120" cy="170" r="2"/><circle class="gbtn" cx="120" cy="200" r="2"/>'+
-        '<path class="fill-lo" d="M131 98 L153 98 L153 120 L142 128 L131 120 Z"/>'+
-        '<path class="hl" d="M99 66 C96 140 98 210 102 250"/>'+
-        em(136, 92, 22),
-      chino:
-        sh(268)+
-        '<path class="fill-lo" d="M78 46 L162 46 L164 66 L76 66 Z"/>'+
-        '<path class="body" fill="'+V+'" d="M76 64 L118 64 L114 264 L86 264 L80 150 Z"/>'+
-        '<path class="body" fill="'+V+'" d="M122 64 L164 64 L160 150 L154 264 L126 264 Z"/>'+
-        '<rect class="fill-lo2" x="84" y="44" width="5" height="12"/><rect class="fill-lo2" x="117" y="44" width="5" height="12"/><rect class="fill-lo2" x="151" y="44" width="5" height="12"/>'+
-        '<circle class="gbtn" cx="120" cy="56" r="2.2"/>'+
-        '<path class="seam" d="M120 66 L120 122"/><path class="seam" d="M80 70 C92 84 100 82 104 68"/><path class="seam" d="M160 70 C148 84 140 82 136 68"/>'+
-        '<path class="hl" d="M92 70 L87 252"/>',
-      bermuda:
-        sh(196)+
-        '<path class="fill-lo" d="M78 46 L162 46 L164 66 L76 66 Z"/>'+
-        '<path class="body" fill="'+V+'" d="M76 64 L118 64 L116 176 L84 176 L80 120 Z"/>'+
-        '<path class="body" fill="'+V+'" d="M122 64 L164 64 L160 120 L156 176 L124 176 Z"/>'+
-        '<path class="fill-lo2" d="M84 165 L116 165 L116 178 L84 178 Z"/><path class="fill-lo2" d="M124 165 L156 165 L156 178 L124 178 Z"/>'+
-        '<rect class="fill-lo2" x="84" y="44" width="5" height="12"/><rect class="fill-lo2" x="117" y="44" width="5" height="12"/><rect class="fill-lo2" x="151" y="44" width="5" height="12"/>'+
-        '<circle class="gbtn" cx="120" cy="56" r="2.2"/>'+
-        '<path class="seam" d="M120 66 L120 112"/><path class="seam" d="M80 70 C92 84 100 82 104 68"/><path class="seam" d="M160 70 C148 84 140 82 136 68"/>'+
-        '<path class="hl" d="M92 70 L88 166"/>',
-      cargo:
-        sh(268)+
-        '<path class="fill-lo" d="M78 46 L162 46 L164 66 L76 66 Z"/>'+
-        '<path class="body" fill="'+V+'" d="M76 64 L118 64 L114 264 L86 264 L80 150 Z"/>'+
-        '<path class="body" fill="'+V+'" d="M122 64 L164 64 L160 150 L154 264 L126 264 Z"/>'+
-        '<path class="fill-lo" d="M74 120 L104 120 L104 156 L74 156 Z"/><path class="fill-lo" d="M136 120 L166 120 L166 156 L136 156 Z"/>'+
-        '<path class="seam" d="M74 138 L104 138"/><path class="seam" d="M136 138 L166 138"/>'+
-        '<rect class="fill-lo2" x="84" y="44" width="5" height="12"/><rect class="fill-lo2" x="151" y="44" width="5" height="12"/>'+
-        '<path class="seam" d="M120 66 L120 122"/>'+
-        '<path class="hl" d="M92 70 L87 252"/>',
-      belt:
-        '<ellipse class="gshadow" cx="118" cy="196" rx="74" ry="10"/>'+
-        '<path class="body" fill="'+H+'" d="M36 118 C36 108 46 102 64 102 L176 102 C192 102 200 110 200 122 C200 134 192 142 176 142 L64 142 C46 142 36 132 36 118 Z"/>'+
-        '<circle class="fill-lo2" cx="58" cy="122" r="2.4"/><circle class="fill-lo2" cx="72" cy="122" r="2.4"/><circle class="fill-lo2" cx="86" cy="122" r="2.4"/><circle class="fill-lo2" cx="100" cy="122" r="2.4"/>'+
-        '<rect class="metal" x="176" y="98" width="34" height="48" rx="5"/>'+
-        '<rect class="cutout" x="185" y="108" width="16" height="28" rx="3"/>'+
-        '<rect class="metal" x="170" y="118" width="16" height="6" rx="2"/>'+
-        em(120, 108, 26),
-      socks:
-        '<ellipse class="gshadow" cx="120" cy="240" rx="66" ry="10"/>'+
-        '<path class="body" fill="'+H+'" d="M74 58 L110 58 L110 150 C110 172 128 178 128 200 L128 214 C128 226 118 232 102 232 L84 232 C70 232 62 224 62 210 L62 198 C62 176 74 170 74 150 Z"/>'+
-        '<path class="body" fill="'+H+'" d="M130 58 L166 58 L166 150 C166 170 176 178 176 200 L176 214 C176 226 168 232 154 232 L136 232 C122 232 112 226 112 214 L112 200 C112 178 130 172 130 150 Z"/>'+
-        '<rect class="fill-lo2" x="72" y="58" width="40" height="11"/><rect class="fill-lo2" x="128" y="58" width="40" height="11"/>'+
-        '<path class="seam" d="M74 150 L110 150"/><path class="seam" d="M130 150 L166 150"/>',
-      backpack:
-        '<ellipse class="gshadow" cx="120" cy="250" rx="66" ry="11"/>'+
-        '<path class="fill-lo2" d="M96 60 C82 66 80 112 92 152 L102 152 C92 112 96 76 106 64 Z"/>'+
-        '<path class="fill-lo2" d="M144 60 C158 66 160 112 148 152 L138 152 C148 112 144 76 134 64 Z"/>'+
-        '<path class="fill-lo2" d="M108 52 C112 42 128 42 132 52 L128 60 C126 50 114 50 112 60 Z"/>'+
-        '<path class="body" fill="'+H+'" d="M78 96 C78 68 100 52 120 52 C140 52 162 68 162 96 L168 214 C168 230 158 240 142 240 L98 240 C82 240 72 230 72 214 Z"/>'+
-        '<path class="fill-lo" d="M88 150 L152 150 L156 214 C156 224 150 230 140 230 L100 230 C90 230 84 224 84 214 Z"/>'+
-        '<path class="seam" d="M90 152 L150 152"/><path class="seam" d="M120 98 L120 148"/>'+
-        em(106, 104, 30),
-      wallet:
-        '<ellipse class="gshadow" cx="120" cy="180" rx="60" ry="9"/>'+
-        '<rect class="body" fill="'+H+'" x="64" y="92" width="112" height="78" rx="7"/>'+
-        '<path class="seam" d="M64 131 L176 131"/>'+
-        '<rect class="fill-lo" x="118" y="102" width="44" height="24" rx="3"/>'+
-        '<rect class="fill-lo2" x="118" y="107" width="44" height="3"/>'+
-        em(78, 132, 26),
-      waistbag:
-        '<ellipse class="gshadow" cx="120" cy="188" rx="66" ry="10"/>'+
-        '<rect class="fill-lo2" x="36" y="118" width="30" height="11" rx="4"/><rect class="fill-lo2" x="174" y="118" width="30" height="11" rx="4"/>'+
-        '<path class="body" fill="'+H+'" d="M58 112 C58 98 74 90 98 90 L142 90 C166 90 182 98 182 112 L184 152 C184 172 168 182 146 182 L94 182 C72 182 56 172 56 152 Z"/>'+
-        '<path class="seam" d="M60 122 C90 136 150 136 180 122"/>'+
-        '<circle class="metal" cx="120" cy="129" r="4"/>'+
-        em(150, 96, 26),
-      keychain:
-        '<ellipse class="gshadow" cx="120" cy="204" rx="42" ry="8"/>'+
-        '<circle cx="120" cy="78" r="18" fill="none" stroke="#c7a468" stroke-width="6"/>'+
-        '<rect class="body" fill="'+H+'" x="90" y="102" width="60" height="92" rx="9"/>'+
-        '<path class="seam" d="M90 120 L150 120"/>'+
-        '<circle class="metal" cx="120" cy="111" r="4"/>'+
-        em(100, 128, 40),
-      cap:
-        '<ellipse class="gshadow" cx="116" cy="182" rx="72" ry="12"/>'+
-        '<path class="body" fill="'+H+'" d="M64 150 C40 156 26 172 34 184 C74 178 150 168 182 150 C150 150 96 150 64 150 Z"/>'+
-        '<path class="body" fill="'+H+'" d="M60 150 C58 96 92 62 128 62 C168 62 192 96 190 140 C160 150 96 152 60 150 Z"/>'+
-        '<path class="seam" d="M96 64 C88 100 84 130 92 150"/><path class="seam" d="M128 62 C126 100 128 132 130 150"/><path class="seam" d="M160 68 C166 104 166 132 160 148"/>'+
-        '<circle class="gbtn" cx="126" cy="64" r="4"/>'+
-        '<circle class="fill-lo2" cx="150" cy="102" r="2"/><circle class="fill-lo2" cx="162" cy="120" r="2"/>'+
-        em(114, 92, 32),
-      leather:
-        '<ellipse class="gshadow" cx="120" cy="198" rx="58" ry="10"/>'+
-        '<ellipse class="body" fill="'+H+'" cx="120" cy="148" rx="64" ry="46"/>'+
-        '<ellipse class="cutout" cx="120" cy="148" rx="39" ry="24"/>'+
-        ring(120,148,53,37,12)+
-        '<rect class="metal" x="106" y="188" width="28" height="16" rx="3"/>'+
-        '<rect class="metal-d" x="118" y="188" width="4" height="16"/>',
-      cord:
-        '<ellipse class="gshadow" cx="120" cy="198" rx="56" ry="10"/>'+
-        '<ellipse class="body" fill="'+H+'" cx="120" cy="148" rx="62" ry="44"/>'+
-        '<ellipse class="cutout" cx="120" cy="148" rx="41" ry="26"/>'+
-        ring(120,148,51,35,9)+
-        '<circle class="fill-lo" cx="120" cy="192" r="12"/><circle class="metal" cx="120" cy="192" r="4"/>',
-      onyx:
-        '<ellipse class="gshadow" cx="120" cy="196" rx="58" ry="10"/>'+
-        (function(){ var s="",i,N=18; for(i=0;i<N;i++){ var a=i/N*Math.PI*2, x=(120+Math.cos(a)*57).toFixed(1), y=(150+Math.sin(a)*40).toFixed(1); s+='<circle class="body" fill="'+H+'" cx="'+x+'" cy="'+y+'" r="10.5"/>'; s+='<circle class="fill-hi" cx="'+(parseFloat(x)-3).toFixed(1)+'" cy="'+(parseFloat(y)-3).toFixed(1)+'" r="2.4" opacity=".55"/>'; } return s; })()
-    };
-    return '<svg class="garment" viewBox="0 0 240 288" role="img" aria-label="Ilustração da peça Maison Rivier">'+defs+(art[type]||art.tee)+'</svg>';
-  }
-  window.__mrGarment = garment;
-
-  var ACCENTS = {"á":"a","à":"a","â":"a","ã":"a","ä":"a","é":"e","ê":"e","è":"e","í":"i","ì":"i","ó":"o","ô":"o","õ":"o","ò":"o","ú":"u","ù":"u","ü":"u","ç":"c","ñ":"n"};
-  function slug(s){
-    return String(s).toLowerCase().replace(/[^\x00-\x7f]/g, function(ch){ return ACCENTS[ch] || ""; })
-      .replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
-  }
-  /* Caminhos de foto testados para cada peça/cor. Se o arquivo existir em images/,
-     a foto entra no lugar da ilustração; se não, fica a ilustração. */
-  function photoCandidates(p, color){
-    if(!p.usePhotos && !p.photo && !(p.photos && p.photos[color])){ return []; }
-    var a = [];
-    if(p.photos && p.photos[color]) a.push(p.photos[color]);
-    if(p.usePhotos) a.push("images/" + p.id + "-" + slug(color) + ".jpg");
-    a.push(p.photo || ("images/" + p.id + ".jpg"));
+  function candidates(p,color){
+    var a=[];
+    if(p.photo) a.push(p.photo);
+    a.push("images/"+p.id+"-"+slug(color)+".jpg");
+    a.push("images/"+p.id+".jpg");
     return a;
   }
-  function hydratePhotos(scope){
-    var nodes = (scope || document).querySelectorAll("[data-ph]");
-    Array.prototype.forEach.call(nodes, function(fig){
-      var urls = (fig.getAttribute("data-ph") || "").split("|").filter(Boolean);
+  function hydrate(scope){
+    (scope||document).querySelectorAll("[data-ph]").forEach(function(fig){
+      var urls=(fig.getAttribute("data-ph")||"").split("|").filter(Boolean);
       if(!urls.length) return;
-      var token = Math.random().toString(36);
-      fig.__pht = token;
-      (function tryNext(i){
-        if(i >= urls.length) return;
-        var im = new Image();
-        im.onload = function(){
-          if(fig.__pht !== token) return;
-          var cat = fig.querySelector(".product__cat");
-          fig.innerHTML = '<img class="product__photo" src="' + urls[i] + '" alt="" decoding="async">';
+      var tk=Math.random().toString(36); fig.__t=tk;
+      (function next(i){
+        if(i>=urls.length) return;
+        var im=new Image();
+        im.onload=function(){
+          if(fig.__t!==tk) return;
+          var cat=fig.querySelector(".card-cat");
+          fig.innerHTML='<img src="'+urls[i]+'" alt="" decoding="async">';
           if(cat) fig.appendChild(cat);
-          if(fig.getAttribute("data-photobg") === "dark") fig.classList.add("is-photo-dark");
         };
-        im.onerror = function(){ tryNext(i + 1); };
-        im.src = urls[i];
+        im.onerror=function(){ next(i+1); };
+        im.src=urls[i];
       })(0);
     });
   }
 
-  /* ------------------------------------------------------------------
-     STATE
-  ------------------------------------------------------------------ */
-  var LS_CART = "mr_cart_v3", LS_THEME = "mr_theme";
-  var WA = "5511996603491", MAIL = "maisonrivierr@gmail.com";
-  var cart = [];
-  try{
-    var raw = localStorage.getItem(LS_CART);
-    if(raw){
-      var parsed = JSON.parse(raw);
-      if(Array.isArray(parsed)){
-        cart = parsed.filter(function(i){
-          return i && PRODUCTS.some(function(p){ return p.id===i.id; }) && typeof i.qty==="number" && i.qty>0;
-        });
-      }
-    }
-  }catch(e){ cart = []; }
-
-  function saveCart(){
-    try{ localStorage.setItem(LS_CART, JSON.stringify(cart)); }catch(e){}
-  }
-
-  /* ------------------------------------------------------------------
-     RENDER — ribbon, filters, grid
-  ------------------------------------------------------------------ */
-  function countIn(key){ return PRODUCTS.filter(function(p){ return p.cat===key; }).length; }
-
-  var CAT_G = {
-    polos:"linear-gradient(180deg,#1e3550,#12233a)",
-    camisetas:"linear-gradient(180deg,#2c3034,#17191c)",
-    camisas:"linear-gradient(180deg,#35495e,#1f3040)",
-    moletons:"linear-gradient(180deg,#313c46,#1c2530)",
-    calcas:"linear-gradient(180deg,#4c4132,#2e271d)",
-    bermudas:"linear-gradient(180deg,#414c38,#2a3123)",
-    acessorios:"linear-gradient(180deg,#2c2824,#17140f)"
-  };
-  function buildRibbon(){
-    var host = $("#ribbon");
-    var tiles = CATS.map(function(c){
-      return '<button class="ribbon__item" data-cat="'+c.key+'" style="--g:'+(CAT_G[c.key]||"#1a2a40")+'">'+
-             '<b>'+esc(c.label)+'</b><span>Ver '+esc(c.label)+'</span></button>';
-    });
-    tiles.push('<button class="ribbon__item" data-cat="all" style="--g:linear-gradient(180deg,#243142,#12161d)">'+
-               '<b>A Coleção</b><span>Ver tudo</span></button>');
-    host.innerHTML = tiles.join("");
-    host.addEventListener("click", function(e){
-      var b = e.target.closest(".ribbon__item"); if(!b) return;
-      setFilter(b.dataset.cat);
-      document.getElementById("loja").scrollIntoView({behavior: reduced?"auto":"smooth", block:"start"});
-    });
-  }
-
-  var currentFilter = "all";
+  /* ---- filters + grid ---- */
+  var cur="all";
+  function catLabel(k){ var c=CATS.filter(function(x){return x.k===k;})[0]; return c?c.l:k; }
   function buildFilters(){
-    var host = $("#filters");
-    var all = [{key:"all",label:"Tudo"}].concat(CATS);
-    host.innerHTML = all.map(function(c){
-      return '<button class="filter-btn" data-cat="'+c.key+'" aria-pressed="'+(c.key==="all")+'">'+esc(c.label)+'</button>';
+    var host=$("#filters");
+    host.innerHTML=[{k:"all",l:"Tudo"}].concat(CATS).map(function(c){
+      return '<button class="filter" data-cat="'+c.k+'" aria-pressed="'+(c.k==="all")+'">'+esc(c.l)+'</button>';
     }).join("");
-    host.addEventListener("click", function(e){
-      var b = e.target.closest(".filter-btn"); if(!b) return;
-      setFilter(b.dataset.cat);
-    });
+    host.addEventListener("click",function(e){ var b=e.target.closest(".filter"); if(b) setFilter(b.dataset.cat); });
   }
-
-  function setFilter(key){
-    currentFilter = key;
-    Array.prototype.forEach.call(document.querySelectorAll(".filter-btn"), function(b){
-      b.setAttribute("aria-pressed", String(b.dataset.cat===key));
-    });
+  function setFilter(k){
+    cur=k;
+    document.querySelectorAll(".filter").forEach(function(b){ b.setAttribute("aria-pressed",String(b.dataset.cat===k)); });
     renderGrid();
   }
-
-  function catLabel(key){
-    var c = CATS.filter(function(x){ return x.key===key; })[0];
-    return c ? c.label : key;
-  }
-
   function cardHTML(p){
-    var first = p.colors[0];
-    var hex = COLORS[first];
-    var sizeBlock = p.sizes
-      ? '<p class="product__group-label">Tamanho</p><div class="product__sizes" role="group" aria-label="Tamanho">'+
-        p.sizes.map(function(s,i){ return '<button class="size'+(i===0?" is-active":"")+'" data-size="'+esc(s)+'">'+esc(s)+'</button>'; }).join("")+
-        '</div>'
-      : '<p class="product__meta">'+esc(p.meta||"Tamanho único")+'</p>';
-    var swatches = p.colors.map(function(c,i){
-      return '<button class="swatch'+(i===0?" is-active":"")+'" data-color="'+esc(c)+'" title="'+esc(c)+'" aria-label="Cor: '+esc(c)+'" style="--sw:'+COLORS[c]+'"></button>';
-    }).join("");
-    return '<article class="product" data-id="'+p.id+'" data-color="'+esc(first)+'" data-size="'+(p.sizes?esc(p.sizes[0]):"Único")+'" style="'+colorVars(first)+'">'+
-      '<div class="product__figure" data-ph="'+esc(photoCandidates(p,first).join("|"))+'" data-photobg="'+(p.photoBg||"")+'">'+garment(p.type,first)+'<span class="product__cat">'+esc(catLabel(p.cat))+'</span></div>'+
-      '<div class="product__body">'+
-        '<h3 class="product__name">'+esc(p.name)+'</h3>'+
-        '<p class="product__desc">'+esc(p.desc)+'</p>'+
-        '<p class="product__price">'+money(p.price)+'</p>'+
-        '<p class="product__group-label">Cor: <span data-color-name>'+esc(first)+'</span></p>'+
-        '<div class="product__colors" role="group" aria-label="Cores">'+swatches+'</div>'+
+    var c0=p.colors[0];
+    var sizeBlock=p.sizes
+      ? '<p class="pick-label">Tamanho</p><div class="sizes" role="group" aria-label="Tamanho">'+p.sizes.map(function(s,i){return '<button class="size'+(i===0?" on":"")+'" data-size="'+esc(s)+'">'+esc(s)+'</button>';}).join("")+'</div>'
+      : '<p class="card-meta">'+esc(p.meta||"Tamanho único")+'</p>';
+    var sw=p.colors.map(function(c,i){ return '<button class="sw'+(i===0?" on":"")+'" data-color="'+esc(c)+'" title="'+esc(c)+'" aria-label="Cor: '+esc(c)+'" style="--c:'+(COLORS[c]||"#999")+'"></button>'; }).join("");
+    return '<article class="card" data-id="'+p.id+'" data-color="'+esc(c0)+'" data-size="'+(p.sizes?esc(p.sizes[0]):"Único")+'">'+
+      '<div class="card-fig" data-ph="'+esc(candidates(p,c0).join("|"))+'">'+sil()+'<span class="card-cat">'+esc(catLabel(p.cat))+'</span></div>'+
+      '<div class="card-body">'+
+        '<h3 class="card-name">'+esc(p.name)+'</h3>'+
+        '<p class="card-desc">'+esc(p.desc)+'</p>'+
+        '<p class="card-price">'+money(p.price)+'</p>'+
+        '<p class="pick-label">Cor: <span data-cn>'+esc(c0)+'</span></p>'+
+        '<div class="swatches" role="group" aria-label="Cores">'+sw+'</div>'+
         sizeBlock+
-        '<button class="btn btn--add" data-add type="button">Adicionar à sacola</button>'+
-      '</div>'+
-    '</article>';
+        '<button class="btn" data-add type="button">Adicionar à sacola</button>'+
+      '</div></article>';
   }
-
   function renderGrid(){
-    var grid = $("#grid");
-    var list = PRODUCTS.filter(function(p){ return currentFilter==="all" || p.cat===currentFilter; });
-    grid.innerHTML = list.map(cardHTML).join("");
-    hydratePhotos(grid);
+    var g=$("#grid");
+    g.innerHTML=P.filter(function(p){return cur==="all"||p.cat===cur;}).map(cardHTML).join("");
+    hydrate(g);
   }
-
-  $("#grid").addEventListener("click", function(e){
-    var card = e.target.closest(".product"); if(!card) return;
-    var p = PRODUCTS.filter(function(x){ return x.id===card.dataset.id; })[0]; if(!p) return;
-
-    var sw = e.target.closest(".swatch");
-    if(sw){
-      card.dataset.color = sw.dataset.color;
-      Array.prototype.forEach.call(card.querySelectorAll(".swatch"), function(b){ b.classList.toggle("is-active", b===sw); });
-      var nm = card.querySelector("[data-color-name]"); if(nm) nm.textContent = sw.dataset.color;
-      card.setAttribute("style", colorVars(sw.dataset.color));
-      var fig = card.querySelector(".product__figure");
-      if(fig){
-        fig.classList.remove("is-photo-dark");
-        fig.innerHTML = garment(p.type, sw.dataset.color) + '<span class="product__cat">'+esc(catLabel(p.cat))+'</span>';
-        fig.setAttribute("data-ph", photoCandidates(p, sw.dataset.color).join("|"));
-        hydratePhotos(card);
-      }
+  $("#grid").addEventListener("click",function(e){
+    var card=e.target.closest(".card"); if(!card) return;
+    var p=P.filter(function(x){return x.id===card.dataset.id;})[0]; if(!p) return;
+    var s=e.target.closest(".sw");
+    if(s){
+      card.dataset.color=s.dataset.color;
+      card.querySelectorAll(".sw").forEach(function(b){ b.classList.toggle("on",b===s); });
+      var cn=card.querySelector("[data-cn]"); if(cn) cn.textContent=s.dataset.color;
+      var fig=card.querySelector(".card-fig");
+      fig.innerHTML=sil()+'<span class="card-cat">'+esc(catLabel(p.cat))+'</span>';
+      fig.setAttribute("data-ph",candidates(p,s.dataset.color).join("|"));
+      hydrate(card);
       return;
     }
-    var sz = e.target.closest(".size");
-    if(sz){
-      card.dataset.size = sz.dataset.size;
-      Array.prototype.forEach.call(card.querySelectorAll(".size"), function(b){ b.classList.toggle("is-active", b===sz); });
-      return;
-    }
-    if(e.target.closest("[data-add]")){
-      addToCart(p, card.dataset.color, card.dataset.size || "Único");
-    }
+    var z=e.target.closest(".size");
+    if(z){ card.dataset.size=z.dataset.size; card.querySelectorAll(".size").forEach(function(b){ b.classList.toggle("on",b===z); }); return; }
+    if(e.target.closest("[data-add]")) addToCart(p,card.dataset.color,card.dataset.size||"Único");
   });
 
-  /* ------------------------------------------------------------------
-     CART
-  ------------------------------------------------------------------ */
-  function addToCart(p, color, size){
-    var key = p.id + "|" + color + "|" + size;
-    var found = cart.filter(function(i){ return (i.id+"|"+i.color+"|"+i.size)===key; })[0];
-    if(found){ found.qty += 1; }
-    else{ cart.push({ id:p.id, name:p.name, type:p.type, price:p.price, color:color, size:size, qty:1 }); }
-    saveCart();
-    renderCart();
-    openDrawer();
-    toast(p.name + " adicionado à sacola");
+  /* ---- cart ---- */
+  var LS="mr_cart_v4";
+  var cart=[];
+  try{ var r=localStorage.getItem(LS); if(r){ var pr=JSON.parse(r); if(Array.isArray(pr)) cart=pr.filter(function(i){return i&&P.some(function(p){return p.id===i.id;})&&i.qty>0;}); } }catch(e){}
+  function save(){ try{ localStorage.setItem(LS,JSON.stringify(cart)); }catch(e){} }
+  function addToCart(p,color,size){
+    var key=p.id+"|"+color+"|"+size;
+    var f=cart.filter(function(i){return (i.id+"|"+i.color+"|"+i.size)===key;})[0];
+    if(f) f.qty++; else cart.push({id:p.id,name:p.name,price:p.price,color:color,size:size,photo:p.photo||("images/"+p.id+"-"+slug(color)+".jpg"),qty:1});
+    save(); renderCart(); openDrawer(); toast(p.name+" adicionado");
   }
-
-  function cartTotalQty(){ return cart.reduce(function(a,i){ return a+i.qty; },0); }
-  function cartSubtotal(){ return cart.reduce(function(a,i){ return a + i.price*i.qty; },0); }
-
-  function lineHTML(item, idx){
-    var variant = "Cor: " + item.color + (item.size && item.size!=="Único" ? "  ·  Tam: " + item.size : "");
-    return '<div class="line" data-idx="'+idx+'">'+
-      '<div class="line__thumb" style="'+colorVars(item.color)+'" data-ph="'+
-        esc((function(){ var pr=PRODUCTS.filter(function(x){return x.id===item.id;})[0];
-          return pr ? photoCandidates(pr, item.color).join("|") : ""; })())+'">'+
-        garment(item.type, item.color)+
-      '</div>'+
-      '<div>'+
-        '<div class="line__name">'+esc(item.name)+'</div>'+
-        '<div class="line__variant">'+esc(variant)+'</div>'+
-        '<div class="qty">'+
-          '<button type="button" data-act="dec" aria-label="Diminuir quantidade">&minus;</button>'+
-          '<span>'+item.qty+'</span>'+
-          '<button type="button" data-act="inc" aria-label="Aumentar quantidade">+</button>'+
-        '</div>'+
-      '</div>'+
-      '<div class="line__right">'+
-        '<div class="line__price">'+money(item.price*item.qty)+'</div>'+
-        '<button type="button" class="line__rm" data-act="rm">Remover</button>'+
-      '</div>'+
-    '</div>';
+  function qtyTotal(){ return cart.reduce(function(a,i){return a+i.qty;},0); }
+  function subtotal(){ return cart.reduce(function(a,i){return a+i.price*i.qty;},0); }
+  function lineHTML(i,idx){
+    var v="Cor: "+i.color+(i.size&&i.size!=="Único"?"  ·  Tam: "+i.size:"");
+    return '<div class="line" data-i="'+idx+'">'+
+      '<div class="line-th" data-ph="'+esc(i.photo+"|images/"+i.id+".jpg")+'">'+sil()+'</div>'+
+      '<div><div class="line-nm">'+esc(i.name)+'</div><div class="line-v">'+esc(v)+'</div>'+
+        '<div class="qty"><button type="button" data-q="-" aria-label="Menos">&minus;</button><span>'+i.qty+'</span><button type="button" data-q="+" aria-label="Mais">+</button></div></div>'+
+      '<div class="line-r"><div class="line-p">'+money(i.price*i.qty)+'</div><button type="button" class="rm" data-q="x">Remover</button></div></div>';
   }
-
   function renderCart(){
-    var body = $("#cartBody"), count = $("#cartCount");
-    var q = cartTotalQty();
-    count.textContent = q;
-    count.setAttribute("data-empty", String(q===0));
-    if(cart.length===0){
-      body.innerHTML = '<p class="drawer__empty">Sua sacola está vazia.<br>Explore a Collection 01.</p>';
-    }else{
-      body.innerHTML = cart.map(lineHTML).join("");
-      hydratePhotos(body);
-    }
-    $("#cartSubtotal").textContent = money(cartSubtotal());
-    $("#checkoutBtn").disabled = cart.length===0;
+    var b=$("#cartBody"), bd=$("#badge"), q=qtyTotal();
+    bd.textContent=q; bd.setAttribute("data-empty",String(q===0));
+    if(!cart.length){ b.innerHTML='<p class="empty">Sua sacola está vazia.<br>Explore a Collection 01.</p>'; }
+    else{ b.innerHTML=cart.map(lineHTML).join(""); hydrate(b); }
+    $("#subtotal").textContent=money(subtotal());
+    $("#checkout").disabled=!cart.length;
   }
-
-  $("#cartBody").addEventListener("click", function(e){
-    var row = e.target.closest(".line"); if(!row) return;
-    var idx = parseInt(row.dataset.idx,10);
-    var act = e.target.closest("[data-act]"); if(!act) return;
-    var a = act.dataset.act;
-    if(a==="inc") cart[idx].qty += 1;
-    else if(a==="dec"){ cart[idx].qty -= 1; if(cart[idx].qty<=0) cart.splice(idx,1); }
-    else if(a==="rm") cart.splice(idx,1);
-    saveCart();
-    renderCart();
+  $("#cartBody").addEventListener("click",function(e){
+    var row=e.target.closest(".line"); if(!row) return;
+    var i=+row.dataset.i, a=e.target.closest("[data-q]"); if(!a) return;
+    if(a.dataset.q==="+") cart[i].qty++;
+    else if(a.dataset.q==="-"){ cart[i].qty--; if(cart[i].qty<=0) cart.splice(i,1); }
+    else cart.splice(i,1);
+    save(); renderCart();
   });
 
-  /* ------------------------------------------------------------------
-     DRAWER / OVERLAY / MODAL
-  ------------------------------------------------------------------ */
-  var drawer = $("#drawer"), overlay = $("#overlay"), modal = $("#modal");
-  var lastFocus = null;
-
-  function anyOpen(){ return drawer.classList.contains("is-open") || modal.classList.contains("is-open"); }
-  function syncOverlay(){ overlay.classList.toggle("is-open", anyOpen()); }
-
-  function openDrawer(){
-    lastFocus = document.activeElement;
-    drawer.classList.add("is-open");
-    drawer.setAttribute("aria-hidden","false");
-    syncOverlay();
-    $("#cartClose").focus();
-  }
-  function closeDrawer(){
-    drawer.classList.remove("is-open");
-    drawer.setAttribute("aria-hidden","true");
-    syncOverlay();
-    if(lastFocus && lastFocus.focus) lastFocus.focus();
-  }
-  function openModal(){
-    if(cart.length===0) return;
-    buildOrder();
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden","false");
-    syncOverlay();
-    $("#modalClose").focus();
-  }
-  function closeModal(){
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden","true");
-    syncOverlay();
-    $("#checkoutBtn").focus();
-  }
-
-  $("#cartOpen").addEventListener("click", openDrawer);
-  $("#cartClose").addEventListener("click", closeDrawer);
-  $("#keepShopping").addEventListener("click", closeDrawer);
-  $("#modalClose").addEventListener("click", closeModal);
-  $("#checkoutBtn").addEventListener("click", openModal);
-  overlay.addEventListener("click", function(){ closeModal(); closeDrawer(); });
-  document.addEventListener("keydown", function(e){
+  /* ---- drawer / modal ---- */
+  var drawer=$("#drawer"), overlay=$("#overlay"), modal=$("#modal"), last=null;
+  function sync(){ overlay.classList.toggle("on",drawer.classList.contains("on")||modal.classList.contains("on")); }
+  function openDrawer(){ last=document.activeElement; drawer.classList.add("on"); drawer.setAttribute("aria-hidden","false"); sync(); $("#cartClose").focus(); }
+  function closeDrawer(){ drawer.classList.remove("on"); drawer.setAttribute("aria-hidden","true"); sync(); if(last&&last.focus) last.focus(); }
+  function openModal(){ if(!cart.length) return; buildOrder(); modal.classList.add("on"); modal.setAttribute("aria-hidden","false"); sync(); $("#modalClose").focus(); }
+  function closeModal(){ modal.classList.remove("on"); modal.setAttribute("aria-hidden","true"); sync(); $("#checkout").focus(); }
+  $("#cartOpen").addEventListener("click",openDrawer);
+  $("#cartClose").addEventListener("click",closeDrawer);
+  $("#keep").addEventListener("click",closeDrawer);
+  $("#checkout").addEventListener("click",openModal);
+  $("#modalClose").addEventListener("click",closeModal);
+  overlay.addEventListener("click",function(){ closeModal(); closeDrawer(); });
+  document.addEventListener("keydown",function(e){
     if(e.key!=="Escape") return;
-    if(modal.classList.contains("is-open")) closeModal();
-    else if(drawer.classList.contains("is-open")) closeDrawer();
-    else if(document.body.classList.contains("nav-open")) toggleNav(false);
+    if(modal.classList.contains("on")) closeModal();
+    else if(drawer.classList.contains("on")) closeDrawer();
+    else if(document.body.classList.contains("menu")) menu(false);
   });
-
-  /* ---- order summary ---- */
   function orderText(){
-    var lines = cart.map(function(i){
-      var v = i.color + (i.size && i.size!=="Único" ? " / " + i.size : "");
-      return i.qty + "x  " + i.name + " — " + v + "  —  " + money(i.price*i.qty);
-    });
-    lines.push("");
-    lines.push("Subtotal: " + money(cartSubtotal()));
-    lines.push("Frete: a combinar");
-    return "PEDIDO — MAISON RIVIER (Collection 01)\n\n" + lines.join("\n");
+    var L=cart.map(function(i){ var v=i.color+(i.size&&i.size!=="Único"?" / "+i.size:""); return i.qty+"x  "+i.name+" — "+v+"  —  "+money(i.price*i.qty); });
+    L.push(""); L.push("Subtotal: "+money(subtotal())); L.push("Frete: a combinar");
+    return "PEDIDO — MAISON RIVIER (Collection 01)\n\n"+L.join("\n");
   }
-
   function buildOrder(){
-    $("#orderList").innerHTML = cart.map(function(i){
-      var v = i.color + (i.size && i.size!=="Único" ? " · " + i.size : "");
-      return '<li><span>'+i.qty+'&times; '+esc(i.name)+' <em style="color:var(--muted)">('+esc(v)+')</em></span><b>'+money(i.price*i.qty)+'</b></li>';
-    }).join("");
-    $("#orderTotal").textContent = money(cartSubtotal());
+    $("#olist").innerHTML=cart.map(function(i){ var v=i.color+(i.size&&i.size!=="Único"?" · "+i.size:""); return '<li><span>'+i.qty+'&times; '+esc(i.name)+' <em style="color:var(--muted)">('+esc(v)+')</em></span><b>'+money(i.price*i.qty)+'</b></li>'; }).join("");
+    $("#ototal").textContent=money(subtotal());
   }
+  $("#oWhats").addEventListener("click",function(){ window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(orderText()),"_blank","noopener"); });
+  $("#oMail").addEventListener("click",function(){ location.href="mailto:"+MAIL+"?subject="+encodeURIComponent("Novo pedido — Maison Rivier")+"&body="+encodeURIComponent(orderText()); });
+  $("#oCopy").addEventListener("click",function(){ var t=orderText(); if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function(){toast("Resumo copiado");},function(){toast("Não foi possível copiar");}); else toast("Copie pelo e-mail"); });
 
-  $("#orderWhats").addEventListener("click", function(){
-    window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(orderText()), "_blank", "noopener");
-  });
-  $("#orderEmail").addEventListener("click", function(){
-    var subject = "Novo pedido — Maison Rivier";
-    window.location.href = "mailto:" + MAIL + "?subject=" + encodeURIComponent(subject) +
-      "&body=" + encodeURIComponent(orderText());
-  });
-  $("#orderCopy").addEventListener("click", function(){
-    var txt = orderText();
-    if(navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(txt).then(function(){ toast("Resumo copiado"); }, function(){ toast("Não foi possível copiar"); });
-    }else{
-      toast("Copie o resumo pelo campo de e-mail");
-    }
-  });
-
-  /* ------------------------------------------------------------------
-     NAV / HEADER / THEME
-  ------------------------------------------------------------------ */
-  var header = $("#siteHeader"), hero = $("#inicio");
-  function onScroll(){
-    header.classList.toggle("is-solid", window.scrollY > (hero.offsetHeight - 90));
-  }
-  window.addEventListener("scroll", function(){
-    if(reduced){ onScroll(); return; }
-    window.requestAnimationFrame(onScroll);
-  }, {passive:true});
+  /* ---- header / nav ---- */
+  var hdr=$("#hdr"), hero=$("#inicio");
+  function onScroll(){ hdr.classList.toggle("over", scrollY < hero.offsetHeight-70 && !document.body.classList.contains("menu")); }
+  addEventListener("scroll",function(){ reduced?onScroll():requestAnimationFrame(onScroll); },{passive:true});
   onScroll();
+  function menu(f){ var o=typeof f==="boolean"?f:!document.body.classList.contains("menu"); document.body.classList.toggle("menu",o); $("#burger").setAttribute("aria-expanded",String(o)); onScroll(); }
+  $("#burger").addEventListener("click",function(){ menu(); });
+  document.querySelectorAll("#nav a").forEach(function(a){ a.addEventListener("click",function(){ menu(false); }); });
 
-  function toggleNav(force){
-    var open = typeof force==="boolean" ? force : !document.body.classList.contains("nav-open");
-    document.body.classList.toggle("nav-open", open);
-    $("#navToggle").setAttribute("aria-expanded", String(open));
-  }
-  $("#navToggle").addEventListener("click", function(){ toggleNav(); });
-  Array.prototype.forEach.call(document.querySelectorAll('#siteNav a'), function(a){
-    a.addEventListener("click", function(){ toggleNav(false); });
-  });
+  try{ if(sessionStorage.getItem("mr_annc")==="0") $("#announce").hidden=true; }catch(e){}
+  $("[data-x-announce]").addEventListener("click",function(){ $("#announce").hidden=true; try{ sessionStorage.setItem("mr_annc","0"); }catch(e){} });
 
-  var themeBtn = $("#themeToggle");
-  function applyTheme(t){ document.documentElement.setAttribute("data-theme", t); }
-  var storedTheme = null;
-  try{ storedTheme = localStorage.getItem(LS_THEME); }catch(e){}
-  applyTheme(storedTheme || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
-  themeBtn.addEventListener("click", function(){
-    var next = document.documentElement.getAttribute("data-theme")==="dark" ? "light" : "dark";
-    applyTheme(next);
-    try{ localStorage.setItem(LS_THEME, next); }catch(e){}
-  });
-
-  /* ---- announcement ---- */
-  try{
-    if(sessionStorage.getItem("mr_annc")==="closed") $("#announce").hidden = true;
-  }catch(e){}
-  $("[data-close-announce]").addEventListener("click", function(){
-    $("#announce").hidden = true;
-    try{ sessionStorage.setItem("mr_annc","closed"); }catch(e){}
-  });
-
-  /* ------------------------------------------------------------------
-     LOOKBOOK / GUARANTEES / FOOTER CATS
-  ------------------------------------------------------------------ */
-  $("#plates").innerHTML = PLATES.map(function(p,i){
-    return '<article class="plate" style="--g:'+p.g+'">'+
-      '<svg class="plate__crest" aria-hidden="true"><use href="#crest"/></svg>'+
-      '<span class="plate__no">Planche '+ROMAN[i]+'</span>'+
-      '<span class="plate__name">'+esc(p.name)+'</span>'+
-      '<span class="plate__cap">'+esc(p.cap)+'</span>'+
-    '</article>';
+  /* ---- guarantees / footer cats ---- */
+  $("#guar").innerHTML=GUAR.map(function(g){
+    return '<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+g.p+'"/></svg><b>'+esc(g.t)+'</b><span>'+esc(g.d)+'</span></div>';
   }).join("");
+  $("#ft-cats").innerHTML=CATS.map(function(c){ return '<li><a href="#loja" data-fc="'+c.k+'">'+esc(c.l)+'</a></li>'; }).join("");
+  $("#ft-cats").addEventListener("click",function(e){ var a=e.target.closest("[data-fc]"); if(a) setFilter(a.dataset.fc); });
+  $("#ft-year").textContent="© "+new Date().getFullYear()+" Maison Rivier";
 
-  $("#guarantees").innerHTML = GUARANTEES.map(function(g){
-    return '<div class="guarantee">'+
-      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+g.p+'"/></svg>'+
-      '<b>'+esc(g.t)+'</b><span>'+esc(g.d)+'</span></div>';
-  }).join("");
-
-  $("#footerCats").innerHTML = CATS.map(function(c){
-    return '<li><a href="#loja" data-foot-cat="'+c.key+'">'+esc(c.label)+'</a></li>';
-  }).join("");
-  $("#footerCats").addEventListener("click", function(e){
-    var a = e.target.closest("[data-foot-cat]"); if(!a) return;
-    setFilter(a.dataset.footCat);
-  });
-
-  $("#footYear").textContent = "© " + new Date().getFullYear() + " Maison Rivier";
-
-  /* ------------------------------------------------------------------
-     FORMS
-  ------------------------------------------------------------------ */
-  var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-  function setError(fieldId, msg){
-    var f = document.getElementById(fieldId);
-    f.classList.toggle("invalid", !!msg);
-    f.querySelector(".field__err").textContent = msg || "";
-  }
-
-  $("#contactForm").addEventListener("submit", function(e){
+  /* ---- forms ---- */
+  var re=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  function bad(id,m){ var f=document.getElementById(id); f.classList.toggle("bad",!!m); f.querySelector(".err").textContent=m||""; }
+  $("#cform").addEventListener("submit",function(e){
     e.preventDefault();
-    var f = e.target;
-    var vName = document.getElementById("cName").value.trim();
-    var vEmail = document.getElementById("cEmail").value.trim();
-    var vSubject = document.getElementById("cSubject").value;
-    var vMessage = document.getElementById("cMessage").value.trim();
-    var ok = true;
-    if(!vName){ setError("f-name","Informe seu nome."); ok=false; } else setError("f-name","");
-    if(!emailRe.test(vEmail)){ setError("f-email","Informe um e-mail válido."); ok=false; } else setError("f-email","");
-    if(!vSubject){ setError("f-subject","Selecione um assunto."); ok=false; } else setError("f-subject","");
-    if(vMessage.length < 10){ setError("f-message","Escreva ao menos 10 caracteres."); ok=false; } else setError("f-message","");
+    var nome=$("#i-nome").value.trim(), email=$("#i-email").value.trim(), assunto=$("#i-assunto").value, msg=$("#i-msg").value.trim(), ok=true;
+    if(!nome){ bad("f-nome","Informe seu nome."); ok=false; } else bad("f-nome","");
+    if(!re.test(email)){ bad("f-email","E-mail inválido."); ok=false; } else bad("f-email","");
+    if(!assunto){ bad("f-assunto","Selecione um assunto."); ok=false; } else bad("f-assunto","");
+    if(msg.length<10){ bad("f-msg","Escreva ao menos 10 caracteres."); ok=false; } else bad("f-msg","");
     if(!ok) return;
-
-    var name = vName.split(" ")[0];
-    var done = document.createElement("div");
-    done.className = "form__ok";
-    done.innerHTML = '<svg aria-hidden="true"><use href="#crest"/></svg>'+
-      '<h3>Mensagem recebida</h3>'+
-      '<p>Obrigado, '+esc(name)+'. O atelier Maison Rivier responderá em até um dia útil.</p>';
-    f.replaceWith(done);
+    var d=document.createElement("div"); d.className="form-ok";
+    d.innerHTML='<svg aria-hidden="true"><use href="#crest"/></svg><h3>Mensagem recebida</h3><p>Obrigado, '+esc(nome.split(" ")[0])+'. Respondemos em até um dia útil.</p>';
+    e.target.replaceWith(d);
+  });
+  $("#nlform").addEventListener("submit",function(e){
+    e.preventDefault(); var i=$("#nl-email"), m=$("#nl-msg");
+    if(!re.test(i.value.trim())){ m.textContent="E-mail inválido."; return; }
+    m.textContent="Pronto — você receberá as novidades."; i.value="";
   });
 
-  $("#newsletter").addEventListener("submit", function(e){
-    e.preventDefault();
-    var input = $("#nlEmail"), msg = $("#nlMsg");
-    if(!emailRe.test(input.value.trim())){
-      msg.style.color = "var(--err)";
-      msg.textContent = "Informe um e-mail válido.";
-      return;
-    }
-    msg.style.color = "var(--accent)";
-    msg.textContent = "Pronto — você receberá novidades da Maison Rivier.";
-    input.value = "";
-  });
-
-  /* ------------------------------------------------------------------
-     TOAST
-  ------------------------------------------------------------------ */
+  /* ---- toast ---- */
   function toast(msg){
-    var host = $("#toasts");
-    var el = document.createElement("div");
-    el.className = "toast";
-    el.textContent = msg;
-    host.appendChild(el);
-    setTimeout(function(){
-      el.style.transition = "opacity .3s ease";
-      el.style.opacity = "0";
-      setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, 320);
-    }, 2400);
+    var h=$("#toasts"), el=document.createElement("div"); el.className="toast"; el.textContent=msg; h.appendChild(el);
+    setTimeout(function(){ el.style.transition="opacity .3s"; el.style.opacity="0"; setTimeout(function(){ el.remove(); },320); },2300);
   }
 
-  /* ------------------------------------------------------------------
-     INIT
-  ------------------------------------------------------------------ */
-  buildRibbon();
-  buildFilters();
-  renderGrid();
-  renderCart();
+  buildFilters(); renderGrid(); renderCart();
 })();
 </script>
