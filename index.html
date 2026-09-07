@@ -1,0 +1,1513 @@
+<title>Maison Rivier — Paris</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap">
+
+<style>
+/* ============================================================
+   MAISON RIVIER — PARIS
+   Storefront · Coleção Heritage I
+   Palette: navy / antique gold / olive on cool greige
+   Type: Cinzel (display, engraved caps) + Montserrat (text)
+   ============================================================ */
+
+:root{
+  --paper:#E9E7DF;
+  --surface:#F3F2EC;
+  --figure-bg:#E3E1D7;
+  --ink:#161A1E;
+  --muted:#5C6167;
+  --line:#D3CFC2;
+  --navy:#001E3A;
+  --ink-solid:#111519;
+  --accent:#9C7635;
+  --accent-hi:#C7A468;
+  --garment-stroke:rgba(20,24,28,.72);
+  --focus:#9C7635;
+  --ok:#3F6B4E;
+  --err:#9B3B2E;
+  --shadow:0 1px 2px rgba(0,20,40,.05), 0 12px 32px -20px rgba(0,20,40,.28);
+  --maxw:1220px;
+  --gutter:clamp(1.15rem, 5vw, 4rem);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0C161F;
+    --surface:#122232;
+    --figure-bg:#16283A;
+    --ink:#E8E3D6;
+    --muted:#9AA2AA;
+    --line:#26384A;
+    --navy:#02131E;
+    --ink-solid:#0A1016;
+    --accent:#C7A468;
+    --accent-hi:#D9BE8C;
+    --garment-stroke:rgba(232,227,214,.6);
+    --focus:#C7A468;
+    --ok:#7FB58F;
+    --err:#E39385;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 40px -22px rgba(0,0,0,.7);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0C161F;
+  --surface:#122232;
+  --figure-bg:#16283A;
+  --ink:#E8E3D6;
+  --muted:#9AA2AA;
+  --line:#26384A;
+  --navy:#02131E;
+  --ink-solid:#0A1016;
+  --accent:#C7A468;
+  --accent-hi:#D9BE8C;
+  --garment-stroke:rgba(232,227,214,.6);
+  --focus:#C7A468;
+  --ok:#7FB58F;
+  --err:#E39385;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 40px -22px rgba(0,0,0,.7);
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+html{ scroll-padding-top:5.5rem; }
+@media (prefers-reduced-motion: no-preference){
+  html{ scroll-behavior:smooth; }
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight:400;
+  line-height:1.7;
+  font-size:1rem;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+
+h1,h2,h3,h4{ font-family:"Cinzel", "Times New Roman", serif; font-weight:500; margin:0; line-height:1.15; text-wrap:balance; }
+p{ margin:0; }
+a{ color:inherit; }
+img{ display:block; }
+button{ font:inherit; color:inherit; cursor:pointer; }
+
+:focus-visible{ outline:2px solid var(--focus); outline-offset:3px; border-radius:2px; }
+
+::selection{ background:var(--accent); color:#fff; }
+
+/* ---------- shared layout ---------- */
+.wrap{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gutter); }
+
+.section{ padding-block:clamp(3.5rem, 8vw, 7rem); }
+
+.eyebrow{
+  font-family:"Montserrat", sans-serif;
+  font-weight:600;
+  font-size:.72rem;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin:0;
+}
+
+.section__head{ max-width:46ch; margin-bottom:clamp(2rem,4vw,3rem); display:flex; flex-direction:column; gap:.9rem; }
+.section__head h2{ font-size:clamp(1.7rem, 3.6vw, 2.6rem); letter-spacing:.06em; text-transform:uppercase; }
+.section__head p{ color:var(--muted); font-weight:300; }
+
+.rule{ width:56px; height:1px; background:var(--accent); border:0; margin:0; }
+
+.panel--navy{
+  background:var(--navy);
+  --paper:var(--navy); --surface:rgba(255,255,255,.05); --figure-bg:#0A2136;
+  --ink:#EFEBDF; --muted:#AEB6BF; --line:rgba(239,235,223,.16);
+  --accent:var(--accent-hi); --garment-stroke:rgba(239,235,223,.62);
+  color:var(--ink);
+}
+.panel--ink{
+  background:var(--ink-solid);
+  --paper:var(--ink-solid); --surface:rgba(255,255,255,.04); --figure-bg:#141C24;
+  --ink:#ECE7DA; --muted:#9AA0A6; --line:rgba(236,231,218,.14);
+  --accent:var(--accent-hi); --garment-stroke:rgba(236,231,218,.6);
+  color:var(--ink);
+}
+
+/* ---------- buttons ---------- */
+.btn{
+  --bg:transparent; --fg:var(--ink); --bd:currentColor;
+  display:inline-flex; align-items:center; justify-content:center; gap:.6ch;
+  padding:.9rem 1.6rem;
+  background:var(--bg); color:var(--fg);
+  border:1px solid var(--bd);
+  font-family:"Montserrat", sans-serif;
+  font-weight:500; font-size:.76rem; letter-spacing:.2em; text-transform:uppercase;
+  text-decoration:none;
+  transition:background .3s ease, color .3s ease, border-color .3s ease, transform .2s ease;
+}
+.btn:hover{ --bg:var(--ink); --fg:var(--paper); --bd:var(--ink); }
+.btn--solid{ --bg:var(--accent); --fg:#fff; --bd:var(--accent); }
+.btn--solid:hover{ --bg:var(--ink); --fg:var(--paper); --bd:var(--ink); }
+.btn--ghost{ --bd:color-mix(in srgb, currentColor 45%, transparent); }
+.btn:disabled{ opacity:.4; cursor:not-allowed; }
+.btn:active{ transform:translateY(1px); }
+
+.link-underline{
+  background:none; border:0; padding:0;
+  font-weight:500; font-size:.74rem; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--muted);
+  border-bottom:1px solid transparent;
+  transition:color .25s ease, border-color .25s ease;
+}
+.link-underline:hover{ color:var(--ink); border-bottom-color:var(--accent); }
+
+/* ---------- svg sprite ---------- */
+.sprite{ position:absolute; width:0; height:0; overflow:hidden; }
+
+/* ---------- announcement ---------- */
+.announce{
+  background:var(--ink-solid); color:#E9E4D6;
+  font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; font-weight:400;
+  display:flex; align-items:center; justify-content:center; gap:1rem;
+  padding:.6rem var(--gutter); text-align:center;
+}
+.announce button{
+  background:none; border:0; color:inherit; opacity:.6; font-size:1rem; line-height:1;
+  padding:.2rem; transition:opacity .2s ease;
+}
+.announce button:hover{ opacity:1; }
+.announce[hidden]{ display:none; }
+
+/* ---------- header ---------- */
+.site-header{
+  position:sticky; top:0; z-index:50;
+  color:#EFEBDF;
+  transition:background .35s ease, color .35s ease, border-color .35s ease;
+  border-bottom:1px solid transparent;
+}
+.site-header.is-solid{
+  background:var(--paper); color:var(--ink);
+  border-bottom-color:var(--line);
+}
+.header-inner{
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:1rem;
+  padding-block:1rem;
+}
+.brand{
+  display:inline-flex; align-items:center; gap:.7rem; text-decoration:none;
+  justify-self:start;
+}
+.brand svg{ width:30px; height:34px; color:currentColor; }
+.brand span{
+  font-family:"Cinzel", serif; font-weight:600; font-size:.95rem;
+  letter-spacing:.28em; white-space:nowrap;
+}
+@media (max-width:560px){ .brand span{ display:none; } }
+
+.site-nav{ justify-self:center; }
+.site-nav ul{ list-style:none; margin:0; padding:0; display:flex; gap:clamp(1rem,2.4vw,2.1rem); }
+.site-nav a{
+  text-decoration:none; font-size:.74rem; letter-spacing:.18em; text-transform:uppercase; font-weight:500;
+  padding-block:.4rem; border-bottom:1px solid transparent;
+  transition:border-color .25s ease, opacity .25s ease;
+  opacity:.82;
+}
+.site-nav a:hover{ opacity:1; border-bottom-color:var(--accent); }
+
+.header-tools{ justify-self:end; display:flex; align-items:center; gap:.4rem; }
+.icon-btn{
+  background:none; border:0; padding:.55rem; display:inline-flex; align-items:center; justify-content:center;
+  color:inherit; position:relative; border-radius:2px;
+  transition:opacity .2s ease;
+}
+.icon-btn:hover{ opacity:.65; }
+.icon-btn svg{ width:20px; height:20px; }
+.cart-count{
+  position:absolute; top:2px; right:0;
+  background:var(--accent); color:#fff;
+  font-family:"Montserrat",sans-serif; font-size:.6rem; font-weight:600; letter-spacing:0;
+  min-width:15px; height:15px; padding:0 3px;
+  border-radius:999px; display:grid; place-items:center;
+}
+.cart-count[data-empty="true"]{ display:none; }
+
+.theme-toggle .i-sun{ display:none; }
+:root[data-theme="dark"] .theme-toggle .i-sun{ display:block; }
+:root[data-theme="dark"] .theme-toggle .i-moon{ display:none; }
+
+.nav-toggle{ display:none; }
+@media (max-width:860px){
+  .nav-toggle{ display:inline-flex; }
+  .site-nav{
+    position:fixed; inset:0 0 0 auto; width:min(320px,84vw);
+    background:var(--paper); color:var(--ink);
+    transform:translateX(100%); transition:transform .4s cubic-bezier(.4,0,.1,1);
+    padding:6rem 2rem 2rem; z-index:60;
+    border-left:1px solid var(--line);
+  }
+  .site-nav ul{ flex-direction:column; gap:1.6rem; }
+  .site-nav a{ font-size:.9rem; opacity:1; }
+  body.nav-open .site-nav{ transform:translateX(0); }
+  body.nav-open .site-header.is-solid,
+  body.nav-open .site-header{ background:var(--paper); color:var(--ink); border-bottom-color:var(--line); }
+}
+
+/* ---------- hero ---------- */
+.hero{ position:relative; overflow:hidden; text-align:center; }
+.hero__mark{ position:absolute; inset:0; display:grid; place-items:center; pointer-events:none; }
+.hero__mark svg{ width:min(78vw,720px); height:auto; color:#fff; opacity:.04; }
+.hero__inner{
+  position:relative; z-index:1;
+  padding-block:clamp(4rem, 12vh, 8rem);
+  display:flex; flex-direction:column; align-items:center; gap:1.6rem;
+}
+.hero__crest{ width:64px; height:72px; color:var(--accent-hi); }
+.hero__eyebrow{ color:var(--accent-hi); }
+.hero__word{
+  font-size:clamp(2.3rem, 7vw, 4.6rem);
+  letter-spacing:.16em; text-transform:uppercase; font-weight:500;
+  margin:0;
+}
+.hero__sub-line{ display:flex; align-items:center; gap:1rem; color:#EFEBDF; }
+.hero__sub-line::before,.hero__sub-line::after{ content:""; width:34px; height:1px; background:currentColor; opacity:.5; }
+.hero__paris{ font-family:"Cinzel",serif; letter-spacing:.4em; font-size:.8rem; text-transform:uppercase; }
+.hero__tag{
+  font-family:"Cinzel",serif; font-size:clamp(.85rem,2.2vw,1.1rem);
+  letter-spacing:.28em; text-transform:uppercase; color:#EFEBDF;
+}
+.hero__copy{ max-width:52ch; color:#C9CFD6; font-weight:300; }
+.hero__cta{ display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; margin-top:.8rem; }
+.hero__cta .btn{ color:#EFEBDF; }
+.hero__cta .btn--solid{ color:#fff; }
+
+@media (prefers-reduced-motion: no-preference){
+  .hero__inner > *{ animation:rise .9s cubic-bezier(.2,.7,.2,1) both; }
+  .hero__inner > *:nth-child(2){ animation-delay:.06s; }
+  .hero__inner > *:nth-child(3){ animation-delay:.12s; }
+  .hero__inner > *:nth-child(4){ animation-delay:.18s; }
+  .hero__inner > *:nth-child(5){ animation-delay:.24s; }
+  .hero__inner > *:nth-child(6){ animation-delay:.30s; }
+  @keyframes rise{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:none; } }
+}
+
+/* ---------- collection ribbon ---------- */
+.ribbon__grid{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line); border-left:1px solid var(--line);
+}
+@media (max-width:900px){ .ribbon__grid{ grid-template-columns:repeat(2,1fr); } }
+.ribbon__item{
+  border-right:1px solid var(--line); border-bottom:1px solid var(--line);
+  background:none; text-align:left;
+  padding:1.5rem 1.4rem; display:flex; flex-direction:column; gap:.35rem;
+  transition:background .25s ease;
+}
+.ribbon__item:hover{ background:var(--surface); }
+.ribbon__item b{
+  font-family:"Cinzel",serif; font-weight:500; font-size:1.02rem; letter-spacing:.05em;
+}
+.ribbon__item span{ font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+
+/* ---------- shop ---------- */
+.shop__filters{
+  display:flex; gap:.4rem 1.4rem; flex-wrap:wrap; align-items:baseline;
+  padding-bottom:1.4rem; margin-bottom:2.4rem;
+  border-bottom:1px solid var(--line);
+  overflow-x:auto;
+}
+.filter-btn{
+  background:none; border:0; padding:.3rem 0;
+  font-size:.74rem; letter-spacing:.16em; text-transform:uppercase; font-weight:500;
+  color:var(--muted); white-space:nowrap;
+  border-bottom:2px solid transparent;
+  transition:color .2s ease, border-color .2s ease;
+}
+.filter-btn:hover{ color:var(--ink); }
+.filter-btn[aria-pressed="true"]{ color:var(--ink); border-bottom-color:var(--accent); }
+
+.grid{
+  display:grid; gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+  grid-template-columns:repeat(3,1fr);
+}
+@media (max-width:900px){ .grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:560px){ .grid{ grid-template-columns:1fr; } }
+
+.product{
+  background:var(--paper);
+  display:flex; flex-direction:column;
+  padding:0;
+}
+.product__figure{
+  position:relative;
+  background:var(--figure-bg);
+  padding:1.6rem 1.6rem 0;
+  aspect-ratio:4/3.4;
+  display:grid; place-items:center;
+  overflow:hidden;
+}
+.product__figure .garment{ width:78%; max-width:230px; height:auto; filter:drop-shadow(0 18px 24px rgba(0,20,40,.10)); }
+
+.garment .fillable{ stroke:var(--garment-stroke); stroke-width:3; stroke-linejoin:round; paint-order:stroke fill; }
+.garment .stitch{ stroke:var(--garment-stroke); stroke-width:2; fill:none; stroke-linecap:round; opacity:.6; }
+.garment .stitch circle{ fill:var(--garment-stroke); stroke:none; }
+.garment .cutout{ fill:var(--figure-bg); }
+.garment .clasp{ fill:var(--accent); }
+.garment use{ color:var(--garment-stroke); opacity:.5; }
+.product__cat{
+  position:absolute; top:1rem; left:1rem;
+  font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; font-weight:600;
+  color:var(--muted);
+  background:var(--paper); padding:.35rem .6rem;
+}
+.product__body{ padding:1.4rem 1.5rem 1.6rem; display:flex; flex-direction:column; gap:.5rem; flex:1; }
+.product__name{ font-size:1.05rem; letter-spacing:.03em; }
+.product__desc{ font-size:.82rem; color:var(--muted); font-weight:300; margin-bottom:.2rem; }
+.product__price{
+  font-family:"Montserrat",sans-serif; font-weight:600; font-size:.9rem;
+  font-variant-numeric:tabular-nums; letter-spacing:.02em;
+}
+.product__group-label{
+  font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted);
+  margin-top:.5rem;
+}
+.product__colors{ display:flex; flex-wrap:wrap; gap:.5rem; }
+.swatch{
+  --sw:#000;
+  width:22px; height:22px; padding:0; border-radius:999px;
+  border:1px solid var(--line);
+  background:var(--sw);
+  position:relative;
+  transition:transform .15s ease;
+}
+.swatch:hover{ transform:scale(1.12); }
+.swatch.is-active::after{
+  content:""; position:absolute; inset:-4px; border:1px solid var(--accent); border-radius:999px;
+}
+.product__sizes{ display:flex; flex-wrap:wrap; gap:.4rem; }
+.size{
+  min-width:34px; padding:.35rem .5rem;
+  background:none; border:1px solid var(--line);
+  font-size:.7rem; letter-spacing:.08em; font-weight:500; color:var(--muted);
+  transition:border-color .2s ease, color .2s ease;
+}
+.size:hover{ color:var(--ink); }
+.size.is-active{ border-color:var(--ink); color:var(--ink); }
+.product__meta{ font-size:.72rem; color:var(--muted); letter-spacing:.06em; }
+.product .btn--add{ margin-top:.9rem; width:100%; }
+
+/* ---------- story ---------- */
+.story__lead{
+  font-family:"Cinzel",serif; font-weight:400;
+  font-size:clamp(1.15rem, 2.6vw, 1.7rem); line-height:1.6; letter-spacing:.02em;
+  max-width:30ch; margin-bottom:2.6rem;
+}
+.story__lead .drop{ color:var(--accent); }
+.story__cols{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:2.4rem;
+  border-top:1px solid var(--line); padding-top:2.4rem;
+}
+@media (max-width:820px){ .story__cols{ grid-template-columns:1fr; gap:1.8rem; } }
+.story__col h3{ font-size:.9rem; letter-spacing:.22em; text-transform:uppercase; margin-bottom:.7rem; color:var(--accent); }
+.story__col p{ color:var(--muted); font-weight:300; font-size:.92rem; }
+.story__values{
+  display:flex; flex-wrap:wrap; gap:.6rem 1.2rem; margin-top:2.4rem;
+  font-family:"Cinzel",serif; letter-spacing:.14em; text-transform:uppercase; font-size:.8rem;
+}
+.story__values span{ position:relative; padding-right:1.2rem; }
+.story__values span:not(:last-child)::after{ content:"·"; position:absolute; right:.4rem; color:var(--accent); }
+.story__foot{ margin-top:2rem; color:var(--muted); font-weight:300; font-size:.86rem; max-width:52ch; }
+
+/* ---------- lookbook ---------- */
+.plates{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line);
+}
+@media (max-width:900px){ .plates{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:520px){ .plates{ grid-template-columns:1fr; } }
+.plate{
+  position:relative; aspect-ratio:3/4; overflow:hidden;
+  background:var(--g,#123); color:#F2EEE2;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding:1.3rem;
+  isolation:isolate;
+}
+.plate::before{
+  content:""; position:absolute; inset:0; z-index:-1;
+  background:
+    repeating-linear-gradient(135deg, rgba(255,255,255,.04) 0 2px, transparent 2px 6px),
+    radial-gradient(120% 80% at 30% 20%, rgba(255,255,255,.14), transparent 60%);
+}
+.plate__no{
+  position:absolute; top:1.1rem; right:1.2rem;
+  font-family:"Cinzel",serif; font-size:.72rem; letter-spacing:.2em; opacity:.7;
+}
+.plate__name{
+  font-family:"Cinzel",serif; font-size:1.05rem; letter-spacing:.14em; text-transform:uppercase;
+}
+.plate__cap{ font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; opacity:.72; margin-top:.2rem; }
+.plate svg.plate__crest{ position:absolute; top:1rem; left:1.1rem; width:24px; height:27px; color:#fff; opacity:.5; }
+
+/* ---------- guarantees ---------- */
+.guarantees{
+  display:grid; grid-template-columns:repeat(5,1fr); gap:1px;
+  background:var(--line); border-block:1px solid var(--line);
+}
+@media (max-width:900px){ .guarantees{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:520px){ .guarantees{ grid-template-columns:1fr; } }
+.guarantee{
+  background:var(--paper);
+  padding:1.7rem 1.4rem;
+  display:flex; flex-direction:column; gap:.5rem;
+}
+.guarantee svg{ width:22px; height:22px; color:var(--accent); }
+.guarantee b{ font-family:"Cinzel",serif; font-weight:500; font-size:.9rem; letter-spacing:.06em; }
+.guarantee span{ font-size:.78rem; color:var(--muted); font-weight:300; }
+
+/* ---------- contact ---------- */
+.contact__grid{ display:grid; grid-template-columns:1fr 1.1fr; gap:clamp(2rem,6vw,5rem); }
+@media (max-width:820px){ .contact__grid{ grid-template-columns:1fr; } }
+.contact__details{ list-style:none; margin:1.8rem 0 0; padding:0; display:flex; flex-direction:column; gap:1rem; }
+.contact__details li{ display:flex; flex-direction:column; gap:.1rem; }
+.contact__details dt,.contact__details .k{
+  font-size:.64rem; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); font-weight:600;
+}
+.contact__details .v{ font-size:.95rem; }
+
+.form{ display:grid; gap:1.1rem; }
+.field{ display:flex; flex-direction:column; gap:.4rem; }
+.field label{ font-size:.66rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.field input,.field select,.field textarea{
+  font:inherit; font-size:.92rem; font-weight:300;
+  background:var(--surface); color:var(--ink);
+  border:1px solid var(--line); border-radius:0;
+  padding:.8rem .9rem;
+  transition:border-color .2s ease;
+}
+.field input:focus,.field select:focus,.field textarea:focus{ outline:none; border-color:var(--accent); }
+.field textarea{ resize:vertical; min-height:120px; }
+.field.invalid input,.field.invalid select,.field.invalid textarea{ border-color:var(--err); }
+.field__err{ font-size:.72rem; color:var(--err); min-height:1em; }
+.form__ok{
+  border:1px solid var(--accent); padding:2rem; text-align:center;
+  display:flex; flex-direction:column; gap:.6rem; align-items:center;
+}
+.form__ok svg{ width:34px; height:38px; color:var(--accent); }
+.form__ok h3{ font-size:1.1rem; letter-spacing:.1em; text-transform:uppercase; }
+.form__ok p{ color:var(--muted); font-weight:300; font-size:.9rem; }
+
+/* ---------- footer ---------- */
+.site-footer{ padding-block:clamp(3rem,7vw,5rem) 2rem; }
+.footer__top{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:2.4rem; }
+@media (max-width:900px){ .footer__top{ grid-template-columns:1fr 1fr; } }
+@media (max-width:520px){ .footer__top{ grid-template-columns:1fr; } }
+.footer__brand svg{ width:40px; height:45px; color:var(--accent); }
+.footer__brand b{ display:block; font-family:"Cinzel",serif; letter-spacing:.28em; margin:.8rem 0 .4rem; font-size:.95rem; }
+.footer__brand p{ font-family:"Cinzel",serif; font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); }
+.footer__col h4{ font-size:.64rem; letter-spacing:.24em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; }
+.footer__col ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.6rem; }
+.footer__col a{ text-decoration:none; font-size:.84rem; color:var(--muted); font-weight:300; transition:color .2s ease; }
+.footer__col a:hover{ color:var(--ink); }
+.newsletter{ display:flex; border:1px solid var(--line); margin-top:.4rem; }
+.newsletter input{
+  flex:1; min-width:0; font:inherit; font-size:.84rem; font-weight:300;
+  background:transparent; color:var(--ink); border:0; padding:.7rem .8rem;
+}
+.newsletter input:focus{ outline:none; }
+.newsletter button{
+  background:var(--accent); color:#fff; border:0; padding:0 1rem;
+  font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; font-weight:600;
+}
+.newsletter__msg{ font-size:.74rem; color:var(--accent); margin-top:.5rem; min-height:1em; }
+.footer__bar{
+  margin-top:3rem; padding-top:1.6rem; border-top:1px solid var(--line);
+  display:flex; flex-wrap:wrap; gap:.6rem 1.6rem; justify-content:space-between;
+  font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; color:var(--muted);
+}
+.footer__bar .fr{ color:var(--ink); }
+
+/* ---------- cart drawer ---------- */
+.overlay{
+  position:fixed; inset:0; z-index:70;
+  background:rgba(6,14,22,.55);
+  opacity:0; visibility:hidden; transition:opacity .35s ease, visibility .35s;
+}
+.overlay.is-open{ opacity:1; visibility:visible; }
+
+.drawer{
+  position:fixed; top:0; right:0; bottom:0; z-index:80;
+  width:min(430px, 94vw);
+  background:var(--paper); color:var(--ink);
+  border-left:1px solid var(--line);
+  display:flex; flex-direction:column;
+  transform:translateX(100%);
+  transition:transform .4s cubic-bezier(.4,0,.1,1);
+}
+.drawer.is-open{ transform:translateX(0); }
+.drawer__head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:1.4rem 1.5rem; border-bottom:1px solid var(--line);
+}
+.drawer__head h2{ font-size:1rem; letter-spacing:.2em; text-transform:uppercase; }
+.drawer__close{ background:none; border:0; font-size:1.5rem; line-height:1; color:var(--muted); padding:.2rem; }
+.drawer__close:hover{ color:var(--ink); }
+.drawer__body{ flex:1; overflow-y:auto; padding:1.2rem 1.5rem; }
+.drawer__empty{ color:var(--muted); font-weight:300; text-align:center; padding:3rem 1rem; font-size:.9rem; }
+
+.line{
+  display:grid; grid-template-columns:64px 1fr auto; gap:1rem;
+  padding:1.1rem 0; border-bottom:1px solid var(--line);
+}
+.line__thumb{ background:var(--figure-bg); display:grid; place-items:center; aspect-ratio:1; }
+.line__thumb .garment{ width:80%; height:auto; }
+.line__name{ font-family:"Cinzel",serif; font-size:.9rem; letter-spacing:.03em; }
+.line__variant{ font-size:.72rem; color:var(--muted); margin-top:.15rem; }
+.qty{ display:inline-flex; align-items:center; border:1px solid var(--line); margin-top:.5rem; }
+.qty button{ background:none; border:0; width:26px; height:26px; color:var(--muted); font-size:.9rem; }
+.qty button:hover{ color:var(--ink); }
+.qty span{ min-width:26px; text-align:center; font-size:.8rem; font-variant-numeric:tabular-nums; }
+.line__right{ display:flex; flex-direction:column; align-items:flex-end; justify-content:space-between; }
+.line__price{ font-weight:600; font-size:.82rem; font-variant-numeric:tabular-nums; }
+.line__rm{ background:none; border:0; font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+.line__rm:hover{ color:var(--err); }
+
+.drawer__foot{ border-top:1px solid var(--line); padding:1.3rem 1.5rem; display:flex; flex-direction:column; gap:.9rem; }
+.subtotal{ display:flex; justify-content:space-between; font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; }
+.subtotal b{ font-family:"Montserrat",sans-serif; font-weight:600; font-variant-numeric:tabular-nums; }
+.drawer__note{ font-size:.72rem; color:var(--muted); font-weight:300; }
+
+/* ---------- modal ---------- */
+.modal{
+  position:fixed; inset:0; z-index:90;
+  display:grid; place-items:center; padding:1.5rem;
+  opacity:0; visibility:hidden; transition:opacity .3s ease, visibility .3s;
+}
+.modal.is-open{ opacity:1; visibility:visible; }
+.modal__card{
+  position:relative;
+  background:var(--paper); color:var(--ink);
+  border:1px solid var(--line);
+  width:min(520px,100%); max-height:88vh; overflow-y:auto;
+  padding:2rem;
+  transform:translateY(12px); transition:transform .3s ease;
+}
+.modal.is-open .modal__card{ transform:none; }
+.modal__card h2{ font-size:1.1rem; letter-spacing:.18em; text-transform:uppercase; margin-bottom:.4rem; }
+.modal__card .eyebrow{ margin-bottom:1.2rem; }
+.order-list{ list-style:none; margin:0 0 1.2rem; padding:0; }
+.order-list li{
+  display:flex; justify-content:space-between; gap:1rem;
+  padding:.7rem 0; border-bottom:1px solid var(--line);
+  font-size:.85rem; font-weight:300;
+}
+.order-list li b{ font-weight:600; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.order-total{ display:flex; justify-content:space-between; font-weight:600; letter-spacing:.1em; text-transform:uppercase; font-size:.82rem; margin-bottom:1.2rem; }
+.modal__note{ font-size:.78rem; color:var(--muted); font-weight:300; margin-bottom:1.4rem; }
+.modal__actions{ display:flex; flex-wrap:wrap; gap:.7rem; }
+.modal__actions .btn{ flex:1; min-width:150px; }
+.modal__close{
+  position:absolute; top:1rem; right:1.2rem;
+  background:none; border:0; font-size:1.5rem; color:var(--muted); line-height:1;
+}
+
+/* ---------- toast ---------- */
+.toasts{
+  position:fixed; left:50%; bottom:1.5rem; transform:translateX(-50%);
+  z-index:100; display:flex; flex-direction:column; gap:.5rem; align-items:center;
+  pointer-events:none;
+}
+.toast{
+  background:var(--ink-solid); color:#EDE8DB;
+  padding:.8rem 1.3rem; font-size:.74rem; letter-spacing:.12em; text-transform:uppercase;
+  border:1px solid rgba(255,255,255,.1);
+  animation:toast-in .3s ease both;
+}
+@keyframes toast-in{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+}
+
+.visually-hidden{
+  position:absolute!important; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+</style>
+
+<!-- ============ SVG SPRITE ============ -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="crest" viewBox="0 0 120 140">
+    <path d="M36 40 L44 20 L54 32 L60 18 L66 32 L76 20 L84 40 Z" fill="currentColor"/>
+    <circle cx="44" cy="17" r="3" fill="currentColor"/>
+    <circle cx="60" cy="13" r="3.4" fill="currentColor"/>
+    <circle cx="76" cy="17" r="3" fill="currentColor"/>
+    <path d="M60 40 C48 40 34 42 26 44 C26 80 34 106 60 122 C86 106 94 80 94 44 C86 42 72 40 60 40 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+    <path d="M60 47 C51 47 40 49 33 51 C33 80 40 100 60 113 C80 100 87 80 87 51 C80 49 69 47 60 47 Z" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".5"/>
+    <text x="60" y="90" text-anchor="middle" font-family="Cinzel, serif" font-size="30" font-weight="600" fill="currentColor" letter-spacing="-1">MR</text>
+    <g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" opacity=".85">
+      <path d="M22 52 C13 66 13 88 30 106"/>
+      <path d="M98 52 C107 66 107 88 90 106"/>
+    </g>
+    <g fill="currentColor" opacity=".8">
+      <ellipse cx="18" cy="58" rx="5" ry="2.2" transform="rotate(-32 18 58)"/>
+      <ellipse cx="15" cy="70" rx="5" ry="2.2" transform="rotate(-14 15 70)"/>
+      <ellipse cx="16" cy="83" rx="5" ry="2.2" transform="rotate(6 16 83)"/>
+      <ellipse cx="21" cy="95" rx="5" ry="2.2" transform="rotate(24 21 95)"/>
+      <ellipse cx="102" cy="58" rx="5" ry="2.2" transform="rotate(32 102 58)"/>
+      <ellipse cx="105" cy="70" rx="5" ry="2.2" transform="rotate(14 105 70)"/>
+      <ellipse cx="104" cy="83" rx="5" ry="2.2" transform="rotate(-6 104 83)"/>
+      <ellipse cx="99" cy="95" rx="5" ry="2.2" transform="rotate(-24 99 95)"/>
+    </g>
+  </symbol>
+  <symbol id="monogram" viewBox="0 0 120 140">
+    <path d="M60 30 C46 30 30 33 22 35 C22 78 32 108 60 126 C88 108 98 78 98 35 C90 33 74 30 60 30 Z" fill="none" stroke="currentColor" stroke-width="4"/>
+    <text x="60" y="88" text-anchor="middle" font-family="Cinzel, serif" font-size="44" font-weight="600" fill="currentColor" letter-spacing="-2">MR</text>
+  </symbol>
+</svg>
+
+<!-- ============ ANNOUNCE ============ -->
+<div class="announce" id="announce">
+  <span>Frete grátis para todo o Brasil acima de R$ 500 — Coleção Heritage I, edição inaugural</span>
+  <button type="button" aria-label="Fechar aviso" data-close-announce>&times;</button>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="wrap header-inner">
+    <a href="#inicio" class="brand" aria-label="Maison Rivier — início">
+      <svg aria-hidden="true"><use href="#crest"/></svg>
+      <span>Maison Rivier</span>
+    </a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Navegação principal">
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#colecao">Coleção</a></li>
+        <li><a href="#loja">Loja</a></li>
+        <li><a href="#historia">História</a></li>
+        <li><a href="#lookbook">Lookbook</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-tools">
+      <button type="button" class="icon-btn theme-toggle" id="themeToggle" aria-label="Alternar tema claro e escuro">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg>
+      </button>
+      <button type="button" class="icon-btn" id="cartOpen" aria-label="Abrir sacola">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 8h12l1 12H5L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="cart-count" id="cartCount" data-empty="true">0</span>
+      </button>
+      <button type="button" class="icon-btn nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <section class="hero panel--navy" id="inicio">
+    <div class="hero__mark" aria-hidden="true"><svg><use href="#crest"/></svg></div>
+    <div class="wrap hero__inner">
+      <svg class="hero__crest" aria-hidden="true"><use href="#crest"/></svg>
+      <p class="eyebrow hero__eyebrow">Paris · Riviera Française</p>
+      <h1 class="hero__word">Maison Rivier</h1>
+      <span class="hero__sub-line"><span class="hero__paris">Paris</span></span>
+      <p class="hero__tag">Élégance. Discrétion. Intemporel.</p>
+      <p class="hero__copy">Moda masculina premium que une a elegância clássica francesa a uma estética contemporânea e atemporal. Peças de qualidade impecável, pensadas para todas as ocasiões.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid" href="#loja">Explorar a coleção</a>
+        <a class="btn btn--ghost" href="#historia">Nossa história</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COLLECTION RIBBON ============ -->
+  <section class="section" id="colecao">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Coleção Heritage I</p>
+        <h2>As categorias</h2>
+        <p>Oito famílias de peças que compõem a edição inaugural da Maison Rivier. Selecione uma para explorar na loja.</p>
+      </div>
+      <div class="ribbon__grid" id="ribbon"></div>
+    </div>
+  </section>
+
+  <!-- ============ SHOP ============ -->
+  <section class="section" id="loja" style="padding-top:0">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">A Loja</p>
+        <h2>Peças Heritage I</h2>
+        <p>Cada peça é desenvolvida com tecidos de alta qualidade e acabamento impecável. Escolha a cor e o tamanho para adicionar à sacola.</p>
+      </div>
+      <div class="shop__filters" id="filters" role="group" aria-label="Filtrar por categoria"></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <!-- ============ STORY ============ -->
+  <section class="section panel--navy" id="historia">
+    <div class="wrap">
+      <p class="eyebrow">A Maison</p>
+      <p class="story__lead"><span class="drop">Maison Rivier</span> nasce do desejo de unir a elegância clássica francesa a uma estética contemporânea e atemporal. Inspirada pela Riviera Francesa, cria peças de sofisticação discreta e qualidade impecável.</p>
+      <div class="story__cols">
+        <div class="story__col">
+          <h3>Missão</h3>
+          <p>Criar roupas de qualidade excepcional que reflitam elegância, autenticidade e confiança.</p>
+        </div>
+        <div class="story__col">
+          <h3>Valores</h3>
+          <p>Excelência e durabilidade em cada detalhe, do tecido ao acabamento, sem concessões.</p>
+        </div>
+        <div class="story__col">
+          <h3>Posicionamento</h3>
+          <p>Moda masculina premium que une o clássico ao contemporâneo, com design atemporal e qualidade superior.</p>
+        </div>
+      </div>
+      <div class="story__values">
+        <span>Excelência</span><span>Discrição</span><span>Autenticidade</span><span>Sofisticação</span><span>Durabilidade</span>
+      </div>
+      <p class="story__foot">Para homens de 25 a 45 anos, exigentes, que valorizam qualidade, discrição e estilo refinado. Tom elegante, confiante, sofisticado e atemporal.</p>
+    </div>
+  </section>
+
+  <!-- ============ LOOKBOOK ============ -->
+  <section class="section panel--ink" id="lookbook">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Conceito Fotográfico</p>
+        <h2>Lookbook</h2>
+        <p>Sete cenários que traduzem o universo Maison Rivier — do litoral à cidade.</p>
+      </div>
+      <div class="plates" id="plates"></div>
+    </div>
+  </section>
+
+  <!-- ============ GUARANTEES ============ -->
+  <section class="section" style="padding:0">
+    <div class="guarantees" id="guarantees"></div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section" id="contato">
+    <div class="wrap contact__grid">
+      <div>
+        <p class="eyebrow">Contato</p>
+        <h2 style="font-size:clamp(1.7rem,3.6vw,2.4rem);letter-spacing:.06em;text-transform:uppercase;margin:.9rem 0 1rem">Fale com o atelier</h2>
+        <p style="color:var(--muted);font-weight:300">Dúvidas sobre peças, tamanhos ou o andamento do seu pedido? Nossa equipe responde em até um dia útil.</p>
+        <ul class="contact__details">
+          <li><span class="k">Instagram</span><span class="v">@maisonrivier</span></li>
+          <li><span class="k">E-mail</span><span class="v">atelier@maisonrivier.com</span></li>
+          <li><span class="k">Atendimento</span><span class="v">Segunda a sexta, 9h às 18h</span></li>
+          <li><span class="k">Origem</span><span class="v">Paris · Riviera Française</span></li>
+        </ul>
+      </div>
+
+      <form class="form" id="contactForm" novalidate>
+        <div class="field" id="f-name">
+          <label for="cName">Nome</label>
+          <input type="text" id="cName" name="name" autocomplete="name" required>
+          <span class="field__err" aria-live="polite"></span>
+        </div>
+        <div class="field" id="f-email">
+          <label for="cEmail">E-mail</label>
+          <input type="email" id="cEmail" name="email" autocomplete="email" required>
+          <span class="field__err" aria-live="polite"></span>
+        </div>
+        <div class="field" id="f-subject">
+          <label for="cSubject">Assunto</label>
+          <select id="cSubject" name="subject" required>
+            <option value="">Selecione…</option>
+            <option>Meu pedido</option>
+            <option>Trocas e devoluções</option>
+            <option>Tamanhos e caimento</option>
+            <option>Imprensa e parcerias</option>
+            <option>Outro assunto</option>
+          </select>
+          <span class="field__err" aria-live="polite"></span>
+        </div>
+        <div class="field" id="f-message">
+          <label for="cMessage">Mensagem</label>
+          <textarea id="cMessage" name="message" required></textarea>
+          <span class="field__err" aria-live="polite"></span>
+        </div>
+        <button type="submit" class="btn btn--solid">Enviar mensagem</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer panel--navy">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <svg aria-hidden="true"><use href="#crest"/></svg>
+        <b>Maison Rivier</b>
+        <p>Élégance. Discrétion. Intemporel.</p>
+        <form id="newsletter" style="margin-top:1.4rem">
+          <label class="visually-hidden" for="nlEmail">E-mail para a newsletter</label>
+          <div class="newsletter">
+            <input type="email" id="nlEmail" placeholder="Seu e-mail" autocomplete="email">
+            <button type="submit">Assinar</button>
+          </div>
+          <p class="newsletter__msg" id="nlMsg" aria-live="polite"></p>
+        </form>
+      </div>
+      <div class="footer__col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#colecao">Coleção</a></li>
+          <li><a href="#loja">Loja</a></li>
+          <li><a href="#historia">História</a></li>
+          <li><a href="#lookbook">Lookbook</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Coleção</h4>
+        <ul id="footerCats"></ul>
+      </div>
+      <div class="footer__col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://instagram.com/maisonrivier" target="_blank" rel="noopener">Instagram @maisonrivier</a></li>
+          <li><a href="mailto:atelier@maisonrivier.com">atelier@maisonrivier.com</a></li>
+          <li><a href="#contato">Fale com o atelier</a></li>
+          <li><span style="color:var(--muted);font-size:.84rem;font-weight:300">Seg–sex, 9h–18h</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <span class="fr">Créé pour ceux qui apprécient l'excellence et la discrétion.</span>
+      <span id="footYear">© Maison Rivier</span>
+      <span>Coleção Heritage I — Lançamento 2025</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ CART DRAWER ============ -->
+<aside class="drawer" id="drawer" aria-label="Sacola de compras" aria-hidden="true">
+  <div class="drawer__head">
+    <h2>Sacola</h2>
+    <button type="button" class="drawer__close" id="cartClose" aria-label="Fechar sacola">&times;</button>
+  </div>
+  <div class="drawer__body" id="cartBody"></div>
+  <div class="drawer__foot">
+    <div class="subtotal"><span>Subtotal</span><b id="cartSubtotal">R$ 0,00</b></div>
+    <p class="drawer__note">Frete e impostos calculados na finalização.</p>
+    <button type="button" class="btn btn--solid" id="checkoutBtn" disabled>Finalizar pedido</button>
+    <button type="button" class="link-underline" id="keepShopping" style="align-self:center">Continuar comprando</button>
+  </div>
+</aside>
+
+<!-- ============ CHECKOUT MODAL ============ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal__card">
+    <button type="button" class="modal__close" id="modalClose" aria-label="Fechar">&times;</button>
+    <p class="eyebrow">Coleção Heritage I</p>
+    <h2 id="modalTitle">Resumo do pedido</h2>
+    <ul class="order-list" id="orderList"></ul>
+    <div class="order-total"><span>Total</span><span id="orderTotal">R$ 0,00</span></div>
+    <p class="modal__note">O pagamento on-line estará disponível em breve. Para concluir agora, envie o resumo do pedido por e-mail ou copie-o e fale conosco pelo Instagram — retornaremos para confirmar a compra e o frete.</p>
+    <div class="modal__actions">
+      <button type="button" class="btn btn--solid" id="orderEmail">Enviar por e-mail</button>
+      <button type="button" class="btn" id="orderCopy">Copiar resumo</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ------------------------------------------------------------------
+     DATA
+  ------------------------------------------------------------------ */
+  var COLORS = {
+    "Azul Marinho":"#001E3A","Branco":"#FBFAF4","Bege Areia":"#CBB489",
+    "Verde Oliva":"#3F4F36","Cinza Mescla":"#9DA0A2","Preto":"#17191C",
+    "Cinza Claro":"#CBCAC5","Cinza Escuro":"#44464A","Azul Claro":"#A9C4D6",
+    "Azul Listrado":"#B9CFDE","Caqui":"#B49A6A","Cinza":"#8E9194",
+    "Bege":"#D2BE97","Couro Marrom":"#6B4A2E","Corda Marinho":"#263B54",
+    "Pedras Ônix":"#1E1E22"
+  };
+
+  var TOPS = ["P","M","G","GG"];
+  var WAIST = ["38","40","42","44","46"];
+
+  var CATS = [
+    {key:"polos",       label:"Polos"},
+    {key:"camisetas",   label:"Camisetas"},
+    {key:"moletons",    label:"Moletons"},
+    {key:"camisas",     label:"Camisas Oxford"},
+    {key:"calcas",      label:"Calças Chino"},
+    {key:"bermudas",    label:"Bermudas"},
+    {key:"bones",       label:"Bonés"},
+    {key:"acessorios",  label:"Acessórios"}
+  ];
+
+  var PRODUCTS = [
+    { id:"polo-riviera", cat:"polos", type:"polo", name:"Polo Piqué Riviera", price:349.90,
+      desc:"Piqué de algodão pima, gola estruturada.",
+      colors:["Azul Marinho","Branco","Bege Areia","Verde Oliva","Cinza Mescla","Preto"], sizes:TOPS },
+    { id:"polo-heritage", cat:"polos", type:"polo", name:"Polo Piqué Heritage", price:429.90,
+      desc:"Brasão bordado ao peito, corte regular.",
+      colors:["Azul Marinho","Branco","Verde Oliva","Preto"], sizes:TOPS },
+    { id:"tee-essential", cat:"camisetas", type:"tee", name:"Camiseta Essential", price:189.90,
+      desc:"Malha penteada 190g, gola reforçada.",
+      colors:["Branco","Azul Marinho","Verde Oliva","Bege Areia","Cinza Claro","Cinza Escuro","Preto","Azul Claro"], sizes:TOPS },
+    { id:"tee-supima", cat:"camisetas", type:"tee", name:"Camiseta Supima Brasão", price:239.90,
+      desc:"Algodão Supima, brasão discreto.",
+      colors:["Branco","Azul Marinho","Preto"], sizes:TOPS },
+    { id:"moletom-rivier", cat:"moletons", type:"hoodie", name:"Moletom Meio-Zíper Rivier", price:399.90,
+      desc:"Felpa francesa, gola alta com zíper.",
+      colors:["Azul Marinho","Bege Areia","Cinza Mescla","Preto"], sizes:TOPS },
+    { id:"oxford-classica", cat:"camisas", type:"oxford", name:"Camisa Oxford Clássica", price:329.90,
+      desc:"Tecido Oxford, colarinho button-down.",
+      colors:["Branco","Azul Claro","Azul Listrado","Bege"], sizes:TOPS },
+    { id:"chino-alfaiataria", cat:"calcas", type:"chino", name:"Calça Chino Alfaiataria", price:359.90,
+      desc:"Sarja com elastano, caimento reto.",
+      colors:["Bege Areia","Azul Marinho","Caqui","Cinza"], sizes:WAIST },
+    { id:"bermuda-riviera", cat:"bermudas", type:"bermuda", name:"Bermuda Chino Riviera", price:249.90,
+      desc:"Sarja leve, comprimento acima do joelho.",
+      colors:["Bege Areia","Azul Marinho","Branco","Verde Oliva"], sizes:WAIST },
+    { id:"bone-brasao", cat:"bones", type:"cap", name:"Boné Brasão Maison", price:149.90,
+      desc:"Sarja de algodão, fecho metálico ajustável.",
+      colors:["Azul Marinho","Bege","Verde Oliva"], sizes:null, meta:"Ajuste regulável" },
+    { id:"pulseira-couro", cat:"acessorios", type:"bracelet", name:"Pulseira Couro Marrom", price:129.90,
+      desc:"Couro legítimo, fecho em aço escovado.",
+      colors:["Couro Marrom"], sizes:null, meta:"Tamanho único" },
+    { id:"pulseira-corda", cat:"acessorios", type:"bracelet", name:"Pulseira Corda Marinho", price:119.90,
+      desc:"Cordão náutico trançado, fecho magnético.",
+      colors:["Corda Marinho"], sizes:null, meta:"Tamanho único" },
+    { id:"pulseira-onix", cat:"acessorios", type:"bracelet", name:"Pulseira Pedras Ônix", price:139.90,
+      desc:"Ônix natural 8mm, elástico interno.",
+      colors:["Pedras Ônix"], sizes:null, meta:"Tamanho único" }
+  ];
+
+  var PLATES = [
+    {name:"Riviera",         cap:"Litoral ao amanhecer",  g:"linear-gradient(160deg,#0A3A5C,#0E5A6E)"},
+    {name:"Iate",            cap:"Convés e linho",         g:"linear-gradient(160deg,#001E3A,#586A74)"},
+    {name:"Clube",           cap:"Tênis e sombra",         g:"linear-gradient(160deg,#2C3B2A,#5E6B4A)"},
+    {name:"Golfe",           cap:"Campo aberto",           g:"linear-gradient(160deg,#3F4F36,#7C8A5B)"},
+    {name:"Centro Histórico",cap:"Pedra e cal",            g:"linear-gradient(160deg,#4A3A2A,#8A7150)"},
+    {name:"Café Europeu",    cap:"Mesa de mármore",        g:"linear-gradient(160deg,#2A211C,#6B4A2E)"},
+    {name:"Hotel",           cap:"Lobby ao entardecer",    g:"linear-gradient(160deg,#101922,#2E3E4C)"}
+  ];
+  var ROMAN = ["I","II","III","IV","V","VI","VII"];
+
+  var GUARANTEES = [
+    {t:"Qualidade premium",  d:"Tecidos nobres e fornecedores selecionados.",
+     p:"M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 21l-4.9 2.6.9-5.5-4-3.9 5.5-.8z"},
+    {t:"Acabamento impecável", d:"Costuras reforçadas e revisão peça a peça.",
+     p:"M4 20l6-6M14 10l6-6M9 9l6 6"},
+    {t:"Atendimento exclusivo", d:"Consultoria de tamanho e caimento.",
+     p:"M4 5h16v10H8l-4 4z"},
+    {t:"Entrega segura", d:"Envio rastreado para todo o Brasil.",
+     p:"M3 7h11v9H3zM14 10h4l3 3v3h-7zM7 19a2 2 0 1 0 0-.01M18 19a2 2 0 1 0 0-.01"},
+    {t:"Troca fácil e garantia", d:"30 dias para trocas e garantia de fábrica.",
+     p:"M4 10a8 8 0 0 1 14-4M20 6v4h-4M20 14a8 8 0 0 1-14 4M4 18v-4h4"}
+  ];
+
+  /* ------------------------------------------------------------------
+     HELPERS
+  ------------------------------------------------------------------ */
+  var $ = function(s,c){ return (c||document).querySelector(s); };
+  var money = function(v){ return "R$ " + v.toFixed(2).replace(".",","); };
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var esc = function(s){ return String(s).replace(/[&<>"]/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
+
+  /* ---- garment illustrations (atelier flats) ---- */
+  function garment(type, hex){
+    var F = 'fill="'+hex+'" class="fillable"';
+    var crest = function(x,y,w){ return '<use href="#monogram" x="'+x+'" y="'+y+'" width="'+w+'" height="'+(w*1.16)+'"/>'; };
+    var m = {
+      polo:
+        '<polygon '+F+' points="86,52 154,52 164,104 156,250 84,250 76,104"/>'+
+        '<polygon '+F+' points="86,52 58,66 40,116 70,130 92,92"/>'+
+        '<polygon '+F+' points="154,52 182,66 200,116 170,130 148,92"/>'+
+        '<polygon '+F+' points="104,50 120,66 120,48 108,42"/>'+
+        '<polygon '+F+' points="136,50 120,66 120,48 132,42"/>'+
+        '<rect '+F+' x="116" y="60" width="8" height="34"/>'+
+        '<g class="stitch"><path d="M84,52 Q120,70 156,52"/><line x1="120" y1="94" x2="120" y2="250"/>'+
+        '<circle cx="120" cy="72" r="2"/><circle cx="120" cy="86" r="2"/></g>'+
+        crest(128,80,26),
+      tee:
+        '<polygon '+F+' points="86,52 154,52 164,104 156,250 84,250 76,104"/>'+
+        '<polygon '+F+' points="86,52 58,66 40,116 70,130 92,92"/>'+
+        '<polygon '+F+' points="154,52 182,66 200,116 170,130 148,92"/>'+
+        '<path '+F+' d="M104,50 Q120,66 136,50 Q120,44 104,50 Z"/>'+
+        '<g class="stitch"><path d="M101,48 Q120,68 139,48"/></g>'+
+        crest(128,84,26),
+      hoodie:
+        '<polygon '+F+' points="82,60 158,60 170,120 162,250 78,250 70,120"/>'+
+        '<polygon '+F+' points="82,60 52,74 40,220 44,250 76,250 88,104"/>'+
+        '<polygon '+F+' points="158,60 188,74 200,220 196,250 164,250 152,104"/>'+
+        '<rect '+F+' x="44" y="240" width="34" height="14"/>'+
+        '<rect '+F+' x="162" y="240" width="34" height="14"/>'+
+        '<rect '+F+' x="74" y="240" width="88" height="14"/>'+
+        '<path '+F+' d="M100,56 Q120,44 140,56 L138,80 Q120,70 102,80 Z"/>'+
+        '<g class="stitch"><line x1="120" y1="60" x2="120" y2="150"/><rect x="117" y="146" width="6" height="12" rx="1" fill="none"/></g>'+
+        crest(128,96,24),
+      oxford:
+        '<polygon '+F+' points="84,54 156,54 166,108 160,252 80,252 74,108"/>'+
+        '<polygon '+F+' points="84,54 56,68 42,210 46,240 78,240 90,100"/>'+
+        '<polygon '+F+' points="156,54 184,68 198,210 194,240 162,240 150,100"/>'+
+        '<rect '+F+' x="46" y="230" width="34" height="14"/>'+
+        '<rect '+F+' x="160" y="230" width="34" height="14"/>'+
+        '<polygon '+F+' points="120,74 100,54 118,48"/>'+
+        '<polygon '+F+' points="120,74 140,54 122,48"/>'+
+        '<rect '+F+' x="115" y="54" width="10" height="192"/>'+
+        '<rect '+F+' x="130" y="100" width="26" height="26"/>'+
+        '<g class="stitch"><circle cx="120" cy="88" r="2"/><circle cx="120" cy="118" r="2"/><circle cx="120" cy="148" r="2"/><circle cx="120" cy="178" r="2"/><circle cx="120" cy="208" r="2"/></g>',
+      chino:
+        '<path '+F+' d="M78,52 L162,52 L164,72 L152,252 L124,252 L120,120 L116,252 L88,252 L76,72 Z"/>'+
+        '<g class="stitch"><line x1="120" y1="72" x2="120" y2="118"/>'+
+        '<path d="M82,80 Q98,96 100,78"/><path d="M158,80 Q142,96 140,78"/>'+
+        '<rect x="86" y="52" width="8" height="8" fill="none"/><rect x="146" y="52" width="8" height="8" fill="none"/>'+
+        '<circle cx="120" cy="66" r="2"/></g>',
+      bermuda:
+        '<path '+F+' d="M78,52 L162,52 L164,72 L156,168 L126,168 L120,116 L114,168 L84,168 L76,72 Z"/>'+
+        '<g class="stitch"><line x1="120" y1="72" x2="120" y2="112"/>'+
+        '<line x1="86" y1="160" x2="114" y2="160"/><line x1="126" y1="160" x2="154" y2="160"/>'+
+        '<circle cx="120" cy="66" r="2"/></g>',
+      cap:
+        '<path '+F+' d="M62,120 C62,74 92,52 128,52 C160,52 182,74 182,116 L62,120 Z"/>'+
+        '<path '+F+' d="M60,116 C40,120 28,134 34,144 C64,140 128,136 156,118 C120,120 90,120 60,116 Z"/>'+
+        '<g class="stitch"><path d="M96,54 C92,80 90,104 92,118"/><path d="M128,52 C128,80 128,104 128,120"/>'+
+        '<circle cx="123" cy="55" r="3" fill="none"/></g>'+
+        crest(132,74,28),
+      bracelet:
+        '<ellipse '+F+' cx="120" cy="150" rx="66" ry="48"/>'+
+        '<ellipse class="cutout" cx="120" cy="150" rx="42" ry="28"/>'+
+        '<rect class="clasp" x="108" y="196" width="24" height="16" rx="3"/>'+
+        '<g class="stitch"><ellipse cx="120" cy="150" rx="66" ry="48" fill="none"/><ellipse cx="120" cy="150" rx="42" ry="28" fill="none"/></g>'
+    };
+    return '<svg class="garment" viewBox="0 0 240 292" role="img" aria-label="Ilustração da peça">' + (m[type]||m.tee) + '</svg>';
+  }
+
+  /* ------------------------------------------------------------------
+     STATE
+  ------------------------------------------------------------------ */
+  var LS_CART = "mr_cart_v1", LS_THEME = "mr_theme";
+  var cart = [];
+  try{
+    var raw = localStorage.getItem(LS_CART);
+    if(raw){
+      var parsed = JSON.parse(raw);
+      if(Array.isArray(parsed)){
+        cart = parsed.filter(function(i){
+          return i && PRODUCTS.some(function(p){ return p.id===i.id; }) && typeof i.qty==="number" && i.qty>0;
+        });
+      }
+    }
+  }catch(e){ cart = []; }
+
+  function saveCart(){
+    try{ localStorage.setItem(LS_CART, JSON.stringify(cart)); }catch(e){}
+  }
+
+  /* ------------------------------------------------------------------
+     RENDER — ribbon, filters, grid
+  ------------------------------------------------------------------ */
+  function countIn(key){ return PRODUCTS.filter(function(p){ return p.cat===key; }).length; }
+
+  function buildRibbon(){
+    var host = $("#ribbon");
+    host.innerHTML = CATS.map(function(c){
+      var n = countIn(c.key);
+      return '<button class="ribbon__item" data-cat="'+c.key+'">'+
+             '<b>'+esc(c.label)+'</b><span>'+n+(n===1?" peça":" peças")+'</span></button>';
+    }).join("");
+    host.addEventListener("click", function(e){
+      var b = e.target.closest(".ribbon__item"); if(!b) return;
+      setFilter(b.dataset.cat);
+      document.getElementById("loja").scrollIntoView({behavior: reduced?"auto":"smooth", block:"start"});
+    });
+  }
+
+  var currentFilter = "all";
+  function buildFilters(){
+    var host = $("#filters");
+    var all = [{key:"all",label:"Tudo"}].concat(CATS);
+    host.innerHTML = all.map(function(c){
+      return '<button class="filter-btn" data-cat="'+c.key+'" aria-pressed="'+(c.key==="all")+'">'+esc(c.label)+'</button>';
+    }).join("");
+    host.addEventListener("click", function(e){
+      var b = e.target.closest(".filter-btn"); if(!b) return;
+      setFilter(b.dataset.cat);
+    });
+  }
+
+  function setFilter(key){
+    currentFilter = key;
+    Array.prototype.forEach.call(document.querySelectorAll(".filter-btn"), function(b){
+      b.setAttribute("aria-pressed", String(b.dataset.cat===key));
+    });
+    renderGrid();
+  }
+
+  function catLabel(key){
+    var c = CATS.filter(function(x){ return x.key===key; })[0];
+    return c ? c.label : key;
+  }
+
+  function cardHTML(p){
+    var first = p.colors[0];
+    var hex = COLORS[first];
+    var sizeBlock = p.sizes
+      ? '<p class="product__group-label">Tamanho</p><div class="product__sizes" role="group" aria-label="Tamanho">'+
+        p.sizes.map(function(s,i){ return '<button class="size'+(i===0?" is-active":"")+'" data-size="'+esc(s)+'">'+esc(s)+'</button>'; }).join("")+
+        '</div>'
+      : '<p class="product__meta">'+esc(p.meta||"Tamanho único")+'</p>';
+    var swatches = p.colors.map(function(c,i){
+      return '<button class="swatch'+(i===0?" is-active":"")+'" data-color="'+esc(c)+'" title="'+esc(c)+'" aria-label="Cor: '+esc(c)+'" style="--sw:'+COLORS[c]+'"></button>';
+    }).join("");
+    return '<article class="product" data-id="'+p.id+'" data-color="'+esc(first)+'" data-size="'+(p.sizes?esc(p.sizes[0]):"Único")+'">'+
+      '<div class="product__figure">'+garment(p.type,hex)+'<span class="product__cat">'+esc(catLabel(p.cat))+'</span></div>'+
+      '<div class="product__body">'+
+        '<h3 class="product__name">'+esc(p.name)+'</h3>'+
+        '<p class="product__desc">'+esc(p.desc)+'</p>'+
+        '<p class="product__price">'+money(p.price)+'</p>'+
+        '<p class="product__group-label">Cor: <span data-color-name>'+esc(first)+'</span></p>'+
+        '<div class="product__colors" role="group" aria-label="Cores">'+swatches+'</div>'+
+        sizeBlock+
+        '<button class="btn btn--add" data-add type="button">Adicionar à sacola</button>'+
+      '</div>'+
+    '</article>';
+  }
+
+  function renderGrid(){
+    var grid = $("#grid");
+    var list = PRODUCTS.filter(function(p){ return currentFilter==="all" || p.cat===currentFilter; });
+    grid.innerHTML = list.map(cardHTML).join("");
+  }
+
+  $("#grid").addEventListener("click", function(e){
+    var card = e.target.closest(".product"); if(!card) return;
+    var p = PRODUCTS.filter(function(x){ return x.id===card.dataset.id; })[0]; if(!p) return;
+
+    var sw = e.target.closest(".swatch");
+    if(sw){
+      card.dataset.color = sw.dataset.color;
+      Array.prototype.forEach.call(card.querySelectorAll(".swatch"), function(b){ b.classList.toggle("is-active", b===sw); });
+      var nm = card.querySelector("[data-color-name]"); if(nm) nm.textContent = sw.dataset.color;
+      var fillHex = COLORS[sw.dataset.color];
+      Array.prototype.forEach.call(card.querySelectorAll(".garment .fillable"), function(el){ el.setAttribute("fill", fillHex); });
+      return;
+    }
+    var sz = e.target.closest(".size");
+    if(sz){
+      card.dataset.size = sz.dataset.size;
+      Array.prototype.forEach.call(card.querySelectorAll(".size"), function(b){ b.classList.toggle("is-active", b===sz); });
+      return;
+    }
+    if(e.target.closest("[data-add]")){
+      addToCart(p, card.dataset.color, card.dataset.size || "Único");
+    }
+  });
+
+  /* ------------------------------------------------------------------
+     CART
+  ------------------------------------------------------------------ */
+  function addToCart(p, color, size){
+    var key = p.id + "|" + color + "|" + size;
+    var found = cart.filter(function(i){ return (i.id+"|"+i.color+"|"+i.size)===key; })[0];
+    if(found){ found.qty += 1; }
+    else{ cart.push({ id:p.id, name:p.name, type:p.type, price:p.price, color:color, size:size, qty:1 }); }
+    saveCart();
+    renderCart();
+    openDrawer();
+    toast(p.name + " adicionado à sacola");
+  }
+
+  function cartTotalQty(){ return cart.reduce(function(a,i){ return a+i.qty; },0); }
+  function cartSubtotal(){ return cart.reduce(function(a,i){ return a + i.price*i.qty; },0); }
+
+  function lineHTML(item, idx){
+    var variant = "Cor: " + item.color + (item.size && item.size!=="Único" ? "  ·  Tam: " + item.size : "");
+    return '<div class="line" data-idx="'+idx+'">'+
+      '<div class="line__thumb">'+garment(item.type, COLORS[item.color] || "#888")+'</div>'+
+      '<div>'+
+        '<div class="line__name">'+esc(item.name)+'</div>'+
+        '<div class="line__variant">'+esc(variant)+'</div>'+
+        '<div class="qty">'+
+          '<button type="button" data-act="dec" aria-label="Diminuir quantidade">&minus;</button>'+
+          '<span>'+item.qty+'</span>'+
+          '<button type="button" data-act="inc" aria-label="Aumentar quantidade">+</button>'+
+        '</div>'+
+      '</div>'+
+      '<div class="line__right">'+
+        '<div class="line__price">'+money(item.price*item.qty)+'</div>'+
+        '<button type="button" class="line__rm" data-act="rm">Remover</button>'+
+      '</div>'+
+    '</div>';
+  }
+
+  function renderCart(){
+    var body = $("#cartBody"), count = $("#cartCount");
+    var q = cartTotalQty();
+    count.textContent = q;
+    count.setAttribute("data-empty", String(q===0));
+    if(cart.length===0){
+      body.innerHTML = '<p class="drawer__empty">Sua sacola está vazia.<br>Explore a Coleção Heritage I.</p>';
+    }else{
+      body.innerHTML = cart.map(lineHTML).join("");
+    }
+    $("#cartSubtotal").textContent = money(cartSubtotal());
+    $("#checkoutBtn").disabled = cart.length===0;
+  }
+
+  $("#cartBody").addEventListener("click", function(e){
+    var row = e.target.closest(".line"); if(!row) return;
+    var idx = parseInt(row.dataset.idx,10);
+    var act = e.target.closest("[data-act]"); if(!act) return;
+    var a = act.dataset.act;
+    if(a==="inc") cart[idx].qty += 1;
+    else if(a==="dec"){ cart[idx].qty -= 1; if(cart[idx].qty<=0) cart.splice(idx,1); }
+    else if(a==="rm") cart.splice(idx,1);
+    saveCart();
+    renderCart();
+  });
+
+  /* ------------------------------------------------------------------
+     DRAWER / OVERLAY / MODAL
+  ------------------------------------------------------------------ */
+  var drawer = $("#drawer"), overlay = $("#overlay"), modal = $("#modal");
+  var lastFocus = null;
+
+  function anyOpen(){ return drawer.classList.contains("is-open") || modal.classList.contains("is-open"); }
+  function syncOverlay(){ overlay.classList.toggle("is-open", anyOpen()); }
+
+  function openDrawer(){
+    lastFocus = document.activeElement;
+    drawer.classList.add("is-open");
+    drawer.setAttribute("aria-hidden","false");
+    syncOverlay();
+    $("#cartClose").focus();
+  }
+  function closeDrawer(){
+    drawer.classList.remove("is-open");
+    drawer.setAttribute("aria-hidden","true");
+    syncOverlay();
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  function openModal(){
+    if(cart.length===0) return;
+    buildOrder();
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden","false");
+    syncOverlay();
+    $("#modalClose").focus();
+  }
+  function closeModal(){
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden","true");
+    syncOverlay();
+    $("#checkoutBtn").focus();
+  }
+
+  $("#cartOpen").addEventListener("click", openDrawer);
+  $("#cartClose").addEventListener("click", closeDrawer);
+  $("#keepShopping").addEventListener("click", closeDrawer);
+  $("#modalClose").addEventListener("click", closeModal);
+  $("#checkoutBtn").addEventListener("click", openModal);
+  overlay.addEventListener("click", function(){ closeModal(); closeDrawer(); });
+  document.addEventListener("keydown", function(e){
+    if(e.key!=="Escape") return;
+    if(modal.classList.contains("is-open")) closeModal();
+    else if(drawer.classList.contains("is-open")) closeDrawer();
+    else if(document.body.classList.contains("nav-open")) toggleNav(false);
+  });
+
+  /* ---- order summary ---- */
+  function orderText(){
+    var lines = cart.map(function(i){
+      var v = i.color + (i.size && i.size!=="Único" ? " / " + i.size : "");
+      return i.qty + "x  " + i.name + " — " + v + "  —  " + money(i.price*i.qty);
+    });
+    lines.push("");
+    lines.push("Subtotal: " + money(cartSubtotal()));
+    lines.push("Frete: a combinar");
+    return "PEDIDO — MAISON RIVIER (Coleção Heritage I)\n\n" + lines.join("\n");
+  }
+
+  function buildOrder(){
+    $("#orderList").innerHTML = cart.map(function(i){
+      var v = i.color + (i.size && i.size!=="Único" ? " · " + i.size : "");
+      return '<li><span>'+i.qty+'&times; '+esc(i.name)+' <em style="color:var(--muted)">('+esc(v)+')</em></span><b>'+money(i.price*i.qty)+'</b></li>';
+    }).join("");
+    $("#orderTotal").textContent = money(cartSubtotal());
+  }
+
+  $("#orderEmail").addEventListener("click", function(){
+    var subject = "Novo pedido — Maison Rivier";
+    window.location.href = "mailto:atelier@maisonrivier.com?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(orderText());
+  });
+  $("#orderCopy").addEventListener("click", function(){
+    var txt = orderText();
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){ toast("Resumo copiado"); }, function(){ toast("Não foi possível copiar"); });
+    }else{
+      toast("Copie o resumo pelo campo de e-mail");
+    }
+  });
+
+  /* ------------------------------------------------------------------
+     NAV / HEADER / THEME
+  ------------------------------------------------------------------ */
+  var header = $("#siteHeader"), hero = $("#inicio");
+  function onScroll(){
+    header.classList.toggle("is-solid", window.scrollY > (hero.offsetHeight - 90));
+  }
+  window.addEventListener("scroll", function(){
+    if(reduced){ onScroll(); return; }
+    window.requestAnimationFrame(onScroll);
+  }, {passive:true});
+  onScroll();
+
+  function toggleNav(force){
+    var open = typeof force==="boolean" ? force : !document.body.classList.contains("nav-open");
+    document.body.classList.toggle("nav-open", open);
+    $("#navToggle").setAttribute("aria-expanded", String(open));
+  }
+  $("#navToggle").addEventListener("click", function(){ toggleNav(); });
+  Array.prototype.forEach.call(document.querySelectorAll('#siteNav a'), function(a){
+    a.addEventListener("click", function(){ toggleNav(false); });
+  });
+
+  var themeBtn = $("#themeToggle");
+  function applyTheme(t){ document.documentElement.setAttribute("data-theme", t); }
+  var storedTheme = null;
+  try{ storedTheme = localStorage.getItem(LS_THEME); }catch(e){}
+  applyTheme(storedTheme || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+  themeBtn.addEventListener("click", function(){
+    var next = document.documentElement.getAttribute("data-theme")==="dark" ? "light" : "dark";
+    applyTheme(next);
+    try{ localStorage.setItem(LS_THEME, next); }catch(e){}
+  });
+
+  /* ---- announcement ---- */
+  try{
+    if(sessionStorage.getItem("mr_annc")==="closed") $("#announce").hidden = true;
+  }catch(e){}
+  $("[data-close-announce]").addEventListener("click", function(){
+    $("#announce").hidden = true;
+    try{ sessionStorage.setItem("mr_annc","closed"); }catch(e){}
+  });
+
+  /* ------------------------------------------------------------------
+     LOOKBOOK / GUARANTEES / FOOTER CATS
+  ------------------------------------------------------------------ */
+  $("#plates").innerHTML = PLATES.map(function(p,i){
+    return '<article class="plate" style="--g:'+p.g+'">'+
+      '<svg class="plate__crest" aria-hidden="true"><use href="#crest"/></svg>'+
+      '<span class="plate__no">Planche '+ROMAN[i]+'</span>'+
+      '<span class="plate__name">'+esc(p.name)+'</span>'+
+      '<span class="plate__cap">'+esc(p.cap)+'</span>'+
+    '</article>';
+  }).join("");
+
+  $("#guarantees").innerHTML = GUARANTEES.map(function(g){
+    return '<div class="guarantee">'+
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+g.p+'"/></svg>'+
+      '<b>'+esc(g.t)+'</b><span>'+esc(g.d)+'</span></div>';
+  }).join("");
+
+  $("#footerCats").innerHTML = CATS.map(function(c){
+    return '<li><a href="#loja" data-foot-cat="'+c.key+'">'+esc(c.label)+'</a></li>';
+  }).join("");
+  $("#footerCats").addEventListener("click", function(e){
+    var a = e.target.closest("[data-foot-cat]"); if(!a) return;
+    setFilter(a.dataset.footCat);
+  });
+
+  $("#footYear").textContent = "© " + new Date().getFullYear() + " Maison Rivier";
+
+  /* ------------------------------------------------------------------
+     FORMS
+  ------------------------------------------------------------------ */
+  var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  function setError(fieldId, msg){
+    var f = document.getElementById(fieldId);
+    f.classList.toggle("invalid", !!msg);
+    f.querySelector(".field__err").textContent = msg || "";
+  }
+
+  $("#contactForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    var f = e.target;
+    var vName = document.getElementById("cName").value.trim();
+    var vEmail = document.getElementById("cEmail").value.trim();
+    var vSubject = document.getElementById("cSubject").value;
+    var vMessage = document.getElementById("cMessage").value.trim();
+    var ok = true;
+    if(!vName){ setError("f-name","Informe seu nome."); ok=false; } else setError("f-name","");
+    if(!emailRe.test(vEmail)){ setError("f-email","Informe um e-mail válido."); ok=false; } else setError("f-email","");
+    if(!vSubject){ setError("f-subject","Selecione um assunto."); ok=false; } else setError("f-subject","");
+    if(vMessage.length < 10){ setError("f-message","Escreva ao menos 10 caracteres."); ok=false; } else setError("f-message","");
+    if(!ok) return;
+
+    var name = vName.split(" ")[0];
+    var done = document.createElement("div");
+    done.className = "form__ok";
+    done.innerHTML = '<svg aria-hidden="true"><use href="#crest"/></svg>'+
+      '<h3>Mensagem recebida</h3>'+
+      '<p>Obrigado, '+esc(name)+'. O atelier Maison Rivier responderá em até um dia útil.</p>';
+    f.replaceWith(done);
+  });
+
+  $("#newsletter").addEventListener("submit", function(e){
+    e.preventDefault();
+    var input = $("#nlEmail"), msg = $("#nlMsg");
+    if(!emailRe.test(input.value.trim())){
+      msg.style.color = "var(--err)";
+      msg.textContent = "Informe um e-mail válido.";
+      return;
+    }
+    msg.style.color = "var(--accent)";
+    msg.textContent = "Pronto — você receberá novidades da Maison Rivier.";
+    input.value = "";
+  });
+
+  /* ------------------------------------------------------------------
+     TOAST
+  ------------------------------------------------------------------ */
+  function toast(msg){
+    var host = $("#toasts");
+    var el = document.createElement("div");
+    el.className = "toast";
+    el.textContent = msg;
+    host.appendChild(el);
+    setTimeout(function(){
+      el.style.transition = "opacity .3s ease";
+      el.style.opacity = "0";
+      setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, 320);
+    }, 2400);
+  }
+
+  /* ------------------------------------------------------------------
+     INIT
+  ------------------------------------------------------------------ */
+  buildRibbon();
+  buildFilters();
+  renderGrid();
+  renderCart();
+})();
+</script>
