@@ -1,72 +1,68 @@
-# Fotos das peças
+# Fotos das peças — Collection 01
 
-Coloque as fotos dos produtos **nesta pasta**. O site troca a ilustração pela
-foto automaticamente assim que o arquivo existir — não precisa mexer no código.
+Coloque as fotos **nesta pasta**. O site troca a ilustração pela foto
+automaticamente assim que o arquivo existir — não precisa mexer no código.
 
-## Nome dos arquivos
+## Nome do arquivo
 
-Formato: `id-da-peca-cor.jpg`
+`id-da-peca-cor.jpg`  (JPG, quadrado, fundo branco/claro, mín. 1000×1000)
 
-Uma foto por cor (recomendado para o catálogo ficar igual ao brand board):
+Se tiver só **uma** foto por peça, use o nome curto (sem a cor): `id-da-peca.jpg`.
 
+### Polos
 ```
-polo-heritage-azul-marinho.jpg
-polo-heritage-branco.jpg
-polo-heritage-bege-areia.jpg
-polo-heritage-verde-oliva.jpg
-polo-heritage-cinza-mescla.jpg
-polo-heritage-preto.jpg
-
-tee-essential-branco.jpg
-tee-essential-azul-marinho.jpg
-tee-essential-verde-oliva.jpg
-tee-essential-bege-areia.jpg
-tee-essential-cinza-claro.jpg
-tee-essential-cinza-escuro.jpg
-tee-essential-preto.jpg
-tee-essential-azul-claro.jpg
-
-moletom-rivier-azul-marinho.jpg   (e -bege-areia, -cinza-mescla, -preto)
-oxford-classica-branco.jpg        (e -azul-claro, -azul-listrado, -bege)
-chino-alfaiataria-bege-areia.jpg  (e -azul-marinho, -caqui, -cinza)
-bermuda-riviera-bege-areia.jpg    (e -azul-marinho, -branco, -verde-oliva)
-bone-brasao-azul-marinho.jpg      (e -bege, -verde-oliva)
-pulseira-couro-couro-marrom.jpg
-pulseira-corda-corda-marinho.jpg
-pulseira-onix-pedras-onix.jpg
+polo-piquet-azul-marinho.jpg   polo-piquet-branco.jpg
+polo-piquet-bege.jpg           polo-piquet-preto.jpg
+```
+### Camisetas
+```
+camiseta-essential-branco.jpg        camiseta-essential-azul-marinho.jpg
+camiseta-essential-verde-oliva.jpg   camiseta-essential-bege-areia.jpg
+camiseta-essential-cinza-mescla.jpg  camiseta-essential-preto.jpg
+```
+### Camisas
+```
+camisa-oxford-branco.jpg  camisa-oxford-azul-marinho.jpg  camisa-oxford-bege.jpg
+```
+### Moletons  (Oversized e Zíper)
+```
+moletom-oversized-preto.jpg  moletom-oversized-branco.jpg  moletom-oversized-bege-areia.jpg
+moletom-oversized-cinza-mescla.jpg  moletom-oversized-verde-oliva.jpg
+moletom-ziper-preto.jpg  moletom-ziper-branco.jpg  moletom-ziper-bege-areia.jpg
+moletom-ziper-cinza-mescla.jpg  moletom-ziper-verde-oliva.jpg
+```
+### Calças  (Reta e Cargo)
+```
+calca-reta-off-white.jpg  calca-reta-azul-marinho.jpg  calca-reta-bege-areia.jpg  calca-reta-preto.jpg
+calca-cargo-preto.jpg  calca-cargo-bege-areia.jpg  calca-cargo-cinza-mescla.jpg  calca-cargo-verde-oliva.jpg
+```
+### Bermudas  (Alfaiataria e Moletom)
+```
+bermuda-alfaiataria-off-white.jpg  bermuda-alfaiataria-azul-marinho.jpg
+bermuda-alfaiataria-bege-areia.jpg  bermuda-alfaiataria-preto.jpg
+bermuda-moletom-preto.jpg  bermuda-moletom-branco.jpg  bermuda-moletom-bege-areia.jpg
+bermuda-moletom-cinza-mescla.jpg  bermuda-moletom-verde-oliva.jpg
+```
+### Acessórios
+```
+bone-preto.jpg  bone-bege.jpg  bone-verde-oliva.jpg
+cinto-marrom.jpg  cinto-preto.jpg
+meia-sortido.jpg
+pochete-preto.jpg
+mochila-preto.jpg
+carteira-marrom.jpg  carteira-preto.jpg
+chaveiro-preto.jpg
 ```
 
-### Só tem uma foto por peça?
+## Imagens da campanha já no site
+- `hero.jpg` — foto do herói (topo do site)
+- `campanha-polo.jpg` — arte da polo (reserva, ainda não usada)
 
-Use o nome curto, sem a cor — vale para todas as cores daquela peça:
-
-```
-polo-heritage.jpg
-tee-essential.jpg
-moletom-rivier.jpg
-oxford-classica.jpg
-chino-alfaiataria.jpg
-bermuda-riviera.jpg
-bone-brasao.jpg
-pulseira-couro.jpg
-pulseira-corda.jpg
-pulseira-onix.jpg
-```
-
-## Especificação técnica
-
-- **JPG** (ou PNG), fundo branco ou bem claro
-- **Quadrada**, no mínimo 1000 × 1000 px
-- Peça centralizada, mesmo enquadramento em todas (catálogo uniforme)
-- Até ~400 KB por arquivo de preferência (comprima antes de subir)
-
-## Como publicar depois de adicionar as fotos
-
+## Publicar depois de adicionar fotos
 ```
 cd C:\Users\Breno\maison-rivier
 git add -A
 git commit -m "Adiciona fotos das pecas"
 git push
 ```
-
-Em ~1 minuto o site atualiza sozinho em https://brenokassab.github.io/Maison-Rivier/
+O site atualiza sozinho em ~1 min: https://brenokassab.github.io/Maison-Rivier/

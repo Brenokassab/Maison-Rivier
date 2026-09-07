@@ -7,7 +7,7 @@
 <style>
 /* ============================================================
    MAISON RIVIER — PARIS
-   Storefront · Coleção Heritage I
+   Storefront · Collection 01
    Estilo: herança / editorial (ref. Polo Ralph Lauren)
    Ivory + tinta quase-preta, navy e bronze como acento discreto
    Type: Cormorant Garamond (display serifado) + Cinzel (marca) + Montserrat (UI)
@@ -267,19 +267,18 @@ button{ font:inherit; color:inherit; cursor:pointer; }
 /* ---------- hero ---------- */
 .hero{
   position:relative; overflow:hidden; text-align:center;
-  min-height:clamp(520px, 84vh, 800px);
-  display:grid; place-items:center;
+  min-height:clamp(560px, 92vh, 880px);
+  display:flex; align-items:flex-end; justify-content:center;
   background:
-    radial-gradient(120% 90% at 50% 0%, rgba(255,255,255,.10), transparent 55%),
-    linear-gradient(180deg, #16283f 0%, #0f1d31 55%, #0b1626 100%);
+    linear-gradient(180deg, rgba(9,15,24,.30) 0%, rgba(9,15,24,.05) 42%, rgba(9,15,24,.74) 100%),
+    #0f1d31 url("images/hero.jpg") center/cover no-repeat;
 }
-.hero__mark{ position:absolute; inset:0; display:grid; place-items:center; pointer-events:none; }
-.hero__mark svg{ width:min(72vw,640px); height:auto; color:#fff; opacity:.045; }
+.hero__mark{ display:none; }
 .hero__inner{
   position:relative; z-index:1;
-  padding:clamp(3rem,10vh,7rem) var(--gutter);
-  display:flex; flex-direction:column; align-items:center; gap:1.5rem;
-  max-width:760px;
+  padding:0 var(--gutter) clamp(3rem,8vh,5.5rem);
+  display:flex; flex-direction:column; align-items:center; gap:1.3rem;
+  max-width:640px;
 }
 .hero__crest{ width:60px; height:68px; color:var(--accent-hi); }
 .hero__eyebrow{ color:rgba(241,238,230,.7); }
@@ -361,11 +360,12 @@ button{ font:inherit; color:inherit; cursor:pointer; }
 .filter-btn[aria-pressed="true"]{ color:var(--ink); border-bottom-color:var(--ink); }
 
 .grid{
-  display:grid; gap:clamp(1.6rem,3vw,3rem) clamp(1rem,2.4vw,2.2rem);
-  grid-template-columns:repeat(3,1fr);
+  display:grid; gap:clamp(1.8rem,3.2vw,3.2rem) clamp(1rem,2vw,1.8rem);
+  grid-template-columns:repeat(4,1fr);
 }
-@media (max-width:900px){ .grid{ grid-template-columns:repeat(2,1fr); } }
-@media (max-width:520px){ .grid{ grid-template-columns:repeat(2,1fr); gap:1.4rem 1rem; } }
+@media (max-width:1080px){ .grid{ grid-template-columns:repeat(3,1fr); } }
+@media (max-width:760px){ .grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:520px){ .grid{ gap:1.4rem 1rem; } }
 
 .product{
   background:transparent;
@@ -744,7 +744,7 @@ button{ font:inherit; color:inherit; cursor:pointer; }
 
 <!-- ============ ANNOUNCE ============ -->
 <div class="announce" id="announce">
-  <span>Frete grátis para todo o Brasil acima de R$ 500 — Coleção Heritage I, edição inaugural</span>
+  <span>Frete grátis para todo o Brasil acima de R$ 500 — Collection 01, edição inaugural</span>
   <button type="button" aria-label="Fechar aviso" data-close-announce>&times;</button>
 </div>
 
@@ -785,15 +785,11 @@ button{ font:inherit; color:inherit; cursor:pointer; }
 
 <main>
   <!-- ============ HERO ============ -->
-  <section class="hero panel--navy" id="inicio">
-    <div class="hero__mark" aria-hidden="true"><svg><use href="#crest"/></svg></div>
+  <section class="hero" id="inicio">
+    <h1 class="visually-hidden">Maison Rivier — Paris · Collection 01</h1>
     <div class="wrap hero__inner">
-      <svg class="hero__crest" aria-hidden="true"><use href="#crest"/></svg>
-      <p class="eyebrow hero__eyebrow">Paris · Riviera Française</p>
-      <h1 class="hero__word">Maison Rivier</h1>
-      <span class="hero__sub-line"><span class="hero__paris">Paris</span></span>
+      <p class="eyebrow hero__eyebrow">Collection 01</p>
       <p class="hero__tag">Élégance. Discrétion. Intemporel.</p>
-      <p class="hero__copy">Moda masculina premium que une a elegância clássica francesa a uma estética contemporânea e atemporal. Peças de qualidade impecável, pensadas para todas as ocasiões.</p>
       <div class="hero__cta">
         <a class="btn btn--solid" href="#loja">Explorar a coleção</a>
         <a class="btn btn--ghost" href="#historia">Nossa história</a>
@@ -805,9 +801,9 @@ button{ font:inherit; color:inherit; cursor:pointer; }
   <section class="section" id="colecao">
     <div class="wrap">
       <div class="section__head">
-        <p class="eyebrow">Coleção Heritage I</p>
+        <p class="eyebrow">Collection 01</p>
         <h2>As categorias</h2>
-        <p>Oito famílias de peças que compõem a edição inaugural da Maison Rivier. Selecione uma para explorar na loja.</p>
+        <p>As sete famílias de peças da Collection 01. Selecione uma para explorar na loja.</p>
       </div>
       <div class="ribbon__grid" id="ribbon"></div>
     </div>
@@ -818,8 +814,8 @@ button{ font:inherit; color:inherit; cursor:pointer; }
     <div class="wrap">
       <div class="section__head">
         <p class="eyebrow">A Loja</p>
-        <h2>Peças Heritage I</h2>
-        <p>As dez peças da Coleção Heritage I, todas com o brasão Maison Rivier. Escolha a cor e o tamanho para adicionar à sacola.</p>
+        <h2>A Collection 01</h2>
+        <p>As peças da Collection 01, todas com o brasão Maison Rivier. Escolha a cor e o tamanho para adicionar à sacola.</p>
       </div>
       <div class="shop__filters" id="filters" role="group" aria-label="Filtrar por categoria"></div>
       <div class="grid" id="grid"></div>
@@ -962,7 +958,7 @@ button{ font:inherit; color:inherit; cursor:pointer; }
     <div class="footer__bar">
       <span class="fr">Créé pour ceux qui apprécient l'excellence et la discrétion.</span>
       <span id="footYear">© Maison Rivier</span>
-      <span>Coleção Heritage I — Lançamento 2025</span>
+      <span>Collection 01 — Lançamento 2025</span>
     </div>
   </div>
 </footer>
@@ -986,7 +982,7 @@ button{ font:inherit; color:inherit; cursor:pointer; }
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
   <div class="modal__card">
     <button type="button" class="modal__close" id="modalClose" aria-label="Fechar">&times;</button>
-    <p class="eyebrow">Coleção Heritage I</p>
+    <p class="eyebrow">Collection 01</p>
     <h2 id="modalTitle">Resumo do pedido</h2>
     <ul class="order-list" id="orderList"></ul>
     <div class="order-total"><span>Total</span><span id="orderTotal">R$ 0,00</span></div>
@@ -1014,59 +1010,77 @@ button{ font:inherit; color:inherit; cursor:pointer; }
      DATA
   ------------------------------------------------------------------ */
   var COLORS = {
-    "Azul Marinho":"#001E3A","Branco":"#F5F3EC","Bege Areia":"#C9B48B",
-    "Verde Oliva":"#3F4F36","Cinza Mescla":"#A6A8AA","Preto":"#18181A",
-    "Cinza Claro":"#D7D7D4","Cinza Escuro":"#3B3D41","Azul Claro":"#AEC6D8",
-    "Azul Listrado":"#E4ECF2","Caqui":"#B6996C","Cinza":"#8B8E91",
-    "Bege":"#CFBB93","Couro Marrom":"#6E4A2E","Corda Marinho":"#26405C",
-    "Pedras Ônix":"#2A2A2E"
+    "Azul Marinho":"#00182E","Branco":"#F5F3EC","Off White":"#EEEBE1",
+    "Bege Areia":"#C9B48B","Bege":"#CFBB93","Verde Oliva":"#3B4A34",
+    "Cinza Mescla":"#A6A8AA","Preto":"#161616","Marrom":"#5A3D28",
+    "Cinza Claro":"#D7D7D4","Sortido":"#B7B2A4"
   };
 
-  var TOPS = ["P","M","G","GG"];
+  var TOPS  = ["P","M","G","GG"];
   var WAIST = ["38","40","42","44","46"];
+  var BELT  = ["85","90","95","100","105"];
+  var SOCK  = ["35–39","40–44"];
 
   var CATS = [
     {key:"polos",       label:"Polos"},
     {key:"camisetas",   label:"Camisetas"},
+    {key:"camisas",     label:"Camisas"},
     {key:"moletons",    label:"Moletons"},
-    {key:"camisas",     label:"Camisas Oxford"},
-    {key:"calcas",      label:"Calças Chino"},
+    {key:"calcas",      label:"Calças"},
     {key:"bermudas",    label:"Bermudas"},
-    {key:"bones",       label:"Bonés"},
     {key:"acessorios",  label:"Acessórios"}
   ];
 
+  /* Collection 01 — preços e peças conforme a campanha oficial */
   var PRODUCTS = [
-    { id:"polo-heritage", cat:"polos", type:"polo", name:"Polo Piqué Heritage", price:349.90,
-      desc:"Piqué de algodão pima, gola canelada e brasão bordado ao peito.",
-      colors:["Azul Marinho","Branco","Bege Areia","Verde Oliva","Cinza Mescla","Preto"], sizes:TOPS, usePhotos:true },
-    { id:"tee-essential", cat:"camisetas", type:"tee", name:"Camiseta Essential", price:189.90,
+    { id:"polo-piquet", cat:"polos", type:"polo", name:"Polo Piquet", price:199.90,
+      desc:"Algodão piquet premium, gola estruturada, botões em madrepérola e brasão bordado.",
+      colors:["Azul Marinho","Branco","Bege","Preto"], sizes:TOPS, usePhotos:true },
+    { id:"camiseta-essential", cat:"camisetas", type:"tee", name:"Camiseta Essential", price:189.90,
       desc:"Malha penteada premium, gola reforçada e brasão ao peito.",
-      colors:["Branco","Azul Marinho","Verde Oliva","Bege Areia","Cinza Claro","Cinza Escuro","Preto","Azul Claro"], sizes:TOPS, usePhotos:true },
-    { id:"moletom-rivier", cat:"moletons", type:"hoodie", name:"Moletom Meio-Zíper Rivier", price:399.90,
-      desc:"Felpa francesa, gola alta com zíper e punhos canelados.",
-      colors:["Azul Marinho","Bege Areia","Cinza Mescla","Preto"], sizes:TOPS, usePhotos:true },
-    { id:"oxford-classica", cat:"camisas", type:"oxford", name:"Camisa Oxford Clássica", price:329.90,
+      colors:["Branco","Azul Marinho","Verde Oliva","Bege Areia","Cinza Mescla","Preto"], sizes:TOPS, usePhotos:true },
+    { id:"camisa-oxford", cat:"camisas", type:"oxford", name:"Camisa Oxford", price:329.90,
       desc:"Tecido Oxford encorpado, colarinho button-down e bolso frontal.",
-      colors:["Branco","Azul Claro","Azul Listrado","Bege"], sizes:TOPS, usePhotos:true },
-    { id:"chino-alfaiataria", cat:"calcas", type:"chino", name:"Calça Chino Alfaiataria", price:359.90,
-      desc:"Sarja com elastano, cós com passantes e caimento reto.",
-      colors:["Bege Areia","Azul Marinho","Caqui","Cinza"], sizes:WAIST, usePhotos:true },
-    { id:"bermuda-riviera", cat:"bermudas", type:"bermuda", name:"Bermuda Chino Riviera", price:249.90,
-      desc:"Sarja leve, comprimento na altura do joelho.",
-      colors:["Bege Areia","Azul Marinho","Branco","Verde Oliva"], sizes:WAIST, usePhotos:true },
-    { id:"bone-brasao", cat:"bones", type:"cap", name:"Boné Brasão Maison", price:149.90,
-      desc:"Seis gomos estruturados, aba curva e brasão bordado à frente.",
-      colors:["Azul Marinho","Bege","Verde Oliva"], sizes:null, usePhotos:true, meta:"Ajuste regulável" },
-    { id:"pulseira-couro", cat:"acessorios", type:"leather", name:"Pulseira Couro Marrom", price:129.90,
-      desc:"Couro legítimo trançado, fecho em aço escovado.",
-      colors:["Couro Marrom"], sizes:null, usePhotos:true, meta:"Tamanho único" },
-    { id:"pulseira-corda", cat:"acessorios", type:"cord", name:"Pulseira Corda Marinho", price:119.90,
-      desc:"Cordão náutico trançado com fecho magnético.",
-      colors:["Corda Marinho"], sizes:null, usePhotos:true, meta:"Tamanho único" },
-    { id:"pulseira-onix", cat:"acessorios", type:"onyx", name:"Pulseira Pedras Ônix", price:139.90,
-      desc:"Contas de ônix natural 8 mm com elástico interno.",
-      colors:["Pedras Ônix"], sizes:null, usePhotos:true, meta:"Tamanho único" }
+      colors:["Branco","Azul Marinho","Bege"], sizes:TOPS, usePhotos:true },
+    { id:"moletom-oversized", cat:"moletons", type:"hoodie", name:"Moletom Oversized", price:399.90,
+      desc:"Felpa premium, capuz duplo, bolso canguru, cordão personalizado, modelagem oversized.",
+      colors:["Preto","Branco","Bege Areia","Cinza Mescla","Verde Oliva"], sizes:TOPS, usePhotos:true },
+    { id:"moletom-ziper", cat:"moletons", type:"hoodie", name:"Moletom Zíper", price:399.90,
+      desc:"Felpa premium, fechamento em zíper, capuz duplo e bolsos laterais.",
+      colors:["Preto","Branco","Bege Areia","Cinza Mescla","Verde Oliva"], sizes:TOPS, usePhotos:true },
+    { id:"calca-reta", cat:"calcas", type:"chino", name:"Calça Reta", price:329.90,
+      desc:"Algodão premium com elastano, cós elástico, modelagem reta, ponteira metálica e brasão bordado.",
+      colors:["Off White","Azul Marinho","Bege Areia","Preto"], sizes:WAIST, usePhotos:true },
+    { id:"calca-cargo", cat:"calcas", type:"cargo", name:"Calça Cargo", price:329.90,
+      desc:"Bolsos laterais utilitários, cós com cordão, modelagem reta e brasão bordado.",
+      colors:["Preto","Bege Areia","Cinza Mescla","Verde Oliva"], sizes:WAIST, usePhotos:true },
+    { id:"bermuda-alfaiataria", cat:"bermudas", type:"bermuda", name:"Bermuda Alfaiataria", price:279.90,
+      desc:"Cós com passantes, fechamento em botão, bolsos laterais e traseiro, brasão bordado.",
+      colors:["Off White","Azul Marinho","Bege Areia","Preto"], sizes:WAIST, usePhotos:true },
+    { id:"bermuda-moletom", cat:"bermudas", type:"bermuda", name:"Bermuda Moletom", price:279.90,
+      desc:"Moletom de algodão, cós com cordão, leveza para o verão.",
+      colors:["Preto","Branco","Bege Areia","Cinza Mescla","Verde Oliva"], sizes:TOPS, usePhotos:true },
+    { id:"bone", cat:"acessorios", type:"cap", name:"Boné", price:199.90,
+      desc:"Bordado exclusivo, aba curva e fecho metálico ajustável.",
+      colors:["Preto","Bege","Verde Oliva"], sizes:null, usePhotos:true, meta:"Ajuste regulável" },
+    { id:"cinto", cat:"acessorios", type:"belt", name:"Cinto", price:249.90,
+      desc:"Couro legítimo com fivela personalizada Maison Rivier.",
+      colors:["Marrom","Preto"], sizes:BELT, usePhotos:true },
+    { id:"meia", cat:"acessorios", type:"socks", name:"Meia — Kit 3 pares", price:59.90,
+      desc:"Algodão premium, conforto térmico. Kit com três pares.",
+      colors:["Sortido"], sizes:SOCK, usePhotos:true },
+    { id:"pochete", cat:"acessorios", type:"waistbag", name:"Pochete", price:179.90,
+      desc:"Nylon premium, alça ajustável e brasão bordado.",
+      colors:["Preto"], sizes:null, usePhotos:true, meta:"Tamanho único" },
+    { id:"mochila", cat:"acessorios", type:"backpack", name:"Mochila", price:399.90,
+      desc:"Espaço interno amplo, tecido resistente à água e brasão bordado.",
+      colors:["Preto"], sizes:null, usePhotos:true, meta:"Tamanho único" },
+    { id:"carteira", cat:"acessorios", type:"wallet", name:"Carteira", price:219.90,
+      desc:"Couro legítimo, compacta e elegante.",
+      colors:["Marrom","Preto"], sizes:null, usePhotos:true, meta:"Tamanho único" },
+    { id:"chaveiro", cat:"acessorios", type:"keychain", name:"Chaveiro", price:99.90,
+      desc:"Metal premium com placa personalizada.",
+      colors:["Preto"], sizes:null, usePhotos:true, meta:"Tamanho único" }
   ];
 
   var PLATES = [
@@ -1207,6 +1221,60 @@ button{ font:inherit; color:inherit; cursor:pointer; }
         '<circle class="gbtn" cx="120" cy="56" r="2.2"/>'+
         '<path class="seam" d="M120 66 L120 112"/><path class="seam" d="M80 70 C92 84 100 82 104 68"/><path class="seam" d="M160 70 C148 84 140 82 136 68"/>'+
         '<path class="hl" d="M92 70 L88 166"/>',
+      cargo:
+        sh(268)+
+        '<path class="fill-lo" d="M78 46 L162 46 L164 66 L76 66 Z"/>'+
+        '<path class="body" fill="'+V+'" d="M76 64 L118 64 L114 264 L86 264 L80 150 Z"/>'+
+        '<path class="body" fill="'+V+'" d="M122 64 L164 64 L160 150 L154 264 L126 264 Z"/>'+
+        '<path class="fill-lo" d="M74 120 L104 120 L104 156 L74 156 Z"/><path class="fill-lo" d="M136 120 L166 120 L166 156 L136 156 Z"/>'+
+        '<path class="seam" d="M74 138 L104 138"/><path class="seam" d="M136 138 L166 138"/>'+
+        '<rect class="fill-lo2" x="84" y="44" width="5" height="12"/><rect class="fill-lo2" x="151" y="44" width="5" height="12"/>'+
+        '<path class="seam" d="M120 66 L120 122"/>'+
+        '<path class="hl" d="M92 70 L87 252"/>',
+      belt:
+        '<ellipse class="gshadow" cx="118" cy="196" rx="74" ry="10"/>'+
+        '<path class="body" fill="'+H+'" d="M36 118 C36 108 46 102 64 102 L176 102 C192 102 200 110 200 122 C200 134 192 142 176 142 L64 142 C46 142 36 132 36 118 Z"/>'+
+        '<circle class="fill-lo2" cx="58" cy="122" r="2.4"/><circle class="fill-lo2" cx="72" cy="122" r="2.4"/><circle class="fill-lo2" cx="86" cy="122" r="2.4"/><circle class="fill-lo2" cx="100" cy="122" r="2.4"/>'+
+        '<rect class="metal" x="176" y="98" width="34" height="48" rx="5"/>'+
+        '<rect class="cutout" x="185" y="108" width="16" height="28" rx="3"/>'+
+        '<rect class="metal" x="170" y="118" width="16" height="6" rx="2"/>'+
+        em(120, 108, 26),
+      socks:
+        '<ellipse class="gshadow" cx="120" cy="240" rx="66" ry="10"/>'+
+        '<path class="body" fill="'+H+'" d="M74 58 L110 58 L110 150 C110 172 128 178 128 200 L128 214 C128 226 118 232 102 232 L84 232 C70 232 62 224 62 210 L62 198 C62 176 74 170 74 150 Z"/>'+
+        '<path class="body" fill="'+H+'" d="M130 58 L166 58 L166 150 C166 170 176 178 176 200 L176 214 C176 226 168 232 154 232 L136 232 C122 232 112 226 112 214 L112 200 C112 178 130 172 130 150 Z"/>'+
+        '<rect class="fill-lo2" x="72" y="58" width="40" height="11"/><rect class="fill-lo2" x="128" y="58" width="40" height="11"/>'+
+        '<path class="seam" d="M74 150 L110 150"/><path class="seam" d="M130 150 L166 150"/>',
+      backpack:
+        '<ellipse class="gshadow" cx="120" cy="250" rx="66" ry="11"/>'+
+        '<path class="fill-lo2" d="M96 60 C82 66 80 112 92 152 L102 152 C92 112 96 76 106 64 Z"/>'+
+        '<path class="fill-lo2" d="M144 60 C158 66 160 112 148 152 L138 152 C148 112 144 76 134 64 Z"/>'+
+        '<path class="fill-lo2" d="M108 52 C112 42 128 42 132 52 L128 60 C126 50 114 50 112 60 Z"/>'+
+        '<path class="body" fill="'+H+'" d="M78 96 C78 68 100 52 120 52 C140 52 162 68 162 96 L168 214 C168 230 158 240 142 240 L98 240 C82 240 72 230 72 214 Z"/>'+
+        '<path class="fill-lo" d="M88 150 L152 150 L156 214 C156 224 150 230 140 230 L100 230 C90 230 84 224 84 214 Z"/>'+
+        '<path class="seam" d="M90 152 L150 152"/><path class="seam" d="M120 98 L120 148"/>'+
+        em(106, 104, 30),
+      wallet:
+        '<ellipse class="gshadow" cx="120" cy="180" rx="60" ry="9"/>'+
+        '<rect class="body" fill="'+H+'" x="64" y="92" width="112" height="78" rx="7"/>'+
+        '<path class="seam" d="M64 131 L176 131"/>'+
+        '<rect class="fill-lo" x="118" y="102" width="44" height="24" rx="3"/>'+
+        '<rect class="fill-lo2" x="118" y="107" width="44" height="3"/>'+
+        em(78, 132, 26),
+      waistbag:
+        '<ellipse class="gshadow" cx="120" cy="188" rx="66" ry="10"/>'+
+        '<rect class="fill-lo2" x="36" y="118" width="30" height="11" rx="4"/><rect class="fill-lo2" x="174" y="118" width="30" height="11" rx="4"/>'+
+        '<path class="body" fill="'+H+'" d="M58 112 C58 98 74 90 98 90 L142 90 C166 90 182 98 182 112 L184 152 C184 172 168 182 146 182 L94 182 C72 182 56 172 56 152 Z"/>'+
+        '<path class="seam" d="M60 122 C90 136 150 136 180 122"/>'+
+        '<circle class="metal" cx="120" cy="129" r="4"/>'+
+        em(150, 96, 26),
+      keychain:
+        '<ellipse class="gshadow" cx="120" cy="204" rx="42" ry="8"/>'+
+        '<circle cx="120" cy="78" r="18" fill="none" stroke="#c7a468" stroke-width="6"/>'+
+        '<rect class="body" fill="'+H+'" x="90" y="102" width="60" height="92" rx="9"/>'+
+        '<path class="seam" d="M90 120 L150 120"/>'+
+        '<circle class="metal" cx="120" cy="111" r="4"/>'+
+        em(100, 128, 40),
       cap:
         '<ellipse class="gshadow" cx="116" cy="182" rx="72" ry="12"/>'+
         '<path class="body" fill="'+H+'" d="M64 150 C40 156 26 172 34 184 C74 178 150 168 182 150 C150 150 96 150 64 150 Z"/>'+
@@ -1276,7 +1344,7 @@ button{ font:inherit; color:inherit; cursor:pointer; }
   /* ------------------------------------------------------------------
      STATE
   ------------------------------------------------------------------ */
-  var LS_CART = "mr_cart_v2", LS_THEME = "mr_theme";
+  var LS_CART = "mr_cart_v3", LS_THEME = "mr_theme";
   var WA = "5511996603491", MAIL = "maisonrivierr@gmail.com";
   var cart = [];
   try{
@@ -1303,19 +1371,21 @@ button{ font:inherit; color:inherit; cursor:pointer; }
   var CAT_G = {
     polos:"linear-gradient(180deg,#1e3550,#12233a)",
     camisetas:"linear-gradient(180deg,#2c3034,#17191c)",
-    moletons:"linear-gradient(180deg,#313c46,#1c2530)",
     camisas:"linear-gradient(180deg,#35495e,#1f3040)",
+    moletons:"linear-gradient(180deg,#313c46,#1c2530)",
     calcas:"linear-gradient(180deg,#4c4132,#2e271d)",
     bermudas:"linear-gradient(180deg,#414c38,#2a3123)",
-    bones:"linear-gradient(180deg,#213548,#132234)",
     acessorios:"linear-gradient(180deg,#2c2824,#17140f)"
   };
   function buildRibbon(){
     var host = $("#ribbon");
-    host.innerHTML = CATS.map(function(c){
+    var tiles = CATS.map(function(c){
       return '<button class="ribbon__item" data-cat="'+c.key+'" style="--g:'+(CAT_G[c.key]||"#1a2a40")+'">'+
              '<b>'+esc(c.label)+'</b><span>Ver '+esc(c.label)+'</span></button>';
-    }).join("");
+    });
+    tiles.push('<button class="ribbon__item" data-cat="all" style="--g:linear-gradient(180deg,#243142,#12161d)">'+
+               '<b>A Coleção</b><span>Ver tudo</span></button>');
+    host.innerHTML = tiles.join("");
     host.addEventListener("click", function(e){
       var b = e.target.closest(".ribbon__item"); if(!b) return;
       setFilter(b.dataset.cat);
@@ -1457,7 +1527,7 @@ button{ font:inherit; color:inherit; cursor:pointer; }
     count.textContent = q;
     count.setAttribute("data-empty", String(q===0));
     if(cart.length===0){
-      body.innerHTML = '<p class="drawer__empty">Sua sacola está vazia.<br>Explore a Coleção Heritage I.</p>';
+      body.innerHTML = '<p class="drawer__empty">Sua sacola está vazia.<br>Explore a Collection 01.</p>';
     }else{
       body.innerHTML = cart.map(lineHTML).join("");
       hydratePhotos(body);
@@ -1537,7 +1607,7 @@ button{ font:inherit; color:inherit; cursor:pointer; }
     lines.push("");
     lines.push("Subtotal: " + money(cartSubtotal()));
     lines.push("Frete: a combinar");
-    return "PEDIDO — MAISON RIVIER (Coleção Heritage I)\n\n" + lines.join("\n");
+    return "PEDIDO — MAISON RIVIER (Collection 01)\n\n" + lines.join("\n");
   }
 
   function buildOrder(){
